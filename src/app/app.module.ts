@@ -15,6 +15,7 @@ import { ComponentComponent } from './admin-home/component/component.component';
 import { CreateComponent } from './admin-home/employee/create/create.component';
 import { UpdateComponent } from './admin-home/employee/update/update.component';
 import { SettingsComponent } from './admin-home/settings/settings.component';
+import { Form, FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -34,7 +35,9 @@ import { SettingsComponent } from './admin-home/settings/settings.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule
+
   ],
   providers: [],
   bootstrap: [AppComponent]

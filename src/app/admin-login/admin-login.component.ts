@@ -9,6 +9,24 @@ import { Router } from '@angular/router';
 })
 export class AdminLoginComponent {
 
+
+  email:string="";
+  pass:string="";
+
+  myFunction(x:any) {
+    x = document.getElementById("togglePassword");
+    if (x.type === "password") {
+      x.type = "text";
+    } else {
+      x.type = "password";
+    }
+  }
+
+  submit(){
+    console.log(this.email);
+    console.log(this.pass);
+  }
+
   constructor(private router: Router) {}
 
   gotoHome(){

@@ -1,1 +1,36 @@
-<p> login works! </p>
+
+<div class="whole">
+    <div class="container">
+        <div class="row">
+          <div class="col-2" style="background-color: rgb(25, 47, 75); height: 900px; margin-left: 0px;" >
+            <div></div>
+          </div>
+          <div class="col-10">
+            <div class="card">
+                
+                <p class="login">A &nbsp; D &nbsp;M &nbsp;I &nbsp;N  &nbsp;&nbsp;&nbsp; L &nbsp;O &nbsp;G &nbsp;I&nbsp; N</p><br><br>
+                <p class="cred"> Email ID</p>
+                <input class="textbox" [(ngModel)]="email" type="email" name="email" > <br>
+                <p class="cred"> Password</p>
+                <input class="textbox" [(ngModel)]="pass" type="password" name="password" autocomplete="current-password" required="" id="id_password">
+                <i class="far fa-eye" (click)= " myFunction" id="togglePassword" style="margin-left: 340px; margin-top: -20px; cursor: pointer; color:gray;"></i>
+                <br><br>
+                <div class="btn-group" role="group" (click)= "submit()" aria-label="Basic outlined example">
+                    <button type="button" class="btn btn-outline-primary">
+                        <p class="submit"> L O G I N</p>
+                    
+                    </button>
+                </div>
+                
+            </div>
+          </div>
+        </div>
+    </div>
+
+      
+
+
+   
+
+
+ 
