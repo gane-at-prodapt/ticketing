@@ -13,7 +13,10 @@
                 <input class="textbox" [(ngModel)]="email" type="email" name="email" > <br>
                 <p class="cred"> Password</p>
                 <input class="textbox" [(ngModel)]="pass" type="password" name="password" autocomplete="current-password" required="" id="id_password">
-                <i class="far fa-eye" (click)= " myFunction" id="togglePassword" style="margin-left: 340px; margin-top: -20px; cursor: pointer; color:gray;"></i>
+                
+                    <i class="far fa-eye" id="tp" style="margin-left: 340px; margin-top: -20px; cursor: pointer; color:gray;"></i>
+            
+                
                 <br><br>
                 <div class="btn-group" role="group" (click)= "submit()" aria-label="Basic outlined example">
                     <button type="button" class="btn btn-outline-primary">
