@@ -34,6 +34,7 @@ import {  MatTableModule  } from '@angular/material/table';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatPaginatorModule } from '@angular/material/paginator';
+import { IncidentComponent } from './incident/incident.component';
 
 
 
@@ -62,7 +63,8 @@ import { MatPaginatorModule } from '@angular/material/paginator';
     UpdateEmployeeComponent,
     UpdateGroupComponent,
     UpdateNetworkComponent,
-    HomepageComponent
+    HomepageComponent,
+    IncidentComponent
   ],
   imports: [
     BrowserModule,

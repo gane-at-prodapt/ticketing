@@ -1,21 +1,41 @@
+<style>
+    .Name
+    {
+        margin-left: 50px;
+    }
+    .custom-select
+    {
+        width: 200px;
+        margin-bottom: 10px;
+      
+       
+    }
+    .submit
+    {
+        width:70px;
+        height: 10px;
+    }
+</style>
+
+<!-- style="background-color: #f4f4f4	;" -->
 <div class="outer">
-
-
-
 <nav class="navbar navbar-expand-lg bg-body-tertiary" style="background-color:black " >
-    <div class="container-fluid" >
-      <a class="navbar-brand"  [routerLink]="'../network'">Network</a>
+    <div class="container-fluid"  >
+      <a class="navbar-brand" [routerLink]="'../network'" style="margin-left: 20px;">Incident</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
           <li class="nav-item">
-            <a class="nav-link active" aria-current="page" [routerLink]="'../addnetwork'">Add Network Device</a>
+            <a class="nav-link active" aria-current="page" [routerLink]="'../addnetwork'">View tickets</a>
           </li>
+
+        
           <li class="nav-item">
-            <a class="nav-link" [routerLink]="'../network'">Search Network Device</a>
+            <a class="nav-link" [routerLink]="'../network'">Raise ticket</a>
           </li>
+          
           <!-- <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
               Dropdown
@@ -27,7 +47,7 @@
               <li><a class="dropdown-item" href="#">Something else here</a></li>
             </ul>
           </li> -->
-          
+         
         </ul>
         <!-- <form class="d-flex" role="search">
           <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
@@ -36,43 +56,20 @@
       </div>
     </div>
   </nav>
-  <br><br><br>
 
-
-    <div class="row">
-      <div class="col-2">
-    
-          <p class="Name" style="margin-left: 50px;"> Network Device</p>
-    
+ 
+    <div class="card" style="width: 18rem;">
+        <div class="card-body">
+          <h5 class="card-title">Card title</h5>
+          <h6 class="card-subtitle mb-2 text-body-secondary">Card subtitle</h6>
+          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+          <a href="#" class="card-link">Card link</a>
+          <a href="#" class="card-link">Another link</a>
+        </div>
       </div>
-      <div class="col-2">
-          <!-- <div class="op"> -->
-    
-          <!-- <form #form="ngForm" (submit)="createnetwork(form)">
-          <div class="form-group pt-3"> -->
-    
-                 
-              <div class="input-group mb-3"  >
-                  <select style="width: 100px;  margin-left: 50px;" name="networkName" [(ngModel)]="networkID"  class="custom-select" id="inputGroupSelect">
-                  <option selected>Select</option>
-                  
-    
-                  <option *ngFor="let i of networkElements; let in= index" value={{in}}>{{i}}</option>
-                  
-                  </select>
-                  
-             </div>
-    
-          </div>
-          <!-- </div> -->
-    
-         
-    </div>
-    <button type="button" class="btn btn-primary"
-            style="--bs-btn-padding-y: .15rem; --bs-btn-padding-x: .9rem; --bs-btn-font-size: .1 rem; margin-left: 270px; margin-top: 10px;">
-             submit 
-        </button>
-</div>
+  </div>
 
 
 
+ 
+  

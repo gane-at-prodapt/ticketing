@@ -1,17 +1,4 @@
 <style>
-  table, th , td {
-  border: 1px solid grey;
-  border-collapse: collapse;
-  padding: 5px;
-}
-
-table tr:nth-child(odd) {
-  background-color: #f1f1f1;
-}
-
-table tr:nth-child(even) {
-  background-color: #ffffff;
-}
     .Name
     {
         margin-left: 50px;
@@ -34,17 +21,17 @@ table tr:nth-child(even) {
 <div class="outer">
 <nav class="navbar navbar-expand-lg bg-body-tertiary" style="background-color:black " >
     <div class="container-fluid" >
-      <a class="navbar-brand" href="#">Network</a>
+      <a class="navbar-brand" [routerLink]="'../network'" style="margin-left: 20px;">Network</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
           <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="#add">Add Network Device</a>
+            <a class="nav-link active" aria-current="page" [routerLink]="'../addnetwork'">Add Network Device</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#whole">Search Network Device</a>
+            <a class="nav-link" [routerLink]="'../network'">Search Network Device</a>
           </li>
           <!-- <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -57,9 +44,7 @@ table tr:nth-child(even) {
               <li><a class="dropdown-item" href="#">Something else here</a></li>
             </ul>
           </li> -->
-          <li class="nav-item">
-            <a class="nav-link disabled" aria-disabled="true">Disabled</a>
-          </li>
+         
         </ul>
         <!-- <form class="d-flex" role="search">
           <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
@@ -73,36 +58,37 @@ table tr:nth-child(even) {
 
 <!-- $event.target.value -->
 <div class="whole" id="whole">
+  <br><br><br><br>
   <div class="search1">
     <mat-form-field id="searchfield" style="margin-left: 300px; width: 700px; background-color: #fff; color: #fff;">
-      <input id="mysearch" matInput (keyup)="applyFilter($any($event.target).value)" placeholder="Filter">
+      <input id="mysearch" matInput (keyup)="applyFilter($any($event.target).value)" placeholder="Search">
     </mat-form-field>
 </div>
-<br><br><br><br>
+<br><br>
 <div class="table1">
-<table id="mytable" style="width: 500px; " mat-table [dataSource]="dataSource" class="mat-elevation"> 
+<table id="mytable" style="width: 320px; " mat-table [dataSource]="dataSource" class="mat-elevation-z8"> 
 
   <!-- Position Column -->
   <ng-container  matColumnDef="position">
-    <th  style=" width: 80px; text-align: center;" *matHeaderCellDef> No. </th>
+    <th  style=" width: 60px; text-align: center;" mat-header-cell  *matHeaderCellDef> S No </th>
     <td   style=" text-align: center " mat-cell *matCellDef="let element"> {{element.position}} </td>
   </ng-container>
 
   <!-- Name Column -->
   <ng-container matColumnDef="name">
-    <th  style=" width: 150px; text-align: center " mat-header-cell *matHeaderCellDef> Name </th>
+    <th  style=" width: 100px; text-align: center " mat-header-cell *matHeaderCellDef> Name </th>
     <td   style=" text-align: center " mat-cell *matCellDef="let element"> {{element.name}} </td>
   </ng-container>
 
   <!-- Weight Column -->
   <ng-container matColumnDef="weight">
-    <th style=" width: 120px; text-align:center"  mat-header-cell *matHeaderCellDef> Weight </th>
+    <th style=" width: 80px; text-align:center"  mat-header-cell *matHeaderCellDef> Weight </th>
     <td  style=" text-align: center " mat-cell *matCellDef="let element"> {{element.weight}} </td>
   </ng-container>
 
   <!-- Symbol Column -->
   <ng-container matColumnDef="symbol">
-    <th style=" width: 100px; text-align: center; border-radius: 10%; " mat-header-cell *matHeaderCellDef> Symbol </th>
+    <th style=" width: 80px; text-align: center; border-radius: 10%; " mat-header-cell *matHeaderCellDef> Symbol </th>
     <td  style=" text-align: center " mat-cell *matCellDef="let element"> {{element.symbol}} </td>
   </ng-container>
 
@@ -134,50 +120,6 @@ table tr:nth-child(even) {
     </div>
 
 </div> -->
-<div class="add" id="add">
-<div class="row">
-  <div class="col-3">
-
-      <p class="Name"> Network Device</p>
-
-  </div>
-  <div class="col-3">
-      <!-- <div class="op"> -->
-
-      <!-- <form #form="ngForm" (submit)="createnetwork(form)">
-      <div class="form-group pt-3"> -->
-
-             
-          <div class="input-group mb-3" >
-              <select name="networkName" [(ngModel)]="networkID"  class="custom-select" id="inputGroupSelect">
-              <option selected>Select</option>
-              
-
-              <option *ngFor="let i of networkElements; let in= index" value={{in}}>{{i}}</option>
-              
-              </select>
-              
-          </div>
-
-      </div>
-      <!-- </div> -->
-
-      <div class="col-3">
-          <div class="btn-group" role="group" (click)= "submit()" aria-label="Basic outlined example">
-              <button type="button" class="btn btn-outline-primary">
-                  <p class="submit"> submit </p>
-              
-              </button>
-
-
-      </div>
-
 </div>
-</div>
-
-
-
-</div>
-
 </div>
 
