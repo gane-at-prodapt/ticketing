@@ -1,6 +1,27 @@
-/* table {
-    width: 100px;
+table {
+    
+    background-color: white;
+    color: white;
+   
+    padding: 20%;
+  
   }
+  .search1
+  {
+    
+  }
+
+  .table1
+  {
+    width: 900px;
+    margin-left: 200px;
+  }
+ 
+  .searchfield
+  {
+    margin-left: 100px;
+  }
+  
   
   .mat-form-field {
     font-size: 14px;
@@ -10,4 +31,4 @@
   }
   .mat-column-select {
     overflow: initial;
-  } */
+  }
