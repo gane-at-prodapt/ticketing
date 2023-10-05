@@ -2,7 +2,22 @@
     color: orchid;
     background-color: black;
 } */
+.mychart
+{
+  /* width: 200px;
+  height: 500px; */
+  min-height: fit-content;
+  min-width: fit-content;
+ 
+}
 
+.card-title
+{
+  width: 700px;
+  
+  margin-left: auto;
+  margin-right: auto;
+}
 .c-item
 {
   height: 300px;

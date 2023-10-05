@@ -12,10 +12,34 @@ import { EmployeeComponent } from './admin-home/employee/employee.component';
 import { GroupComponent } from './admin-home/group/group.component';
 import { NetworkElementComponent } from './admin-home/network-element/network-element.component';
 import { ComponentComponent } from './admin-home/component/component.component';
-import { CreateComponent } from './admin-home/employee/create/create.component';
-import { UpdateComponent } from './admin-home/employee/update/update.component';
+import { CreateNetworkComponent } from './create-network/create-network.component';
+import { CreateComponentComponent } from './create-component/create-component.component';
+import { CreateEmployeeComponent } from './create-employee/create-employee.component';
+import { CreateGroupComponent } from './create-group/create-group.component';
+import { UpdateComponentComponent } from './update-component/update-component.component';
+import { UpdateEmployeeComponent } from './update-employee/update-employee.component';
+import { UpdateGroupComponent } from './update-group/update-group.component';
+import { UpdateNetworkComponent } from './update-network/update-network.component';
+
 import { SettingsComponent } from './admin-home/settings/settings.component';
 import { Form, FormsModule } from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
+import { ChartModule } from 'angular-highcharts';
+
+
+import { NgChartsModule } from 'ng2-charts';
+import { HomepageComponent } from './homepage/homepage.component';
+import { MatTableDataSource } from '@angular/material/table'
+import {  MatTableModule  } from '@angular/material/table';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { MatPaginatorModule } from '@angular/material/paginator';
+
+
+
+
+
+
 
 @NgModule({
   declarations: [
@@ -29,14 +53,29 @@ import { Form, FormsModule } from '@angular/forms';
     GroupComponent,
     NetworkElementComponent,
     ComponentComponent,
-    CreateComponent,
-    UpdateComponent,
-    SettingsComponent
+    SettingsComponent,
+    CreateComponentComponent,
+    CreateEmployeeComponent,
+    CreateGroupComponent,
+    CreateNetworkComponent,
+    UpdateComponentComponent,
+    UpdateEmployeeComponent,
+    UpdateGroupComponent,
+    UpdateNetworkComponent,
+    HomepageComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule,
+    ChartModule,
+    NgChartsModule,
+    MatTableModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatPaginatorModule
+    
 
   ],
   providers: [],

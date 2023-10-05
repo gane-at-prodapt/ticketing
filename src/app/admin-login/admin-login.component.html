@@ -7,15 +7,47 @@
           </div>
           <div class="col-10">
             <div class="card">
+              
                 
                 <p class="login">A &nbsp; D &nbsp;M &nbsp;I &nbsp;N  &nbsp;&nbsp;&nbsp; L &nbsp;O &nbsp;G &nbsp;I&nbsp; N</p><br><br>
-                <p class="cred"> Email ID</p>
-                <input class="textbox" [(ngModel)]="email" type="email" name="email" > <br>
-                <p class="cred"> Password</p>
-                <input class="textbox" [(ngModel)]="pass" type="password" name="password" autocomplete="current-password" required="" id="id_password">
+                <form [formGroup]= "form">
+
                 
-                    <i class="far fa-eye" id="tp" style="margin-left: 340px; margin-top: -20px; cursor: pointer; color:gray;"></i>
-            
+                <!-- <div class="form-group">
+                  <label>Email</label>
+                  <input type="text" formControlName="email1" placeholder="enter email" class="form-control">
+                  <label class="text-danger" *ngIf="getError(form.get('email1'))">
+                    {{
+                      getError(form.get('email1'))
+                    }}
+
+                  </label>
+                </div> -->
+
+                <div class="form-group">
+                <!-- <p class="cred"> Email ID</p> -->
+                <input class="form-control" placeholder="Enter email"  formControlName="email" type="text" name="email" > 
+                <label class="text-danger" style="margin-left: auto;" *ngIf= "getError(form.get('email'))">
+                  {{
+                    getError(form.get('email'))
+                  }}
+
+                </label>
+             
+
+                <br>
+               
+                <!-- <p class="cred"> Password</p> -->
+                <input class="form-control" placeholder="Enter password" formControlName="pass" type="password" name="pass" >
+                <label class="text-danger" style="margin-left: auto;" *ngIf= "getpass(form.get('pass'))">
+                  {{
+                    getpass(form.get('pass'))
+                  }}
+
+                </label>
+<!--                 
+                    <i class="far fa-eye" id="tp" style="margin-left: 340px; margin-top: -20px; cursor: pointer; color:gray;"></i> -->
+                
                 
                 <br><br>
                 <div class="btn-group" role="group" (click)= "submit()" aria-label="Basic outlined example">
@@ -24,7 +56,8 @@
                     
                     </button>
                 </div>
-                
+              </div>
+              </form>
             </div>
           </div>
         </div>
