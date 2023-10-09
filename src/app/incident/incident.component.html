@@ -21,19 +21,19 @@
 <div class="outer">
 <nav class="navbar navbar-expand-lg bg-body-tertiary" style="background-color:black " >
     <div class="container-fluid"  >
-      <a class="navbar-brand" [routerLink]="'../network'" style="margin-left: 20px;">Incident</a>
+      <a class="navbar-brand" [routerLink]="'../incident'" style="margin-left: 20px;">Incident</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
           <li class="nav-item">
-            <a class="nav-link active" aria-current="page" [routerLink]="'../addnetwork'">View tickets</a>
+            <a class="nav-link active" aria-current="page" [routerLink]="'../incident'">View tickets</a>
           </li>
 
         
           <li class="nav-item">
-            <a class="nav-link" [routerLink]="'../network'">Raise ticket</a>
+            <a class="nav-link" [routerLink]="'../ticket'">Raise ticket</a>
           </li>
           
           <!-- <li class="nav-item dropdown">
@@ -57,17 +57,59 @@
     </div>
   </nav>
 
- 
-    <div class="card" style="width: 18rem;">
-        <div class="card-body">
-          <h5 class="card-title">Card title</h5>
-          <h6 class="card-subtitle mb-2 text-body-secondary">Card subtitle</h6>
-          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-          <a href="#" class="card-link">Card link</a>
-          <a href="#" class="card-link">Another link</a>
-        </div>
-      </div>
+   
+  <br>
+  <br>
+  
+  <div class="whole" id="whole">
+    <br><br><br><br>
+    <div class="search1">
+      <mat-form-field id="searchfield" style="margin-left: 300px; width: 700px; background-color: #fff; color: #fff;">
+        <input id="mysearch" matInput (keyup)="applyFilter($any($event.target).value)" placeholder="Search">
+      </mat-form-field>
   </div>
+  <br><br>
+  <div class="table1">
+  <table id="mytable" style="width: 320px; " mat-table [dataSource]="dataSource" class="mat-elevation-z8"> 
+  
+    <!-- Position Column -->
+    <ng-container  matColumnDef="position">
+      <th  style=" width: 60px; text-align: center;" mat-header-cell  *matHeaderCellDef> S No </th>
+      <td   style=" text-align: center " mat-cell *matCellDef="let element"> {{element.position}} </td>
+    </ng-container>
+  
+    <!-- Name Column -->
+    <ng-container matColumnDef="name">
+      <th  style=" width: 100px; text-align: center " mat-header-cell *matHeaderCellDef> Name </th>
+      <td   style=" text-align: center " mat-cell *matCellDef="let element"> {{element.name}} </td>
+    </ng-container>
+  
+    <!-- Weight Column -->
+    <ng-container matColumnDef="weight">
+      <th style=" width: 80px; text-align:center"  mat-header-cell *matHeaderCellDef> Weight </th>
+      <td  style=" text-align: center " mat-cell *matCellDef="let element"> {{element.weight}} </td>
+    </ng-container>
+  
+    <!-- Symbol Column -->
+    <ng-container matColumnDef="symbol">
+      <th style=" width: 80px; text-align: center; border-radius: 10%; " mat-header-cell *matHeaderCellDef> Symbol </th>
+      <td  style=" text-align: center " mat-cell *matCellDef="let element"> {{element.symbol}} </td>
+    </ng-container>
+  
+    <tr style="background-color: #fff;" mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr style="background-color: #fff;" mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+  
+  </div>
+  <br><br>
+  <br><br>
+  <br><br>
+  <br><br>
+  <br><br>
+  <br><br>
+  </div>
+ </div>
+   
 
 
 

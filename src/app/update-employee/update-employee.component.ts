@@ -7,4 +7,12 @@ import { Component } from '@angular/core';
 })
 export class UpdateEmployeeComponent {
 
+  // ngOnit()
+  // {
+  //   $(document).ready( function() {
+  //     console.log("yay");
+  //   ;
+  // }
+ 
+
 }

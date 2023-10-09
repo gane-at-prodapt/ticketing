@@ -10,6 +10,9 @@ import { CreateGroupComponent } from './create-group/create-group.component';
 import { UpdateNetworkComponent } from './update-network/update-network.component';
 import { UpdateComponentComponent } from './update-component/update-component.component';
 import { IncidentComponent } from './incident/incident.component';
+import { RaiseticketComponent } from './raiseticket/raiseticket.component';
+import { UpdateGroupComponent } from './update-group/update-group.component';
+import { UpdateEmployeeComponent } from './update-employee/update-employee.component';
 
 const routes: Routes = [
   { path: 'login', component: AdminLoginComponent },
@@ -20,7 +23,10 @@ const routes: Routes = [
   { path: 'incident', component: IncidentComponent },
   { path: 'group', component: CreateGroupComponent },
   { path: 'addnetwork', component: UpdateNetworkComponent },
-  { path: 'addcomponent', component: UpdateComponentComponent }
+  { path: 'addcomponent', component: UpdateComponentComponent },
+  { path: 'ticket', component: RaiseticketComponent },
+  { path: 'addgroup', component: UpdateGroupComponent },
+  { path: 'scrolldown', component: UpdateEmployeeComponent}
 
   
 ];

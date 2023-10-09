@@ -1,1 +1,99 @@
-<p>update-group works!</p>
+<style>
+    .Name
+    {
+        margin-left: 50px;
+    }
+    
+    .custom-select
+    {
+        width: 200px;
+        margin-bottom: 10px;
+    }
+
+    .submit
+    {
+        width:70px;
+        height: 10px;
+    }
+</style>
+
+
+
+<div class="outer">
+<nav class="navbar navbar-expand-lg bg-body-tertiary" style="background-color:black " >
+    <div class="container-fluid" >
+      <a class="navbar-brand" [routerLink]="'../group'">Group</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" [routerLink]="'../addgroup'">Create group</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" [routerLink]="'../group'">View group</a>
+          </li>
+          <!-- <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Dropdown
+            </a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="#">Action</a></li>
+              <li><a class="dropdown-item" href="#">Another action</a></li>
+              <li><hr class="dropdown-divider"></li>
+              <li><a class="dropdown-item" href="#">Something else here</a></li>
+            </ul>
+          </li> -->
+          
+        </ul>
+       
+      </div>
+    </div>
+  </nav>
+
+<div class="container">
+  <div class="select-btn">
+    <span id="select" class="btn-text">Select Language</span>
+    <span class="arrow-down">
+    <i class="fa-solid fa-chevron-down" ></i>
+  </span>
+  </div>
+
+  <ul class="list-items" >
+    <li class="item">
+        <span class="checkbox" >
+          <i class="fa-solid fa-check check-icon"></i>
+      </span>
+      <span class="item-text">HTML </span>
+    </li>
+    <li class="item">
+      <span class="checkbox" >
+        <i class="fa-solid fa-check check-icon"></i>
+    </span>
+    <span class="item-text">Bootstrap </span>
+  </li>
+  <li class="item">
+    <span class="checkbox" >
+      <i class="fa-solid fa-check check-icon"></i>
+  </span>
+  <span class="item-text">Java </span>
+</li>
+<li class="item">
+  <span class="checkbox" >
+    <i class="fa-solid fa-check check-icon"></i>
+</span>
+<span class="item-text">Python </span>
+</li>
+<li class="item">
+  <span class="checkbox" >
+    <i class="fa-solid fa-check check-icon"></i>
+</span>
+<span class="item-text">Javascript </span>
+</li>
+
+  </ul>
+</div>
+
+
+</div>

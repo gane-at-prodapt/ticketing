@@ -25,6 +25,8 @@ import { SettingsComponent } from './admin-home/settings/settings.component';
 import { Form, FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
 import { ChartModule } from 'angular-highcharts';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+
 
 
 import { NgChartsModule } from 'ng2-charts';
@@ -35,6 +37,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { IncidentComponent } from './incident/incident.component';
+import { RaiseticketComponent } from './raiseticket/raiseticket.component';
 
 
 
@@ -64,7 +67,8 @@ import { IncidentComponent } from './incident/incident.component';
     UpdateGroupComponent,
     UpdateNetworkComponent,
     HomepageComponent,
-    IncidentComponent
+    IncidentComponent,
+    RaiseticketComponent
   ],
   imports: [
     BrowserModule,
@@ -76,7 +80,8 @@ import { IncidentComponent } from './incident/incident.component';
     MatTableModule,
     MatFormFieldModule,
     MatInputModule,
-    MatPaginatorModule
+    MatPaginatorModule,
+    FontAwesomeModule
     
 
   ],
