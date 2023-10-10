@@ -1,6 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormControl, FormGroup, Validators } from '@angular/forms';
+import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
+
+
+import * as CryptoJS from 'crypto-js'
 
 
 @Component({
@@ -10,11 +14,10 @@ import { Router } from '@angular/router';
 })
 export class AdminLoginComponent implements OnInit{
 
-  constructor(private router: Router) {
+  constructor(private httpClient : HttpClient,private router:Router) {
     
   }
   ngOnInit(): void {
-    throw new Error('Method not implemented.');
   }
 
   email:string="";
@@ -40,7 +43,7 @@ export class AdminLoginComponent implements OnInit{
   getpass(control:any):string
   {
     this.pass= control.value
-    return ' '
+    return ''
   }
  
   customEmailValidator(control:AbstractControl)
@@ -57,8 +60,21 @@ export class AdminLoginComponent implements OnInit{
   
 
   submit(){
-    console.log(this.email);
-    console.log(this.pass);
+    console.log(this.email,this.pass);
+    let data = {"email":this.email,"token":CryptoJS.SHA256(this.pass).toString(CryptoJS.enc.Hex)};
+
+
+    data["email"]=this.email;
+    data["token"]=CryptoJS.SHA256(this.pass).toString(CryptoJS.enc.Hex);
+
+  
+
+    this.httpClient.post('http://localhost:8088/api/v1/auth/login',JSON.stringify(data)).subscribe(Response=>{
+      this.router.navigate(['/','homepage']);
+    },
+    error=>{
+      console.log(error);
+    });
   }
 
   

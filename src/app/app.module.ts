@@ -26,6 +26,7 @@ import { Form, FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
 import { ChartModule } from 'angular-highcharts';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { HttpClientModule } from '@angular/common/http';
 
 
 
@@ -38,6 +39,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { IncidentComponent } from './incident/incident.component';
 import { RaiseticketComponent } from './raiseticket/raiseticket.component';
+import { RouterModule } from '@angular/router';
 
 
 
@@ -81,9 +83,9 @@ import { RaiseticketComponent } from './raiseticket/raiseticket.component';
     MatFormFieldModule,
     MatInputModule,
     MatPaginatorModule,
-    FontAwesomeModule
-    
-
+    FontAwesomeModule,
+    HttpClientModule,
+    RouterModule
   ],
   providers: [],
   bootstrap: [AppComponent]

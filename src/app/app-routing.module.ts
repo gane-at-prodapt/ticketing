@@ -15,7 +15,6 @@ import { UpdateGroupComponent } from './update-group/update-group.component';
 import { UpdateEmployeeComponent } from './update-employee/update-employee.component';
 
 const routes: Routes = [
-  { path: 'login', component: AdminLoginComponent },
   { path: 'home', component: AdminHomeComponent },
   { path: 'homepage', component: HomepageComponent },
   { path: 'network', component: CreateNetworkComponent },
@@ -26,9 +25,8 @@ const routes: Routes = [
   { path: 'addcomponent', component: UpdateComponentComponent },
   { path: 'ticket', component: RaiseticketComponent },
   { path: 'addgroup', component: UpdateGroupComponent },
-  { path: 'scrolldown', component: UpdateEmployeeComponent}
-
-  
+  { path: 'scrolldown', component: UpdateEmployeeComponent},
+  { path: 'login', component: AdminLoginComponent}
 ];
 
 @NgModule({
