@@ -1,1 +1,296 @@
-<p>rolesandaccess works!</p>
+<style>
+    .Name
+    {
+        margin-left: 50px;
+    }
+    
+    .custom-select
+    {
+        width: 200px;
+        margin-bottom: 10px;
+    }
+
+    .submit
+    {
+        width:70px;
+        height: 10px;
+    }
+</style>
+
+
+
+<div class="outer">
+<nav class="navbar navbar-expand-lg bg-body-tertiary" style="background-color:black " >
+    <div class="container-fluid" >
+      <a class="navbar-brand" [routerLink]="'../roles'">Roles</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <!-- <li class="nav-item">
+            <a class="nav-link active" aria-current="page" [routerLink]="'../adduser'">Add User</a>
+          </li> -->
+          <li class="nav-item">
+            <a class="nav-link" [routerLink]="'../roles'">View Roles</a>
+          </li>
+          <!-- <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Dropdown
+            </a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="#">Action</a></li>
+              <li><a class="dropdown-item" href="#">Another action</a></li>
+              <li><hr class="dropdown-divider"></li>
+              <li><a class="dropdown-item" href="#">Something else here</a></li>
+            </ul>
+          </li> -->
+          
+        </ul>
+       
+      </div>
+    </div>
+  </nav>
+
+  <br>
+  
+  <div class="whole" id="whole">
+    <br><br><br><br>
+    <div class="search1">
+      <mat-form-field id="searchfield" style="margin-left: 250px; width: 700px; background-color: #fff; color: #fff;">
+        <input id="mysearch" matInput (keyup)="applyFilter($any($event.target).value)" placeholder="Search">
+      </mat-form-field>
+  </div>
+  <br><br>
+  <div class="table1">
+  <table id="mytable" mat-table [dataSource]="dataSource" class="mat-elevation-z8"> 
+    
+    <!-- Position Column -->
+    <ng-container  matColumnDef="position">
+      <th  style=" width: 100px; text-align: center;" mat-header-cell  *matHeaderCellDef> Role ID </th>
+      <td  (click)="test(element.position)" style=" text-align: center; cursor: pointer;" mat-cell *matCellDef="let element"> {{element.position}} </td>
+    </ng-container>
+
+    
+   
+    <ng-container matColumnDef="name">
+       
+       
+      <th  style=" width: 100px; text-align: center " mat-header-cell *matHeaderCellDef> Role Name </th>
+      <td  style=" text-align: center " mat-cell *matCellDef="let element"> {{element.name}} </td>
+      
+   
+    </ng-container>
+   
+  
+    <!-- Weight Column -->
+
+<!--     
+    <ng-container matColumnDef="network">
+      <th style=" width: 80px; text-align:center"  mat-header-cell *matHeaderCellDef> Network </th>
+      <td  style=" text-align: center " mat-cell *matCellDef="let element"> {{element.network}} </td>
+    </ng-container>
+  
+    
+    <ng-container matColumnDef="incident">
+      <th style=" width: 80px; text-align: center; border-radius: 10%; " mat-header-cell *matHeaderCellDef> Incident </th>
+      <td  style=" text-align: center " mat-cell *matCellDef="let element"> {{element.incident}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="issues">
+        <th style=" width: 80px; text-align: center; border-radius: 10%; " mat-header-cell *matHeaderCellDef> Issues </th>
+        <td  style=" text-align: center " mat-cell *matCellDef="let element"> {{element.issues}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="groups">
+        <th style=" width: 80px; text-align: center; border-radius: 10%; " mat-header-cell *matHeaderCellDef> Groups </th>
+        <td  style=" text-align: center " mat-cell *matCellDef="let element"> {{element.groups}} </td>
+      </ng-container> --> 
+  
+    <tr style="background-color: #fff;" mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr style="background-color: #fff;" mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+      
+</table>
+
+</div>
+
+<div class="buttons">
+    
+<div class="modal fade" id="exampleModalToggleSA" aria-hidden="true" aria-labelledby="exampleModalToggleLabelSA" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="exampleModalToggleLabelSA"> Super Admin access</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+
+        
+
+          <div class="table2">
+            <table id="mysecondtable" mat-table [dataSource]="seconddataSource" class="mat-elevation-z8"> 
+              
+              <!-- Position Column -->
+              <ng-container  matColumnDef="position">
+                <th  style=" width: 100px; text-align: center;" mat-header-cell  *matHeaderCellDef> Role ID </th>
+                <td  style=" text-align: center; cursor: pointer;" mat-cell *matCellDef="let element"> {{element.module}} </td>
+              </ng-container>
+          
+              
+             
+              <ng-container matColumnDef="name">
+                 
+                 
+                <th  style=" width: 100px; text-align: center " mat-header-cell *matHeaderCellDef> Role Name </th>
+                <td  style=" text-align: center; " mat-cell *matCellDef="let element"><span style="border: 1px solid; border-radius: 8px; color: #0d6efd; "> &nbsp; &nbsp;  {{element.moduleaccess}}  &nbsp;  &nbsp;  </span> </td>
+                
+             
+              </ng-container>
+    
+            
+              <tr style="background-color: #fff;" mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+              <tr style="background-color: #fff;" mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+                
+          </table>
+          
+          </div>
+        </div>
+        <!-- <div class="modal-footer">
+          <button class="btn btn-primary" data-bs-toggle="modal">Open second modal</button>
+        </div> -->
+      </div>   
+    </div>
+  </div>
+
+  <div class="modal fade" id="exampleModalToggleNA" aria-hidden="true" aria-labelledby="exampleModalToggleLabelNA" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered" >
+      <div class="modal-content" >
+        <div class="modal-header" >
+          <h6 class="modal-title fs-5" id="exampleModalToggleLabelNA">Network Admin access</h6>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          
+            <div class="table2">
+                <table id="mysecondtable" mat-table [dataSource]="seconddataSource" class="mat-elevation-z8"> 
+                  
+                  <!-- Position Column -->
+                  <ng-container  matColumnDef="position">
+                    <th  style=" width: 100px; text-align: center;" mat-header-cell  *matHeaderCellDef> Role ID </th>
+                    <td  style=" text-align: center; cursor: pointer;" mat-cell *matCellDef="let element"> {{element.module}} </td>
+                  </ng-container>
+              
+                  
+                 
+                  <ng-container matColumnDef="name">
+                     
+                     
+                    <th  style=" width: 100px; text-align: center " mat-header-cell *matHeaderCellDef> Role Name </th>
+                    <td  style=" text-align: center; " mat-cell *matCellDef="let element"><span style="border: 1px solid; border-radius: 8px; color: #0d6efd; "> &nbsp; &nbsp; &nbsp; &nbsp;  {{element.moduleaccess}}  &nbsp; &nbsp;  &nbsp; &nbsp;  </span> </td>
+                    
+                 
+                  </ng-container>
+        
+                
+                  <tr style="background-color: #fff;" mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                  <tr style="background-color: #fff;" mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+                    
+              </table>
+              
+              </div>
+        </div>
+        <!-- <div class="modal-footer">
+          <button class="btn btn-primary" data-bs-toggle="modal">Open second modal</button>
+        </div> -->
+      </div>
+    </div>
+  </div>
+
+  <div class="modal fade" id="exampleModalToggleNE" aria-hidden="true" aria-labelledby="exampleModalToggleLabelNE" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="exampleModalToggleLabelNE"> Network Engineer access</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          Show a second modal and hide this one with the button below.
+          Network Engineer access
+        </div>
+        <!-- <div class="modal-footer">
+          <button class="btn btn-primary" data-bs-toggle="modal">Open second modal</button>
+        </div> -->
+      </div>
+    </div>
+  </div>
+
+  <div class="modal fade" id="exampleModalToggleSUPA" aria-hidden="true" aria-labelledby="exampleModalToggleLabelSUPA" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="exampleModalToggleLabelSUPA">Support Analyst Access</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          Show a second modal and hide this one with the button below.
+          Support Analyst
+        </div>
+        <!-- <div class="modal-footer">
+          <button class="btn btn-primary" data-bs-toggle="modal">Open second modal</button>
+        </div> -->
+      </div>
+    </div>
+  </div>
+
+  <div class="modal fade" id="exampleModalToggleO" aria-hidden="true" aria-labelledby="exampleModalToggleLabelO" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="exampleModalToggleLabelO">Observer Access</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          Show a second modal and hide this one with the button below.
+          Observer Access
+        </div>
+        <!-- <div class="modal-footer">
+          <button class="btn btn-primary" data-bs-toggle="modal">Open second modal</button>
+        </div> -->
+      </div>
+    </div>
+  </div>
+ 
+  <div>
+  <button  id="superAdmin" class="btn btn-primary" data-bs-target="#exampleModalToggleSA" data-bs-toggle="modal">access</button>
+</div>
+<div>
+  <button  id="networkAdmin" class="btn btn-primary" data-bs-target="#exampleModalToggleNA" data-bs-toggle="modal">access</button>
+</div>
+<div>
+<button  id="networkEngineer" class="btn btn-primary" data-bs-target="#exampleModalToggleNE" data-bs-toggle="modal">access</button>
+</div>
+<div>
+  <button  id="supportAnalyst" class="btn btn-primary" data-bs-target="#exampleModalToggleSUPA" data-bs-toggle="modal">access</button>
+</div>
+<div>
+ <button  id="Observer" class="btn btn-primary" data-bs-target="#exampleModalToggleO" data-bs-toggle="modal">access</button>
+</div>
+  
+ 
+  </div>
+  
+  <br><br>
+  <br><br>
+  <br><br>
+  <br><br>
+  <br><br>
+  <br><br>
+
+  </div>
+
+  <br><br>
+  <br><br>
+  <br><br>
+  <br><br>
+  <br><br>
+  <br><br>

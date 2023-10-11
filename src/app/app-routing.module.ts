@@ -17,6 +17,7 @@ import { UsersComponent } from './users/users.component';
 import { ProblemComponent } from './problem/problem.component';
 import { RolesandaccessComponent } from './rolesandaccess/rolesandaccess.component';
 import { CreateissueComponent } from './createissue/createissue.component';
+import { AdduserComponent } from './adduser/adduser.component';
 
 const routes: Routes = [
   { path: 'home', component: AdminHomeComponent },
@@ -34,7 +35,9 @@ const routes: Routes = [
   { path: 'access', component: RolesandaccessComponent },
   { path: 'adminhome', component: AdminHomeComponent},
   { path: 'addissue', component: CreateissueComponent},
-  { path: 'login', component: AdminLoginComponent}
+  { path: 'login', component: AdminLoginComponent},
+  { path: 'adduser', component:AdduserComponent },
+  { path: 'roles', component:RolesandaccessComponent }
 
 
   

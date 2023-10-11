@@ -34,8 +34,10 @@ import { NgChartsModule } from 'ng2-charts';
 import { HomepageComponent } from './homepage/homepage.component';
 import { MatTableDataSource } from '@angular/material/table'
 import {  MatTableModule  } from '@angular/material/table';
+import { MatFormField } from '@angular/material/form-field';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
+import { MatSelect, MatSelectModule } from '@angular/material/select';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { IncidentComponent } from './incident/incident.component';
 import { RaiseticketComponent } from './raiseticket/raiseticket.component';
@@ -44,6 +46,8 @@ import { ProblemComponent } from './problem/problem.component';
 import { RolesandaccessComponent } from './rolesandaccess/rolesandaccess.component';
 import { CreateissueComponent } from './createissue/createissue.component';
 import { RouterModule } from '@angular/router';
+import { AdduserComponent } from './adduser/adduser.component';
+
 
 
 
@@ -78,7 +82,8 @@ import { RouterModule } from '@angular/router';
     UsersComponent,
     ProblemComponent,
     RolesandaccessComponent,
-    CreateissueComponent
+    CreateissueComponent,
+    AdduserComponent
   ],
   imports: [
     BrowserModule,
@@ -93,7 +98,9 @@ import { RouterModule } from '@angular/router';
     MatPaginatorModule,
     FontAwesomeModule,
     HttpClientModule,
-    RouterModule
+    RouterModule,
+    MatFormFieldModule,
+    MatSelectModule
   ],
   providers: [],
   bootstrap: [AppComponent]

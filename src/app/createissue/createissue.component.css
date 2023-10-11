@@ -35,3 +35,14 @@
     border-radius: 3px;
     border-color: rgb(122, 122, 122);
 }
+
+.example-container {
+    display: flex;
+    flex-direction: column;
+    background-color: #fff;
+  }
+  .input
+  {
+    width: 300px;
+    background-color: #fff;
+  }

@@ -27,12 +27,15 @@
                 <div class="form-group">
                 <!-- <p class="cred"> Email ID</p> -->
                 <input class="form-control" placeholder="Enter email"  formControlName="email" type="text" name="email" > 
+                <br>
+                <div style="margin-left: 60px;">
                 <label class="text-danger" id="message" style="margin-left: auto;" *ngIf= "getError(form.get('email'))">
                   {{
                     getError(form.get('email'))
                   }}
 
                 </label>
+              </div>
              
 
                 <br>

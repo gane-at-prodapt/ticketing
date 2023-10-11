@@ -1,0 +1,110 @@
+.card{
+    position: absolute;
+  
+}
+
+.table1 {
+    width: 700px;
+    text-align: center;
+    margin-left: 250px;
+    position: absolute;
+  }
+
+.table2
+{
+    height: 300px;
+    overflow: auto;
+}
+  
+  .mat-form-field {
+    font-size: 14px;
+    width: 100px;
+  }
+
+.buttons
+{
+    margin-left: 700px;
+    position: absolute;
+    margin-bottom: 90px;
+
+    
+}
+
+
+.buttons #superAdmin
+{
+
+  
+  margin-left: 0px;
+  margin-top: 65px;
+  width: 200px;
+  color: transparent; background-color: transparent; border-color: transparent; cursor: default;
+
+  /* --bs-btn-padding-y: .25rem;
+  --bs-btn-padding-x: .5rem;
+   --bs-btn-font-size: .80rem; */
+  cursor: pointer; 
+  
+}
+
+.buttons #networkAdmin
+{
+
+    width: 200px;
+
+  margin-top: 12px;
+ 
+  color: transparent; background-color: transparent; border-color: transparent; cursor: default;
+
+  /* --bs-btn-padding-y: .25rem;
+  --bs-btn-padding-x: .5rem;
+   --bs-btn-font-size: .80rem; */
+  cursor: pointer; 
+  
+}
+
+.buttons #networkEngineer
+{
+
+    width: 200px;
+
+  margin-top: 16px;
+ 
+  color: transparent; background-color: transparent; border-color: transparent; cursor: default;
+
+  /* --bs-btn-padding-y: .25rem;
+  --bs-btn-padding-x: .5rem;
+   --bs-btn-font-size: .80rem; */
+  cursor: pointer; 
+  
+}
+.buttons #supportAnalyst
+{
+    width: 200px;
+  
+
+  margin-top: 16px;
+ 
+  color: transparent; background-color: transparent; border-color: transparent; cursor: default;
+
+  /* --bs-btn-padding-y: .25rem;
+  --bs-btn-padding-x: .5rem;
+   --bs-btn-font-size: .80rem; */
+  cursor: pointer; 
+  
+}
+.buttons #Observer
+{
+    width: 200px;
+  
+
+  margin-top: 12px;
+ 
+  color: transparent; background-color: transparent; border-color: transparent; cursor: default;
+
+  /* --bs-btn-padding-y: .25rem;
+  --bs-btn-padding-x: .5rem;
+   --bs-btn-font-size: .80rem; */
+  cursor: pointer; 
+  
+}
