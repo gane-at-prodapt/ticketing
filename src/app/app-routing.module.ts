@@ -19,7 +19,6 @@ import { RolesandaccessComponent } from './rolesandaccess/rolesandaccess.compone
 import { CreateissueComponent } from './createissue/createissue.component';
 
 const routes: Routes = [
-  { path: 'login', component: AdminLoginComponent },
   { path: 'home', component: AdminHomeComponent },
   { path: 'homepage', component: HomepageComponent },
   { path: 'network', component: CreateNetworkComponent },

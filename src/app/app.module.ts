@@ -26,6 +26,7 @@ import { Form, FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
 import { ChartModule } from 'angular-highcharts';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { HttpClientModule } from '@angular/common/http';
 
 
 
@@ -42,6 +43,7 @@ import { UsersComponent } from './users/users.component';
 import { ProblemComponent } from './problem/problem.component';
 import { RolesandaccessComponent } from './rolesandaccess/rolesandaccess.component';
 import { CreateissueComponent } from './createissue/createissue.component';
+import { RouterModule } from '@angular/router';
 
 
 
@@ -89,9 +91,9 @@ import { CreateissueComponent } from './createissue/createissue.component';
     MatFormFieldModule,
     MatInputModule,
     MatPaginatorModule,
-    FontAwesomeModule
-    
-
+    FontAwesomeModule,
+    HttpClientModule,
+    RouterModule
   ],
   providers: [],
   bootstrap: [AppComponent]
