@@ -64,7 +64,7 @@
 {
     transform: rotate(-180deg);
 }
-
+ 
 .list-items
 {
     position: relative;
@@ -135,4 +135,4 @@
 .item.checked .check-icon
 {
     transform: scale(1);
-}
+} 

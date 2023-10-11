@@ -113,6 +113,8 @@ section img#bubble1
     align-items: center;
     justify-content: space-around;
     position: absolute;
+    opacity: 60%;
+    mix-blend-mode: screen;
    
 
     /* mix-blend-mode: screen; */
@@ -126,6 +128,8 @@ section img#bubble2
     align-items: center;
     justify-content: space-around;
     position: absolute;
+    opacity: 60%;
+    mix-blend-mode: screen;
   
     /* mix-blend-mode: screen; */
 }section img#bubble3
@@ -137,6 +141,8 @@ section img#bubble2
     align-items: center;
     justify-content: space-around;
     position: absolute;
+    opacity: 60%;
+    mix-blend-mode: screen;
     
 
     /* mix-blend-mode: screen; */
@@ -150,6 +156,7 @@ section img#bubble4
     align-items: center;
     justify-content: space-around;
     position: absolute;
+    opacity: 60%;
 
     mix-blend-mode: screen;
 }section img#bubble5
@@ -162,6 +169,7 @@ section img#bubble4
     justify-content: space-around;
     position: absolute;
     mix-blend-mode: screen;
+    opacity: 60%;
     
 }section img#bubble6
 {
@@ -172,6 +180,7 @@ section img#bubble4
     align-items: center;
     justify-content: space-around;
     position: absolute;
+    opacity: 60%;
 
     mix-blend-mode: screen;
 }section img#bubble7
@@ -183,7 +192,7 @@ section img#bubble4
     align-items: center;
     justify-content: space-around;
     position: absolute;
-
+    opacity: 60%;
     mix-blend-mode: screen;
 }section img#bubble8
 {
@@ -194,6 +203,7 @@ section img#bubble4
     align-items: center;
     justify-content: space-around;
     position: absolute;
+    opacity: 60%;
  
     mix-blend-mode: screen;
   

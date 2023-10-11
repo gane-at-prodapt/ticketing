@@ -38,6 +38,10 @@ import { MatInputModule } from '@angular/material/input';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { IncidentComponent } from './incident/incident.component';
 import { RaiseticketComponent } from './raiseticket/raiseticket.component';
+import { UsersComponent } from './users/users.component';
+import { ProblemComponent } from './problem/problem.component';
+import { RolesandaccessComponent } from './rolesandaccess/rolesandaccess.component';
+import { CreateissueComponent } from './createissue/createissue.component';
 
 
 
@@ -68,7 +72,11 @@ import { RaiseticketComponent } from './raiseticket/raiseticket.component';
     UpdateNetworkComponent,
     HomepageComponent,
     IncidentComponent,
-    RaiseticketComponent
+    RaiseticketComponent,
+    UsersComponent,
+    ProblemComponent,
+    RolesandaccessComponent,
+    CreateissueComponent
   ],
   imports: [
     BrowserModule,

@@ -13,6 +13,10 @@ import { IncidentComponent } from './incident/incident.component';
 import { RaiseticketComponent } from './raiseticket/raiseticket.component';
 import { UpdateGroupComponent } from './update-group/update-group.component';
 import { UpdateEmployeeComponent } from './update-employee/update-employee.component';
+import { UsersComponent } from './users/users.component';
+import { ProblemComponent } from './problem/problem.component';
+import { RolesandaccessComponent } from './rolesandaccess/rolesandaccess.component';
+import { CreateissueComponent } from './createissue/createissue.component';
 
 const routes: Routes = [
   { path: 'login', component: AdminLoginComponent },
@@ -26,7 +30,15 @@ const routes: Routes = [
   { path: 'addcomponent', component: UpdateComponentComponent },
   { path: 'ticket', component: RaiseticketComponent },
   { path: 'addgroup', component: UpdateGroupComponent },
-  { path: 'scrolldown', component: UpdateEmployeeComponent}
+  { path: 'users', component: UsersComponent},
+  { path: 'issues', component: ProblemComponent},
+  { path: 'access', component: RolesandaccessComponent },
+  { path: 'adminhome', component: AdminHomeComponent},
+  { path: 'addissue', component: CreateissueComponent},
+  { path: 'login', component: AdminLoginComponent}
+
+
+  
 
   
 ];

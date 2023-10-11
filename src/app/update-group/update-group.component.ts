@@ -10,43 +10,56 @@ import { Component } from '@angular/core';
 export class UpdateGroupComponent {
   // faCoffee = faCoffee;
 
-  ngOnInit(){
+  data: string[] = ["HTML", "CSS", "Bootstrap", "React"];
+  checkedValue:string[]=[];
+  
 
-    const selectBtn= document.querySelector(".select-btn"),
-    items = document.querySelectorAll(".item");
 
-    selectBtn?.addEventListener("click", () =>
-    {
+  oncheckk() {
+    console.log("check" );
+  }
+  ngOnInit() {
+
+    const selectBtn = document.querySelector(".select-btn"),
+      items = document.querySelectorAll(".item"),
+      checkbox = document.querySelectorAll(".item"),
+      checks= document.querySelector('item-text');
+    
+
+    
+      console.log(checks);
+
+    selectBtn?.addEventListener("click", () => {
       selectBtn.classList.toggle("open");
     });
 
-    items.forEach( item =>
-      {
-        item.addEventListener("click", () =>
-        {
-          item.classList.toggle("checked");
+    checkbox.forEach(item => {
+      item.addEventListener("click", () => {
+        item.classList.toggle("checked");
 
-          let checked= document.querySelectorAll(".checked");
-          let btnText = document.getElementById("select");
+        let checked = document.querySelectorAll(".checked");
+        let btnText = document.getElementById("select");
+        let checkedvalue: string[] = [];
+        checked.forEach(
+          function (val) {
+            console.log(val.getAttributeNames);
+          }
+        )
+        // console.log(checks);
 
-            console.log(checked.length);
+        if (checked && checked.length > 0) {
+          if (btnText != null) {
+            btnText.innerText = `${checked.length} `
+          }
 
-            if( checked && checked.length > 0)
-            {
-              if(btnText!= null)
-              {
-                btnText.innerText = `${checked.length} `
-              }
-              
-              
-              console.log("valid");
-            }
-            else
-            {
-              console.log("invalid");
-            }
-        })
+
+          console.log("valid");
+        }
+        else {
+          console.log("invalid");
+        }
       })
+    })
   }
 
 

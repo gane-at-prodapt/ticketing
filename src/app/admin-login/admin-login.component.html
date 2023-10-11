@@ -2,7 +2,7 @@
 <div class="whole">
     <div class="container">
         <div class="row">
-          <div class="col-2" style="background-color: rgb(25, 47, 75); height: 900px; margin-left: 0px;" >
+          <div class="col-2" style="background-color: rgb(25, 47, 75); height: 600px; margin-left: 0px;" >
             <div></div>
           </div>
           <div class="col-10">
@@ -27,7 +27,7 @@
                 <div class="form-group">
                 <!-- <p class="cred"> Email ID</p> -->
                 <input class="form-control" placeholder="Enter email"  formControlName="email" type="text" name="email" > 
-                <label class="text-danger" style="margin-left: auto;" *ngIf= "getError(form.get('email'))">
+                <label class="text-danger" id="message" style="margin-left: auto;" *ngIf= "getError(form.get('email'))">
                   {{
                     getError(form.get('email'))
                   }}
@@ -39,12 +39,12 @@
                
                 <!-- <p class="cred"> Password</p> -->
                 <input class="form-control" placeholder="Enter password" formControlName="pass" type="password" name="pass" >
-                <label class="text-danger" style="margin-left: auto;" *ngIf= "getpass(form.get('pass'))">
+                <span class="text-danger" *ngIf= "getpass(form.get('pass'))">
                   {{
                     getpass(form.get('pass'))
                   }}
 
-                </label>
+                </span>
 <!--                 
                     <i class="far fa-eye" id="tp" style="margin-left: 340px; margin-top: -20px; cursor: pointer; color:gray;"></i> -->
                 
