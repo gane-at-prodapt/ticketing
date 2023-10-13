@@ -56,7 +56,7 @@ header ul li a{
 header ul li a:hover
 {
     background: #fff;
-    color:#2b1055
+    color:#0e2a57
 }
 
 section
@@ -328,7 +328,9 @@ section img#bubble88
     /* right: -10px; */
     font-weight: 900;
     /* white-space: nowrap; */
-    font-family:'Poppins';
+
+    font-family: 'League Spartan', sans-serif;
+
     font-size:1.5cm;
     margin-left: 40px;
     margin-bottom: 30px;
@@ -384,10 +386,12 @@ section img#bubble88
 }
 
 
-.card
+
+
+.card 
 {
     width:30cm;
-    height: 500px;
+    height: 400px;
     margin-top: 100px;
 }
 
@@ -402,11 +406,161 @@ section img#bubble88
 .card-title
 {
      letter-spacing: 1.2px;
+     font-family: 'League Spartan', sans-serif;
+
 }
 
 .card-text{
     letter-spacing: 1.2px;
+    font-family: 'League Spartan', sans-serif;
 }
+
+.mychart
+{
+    display: none;
+    transition: 0.3s;
+}
+
+.mychart2
+{
+    display: none;
+    position: absolute;
+    height: 200px;
+    transition: 0.3s;
+}
+.mychart3
+{
+    display: none;
+    position: absolute;
+    transition: 0.3s;
+}
+
+
+#button1
+{
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    border: 0cm;
+    margin-left: 105px;
+    margin-top: 60px;
+    color: #569ba9;
+    transition: 0.3s;
+    background: linear-gradient(to bottom, #075665 50%, #569ba9 50%);
+}
+
+#button1.open
+{
+    border: 3px solid;
+    transform: rotate(-90deg);
+    border-color: rgb(205, 204, 204);
+    
+    
+
+}
+
+#button1:hover
+{
+    border: 3px solid;
+    transform: rotate(-90deg);
+    border-color: rgb(205, 204, 204);
+}
+
+#pie.open
+{
+    display: block;
+    /* background-color:  rgba(86, 155, 169,0.2); */
+   
+   
+    border-radius: 10%;
+    transition-timing-function: ease-in-out;
+    
+}
+
+#pie2.open
+{
+    display: block;
+   
+    /* background-color: rgba(125, 165, 133, 0.2); */
+    border-radius: 20%;
+   
+    transition-timing-function: ease-in-out;
+    
+    
+}
+
+#pie3.open
+{
+    display: block;
+   
+    /* background-color: rgba(216, 140, 140 , 0.2); */
+   
+    border-radius: 10%;
+    transition-timing-function: ease-in-out;
+}
+
+
+
+#button2
+{
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    border: 0cm;
+    margin-left: 40px;
+    margin-top: 60px;
+    color: #d88c8c;
+    transition: 0.3s;
+    background: linear-gradient(to bottom, #c13c3c 50%, #d88c8c 50%);
+
+}
+
+#button2.open
+{
+    border: 3px solid;
+    
+    transform: rotate(-90deg);
+    border-color: rgb(205, 204, 204);
+}
+
+#button2:hover
+{
+    border: 3px solid;
+    transform: rotate(-90deg);
+    border-color: rgb(205, 204, 204);
+}
+
+
+
+
+#button3
+{
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    border: 0cm;
+    margin-left: 40px;
+    margin-top: 60px;
+    color:rgb(125, 165, 133);
+    transition: 0.3s;
+    background: linear-gradient(to bottom, #d0e0d0 50%, rgb(125, 165, 133) 50%);
+}
+
+#button3.open
+{
+    border: 3px solid;
+    transform: rotate(-90deg);
+    border-color: rgb(205, 204, 204);
+    
+}
+
+#button3:hover
+{
+    border: 3px solid;
+    transform: rotate(-90deg);
+    border-color: rgb(205, 204, 204);
+}
+
 
 
 
@@ -415,5 +569,20 @@ section img#bubble88
     color: #fff;
 }
 
+
+/* #statscard
+{
+    border-radius: 50%;
+    height: max-content;
+    background-color: rgba(125, 165, 133, 0.2);
+} */
+
+/* #firstcard
+{
+    background-color: rgba(125, 165, 133, 0.2);
+    border-radius: 50%;
+    width: 100px;
+    height: 100px;
+} */
 
 

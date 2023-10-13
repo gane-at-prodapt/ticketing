@@ -1,5 +1,82 @@
+*
+{
+    font-family: 'League Spartan', sans-serif;
+}
+
+#mynavbar1
+{
+    position: absolute;
+    z-index: 9;
+}
+
 .card{
     position: absolute;
     box-shadow: 0 2px 8px 0 rgba(0,0,0,0.2);
     transition: 0.3s;
 }
+
+.searchbtn
+{
+    position: absolute;
+    margin-top: 345px;
+    margin-left: 165px;
+    font-family: 'League Spartan', sans-serif;
+    font-size: .75cm;
+    color: gray;
+    text-decoration: none;
+    z-index: 15;
+}
+
+#mysearch
+{
+    position: absolute;
+    z-index: 15;
+}
+
+/* #superAdmin
+{
+    position: absolute;
+    margin-top: 345px;
+    margin-left: 165px;
+    width: 100px;
+
+} */
+
+.firstline
+{
+    position: absolute;
+    margin-top: 200px;
+    margin-left: 130px;
+    font-family: 'League Spartan', sans-serif;
+    font-size: 1.3cm;
+
+}
+
+.secondline
+{
+    position: absolute;
+    margin-top: 250px;
+    margin-left: 130px;
+    font-family: 'League Spartan', sans-serif;
+    font-size: 1.3cm;
+
+}
+
+.image
+{
+    
+
+    display: flex;
+    position: absolute;
+}
+
+.text
+{
+    text-align: center;
+    font-family: 'League Spartan', sans-serif;
+    font-size: 0.70cm;
+    position: relative;
+    margin-top: 100px;   
+}
+
+

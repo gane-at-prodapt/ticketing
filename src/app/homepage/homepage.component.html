@@ -63,9 +63,9 @@
         </section>
 
         <div class="sect" id="sect">
-            <h2> Ticketing</h2>
+            <h2 > Ticketing</h2>
             <br><br>
-            <p>
+            <p >
                  Within an employee IT ticketing system, a ticket is a special document or record that represents an incident, alert, request, or
                  event that requires action from the IT department. It often contains additional contextual details and may also include relevant 
                  contact information of the individual who created the ticket.
@@ -89,15 +89,65 @@
         <section class= "section1">
             
             
-            <div class="card">
+            <div class="card" id="outercard" style="position: absolute; width: 60rem; ">
                 <div class="card-body">
-                  <h5 class="card-title" style="margin-top: 120px; margin-left: 100px; font-size:xx-large; font-weight: bold; color: #11315f;">Networking Stats</h5>
-                  <h6 class="card-text" style="margin-top: 40px; margin-left: 100px; font-size:medium; font-weight: bold; color: #233856; align-content:flex-start;">
+                  <h5 class="card-title" style="margin-top: 50px; margin-bottom: 0px; margin-left: 100px; font-size:xx-large; font-weight: bold; color: #11315f;">Networking Stats</h5>
+                  <!-- <h6 class="card-text" style="margin-top: 40px; margin-left: 100px; font-size:medium; font-weight: bold; color: #233856; align-content:flex-start;">
                     Statistics is the discipline that concerns the collection,<br> organization, analysis, interpretation, and 
                     presentation of data.<br> In applying statistics to a scientific, industrial, or social problem,<br> it is conventional
                      to begin with a statistical population or <br>a statistical model to be studied</h6>
                   <p class="card-text" style="margin-top: 40px; margin-left: 100px; font-size:large; font-weight: bold; color: #11315f;"></p>
+                   -->
+
+                   <div id="statscard" class="card" style="width: 20rem;  height: 300px; margin-bottom: 200px;margin-left: 550px; margin-top: 1px; position: absolute;" @inOutPaneAnimation>
+                    <!-- <img src="..." class="card-img-top" alt="..."> -->
+                 
+                    <div class="mychart" id="pie" style="margin-left: 30px; margin-top: 15px; " >
+                      <canvas id="piestatus" baseChart [type]="'doughnut'" [data]= "lineChart2Data" [options]= "lineChart2Options" options.animation.loop="true" style="height: 120px;" @inOutPaneAnimation ></canvas>
+                      
+                   
+                  </div>
+                
+                    <div class="mychart2" id="pie2" style="margin-left: 10px; margin-top: 50px; " >
+                     <canvas id="piestatus2" baseChart [type]="'bar'" [data]= "barChartData" [options]= "barChartDataOptions" options.animation.loop="true" style="height: 220px;" @inOutPaneAnimation ></canvas>
+                   
+                    </div>
+                   
+                    <div class="mychart3" id="pie3" style="margin-left: 10px; margin-top: 40px; " >
+                      <canvas id="piestatus3" baseChart [type]="'line'" [data]= "lineChartData" [options]= "lineChartDataOptions" options.animation.loop="true" style="height: 220px;" @inOutPaneAnimation></canvas>
+                    </div>
                   
+                   
+                  
+                  </div>
+
+                  
+                  <div style="width: 300px;">
+
+                    <div style=" position: absolute;">
+                   <button id="button1" onclick="setInterval()"  >.</button>
+                  </div>
+                  <div style="position: absolute; margin-left: 120px;">
+                   <button id="button2" >.</button>
+                  </div>
+                  <div style="position: absolute;  margin-left: 175px;">
+                   <button id="button3" >.</button>
+                  </div>
+                  </div>
+                   <!-- <button id="button4">.</button> -->
+
+                   <div>
+                    <p style="position: absolute; margin-top: 130px; margin-left: 100px;"> Here are some statistics from our ticketing system.<br> The first graph represents our tickets raised
+                      and the <br>bar graph represents the tickets assigned to the<br> respective groups and the line graph represents
+                    the <br> current network devices </p>
+                   </div>
+
+
+                 
+
+                   
+
+
                 </div>
               </div>
 
@@ -106,33 +156,6 @@
 
         </section>
 
-        <!-- <section class ="secondcard">
-
-            <div class="card" style="width: 18rem;">
-                <img src="..." class="card-img-top" alt="...">
-                <div class="card-body">
-                  <h5 class="card-title">Card title</h5>
-                  <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                  <a href="#" class="btn btn-primary">Go somewhere</a>
-                </div>
-              </div>
-             -->
-            
-            <!-- <div class="card" style="margin-top: 300px;">
-                <div class="card-body">
-                  <h5 class="card-title" style="margin-top: 120px; margin-left: 100px; font-size:xx-large; font-weight: bold; color: #11315f;">Networking Stats</h5>
-                  <h6 class="card-text" style="margin-top: 40px; margin-left: 100px; font-size:medium; font-weight: bold; color: #233856; align-content:flex-start;">
-                    Statistics is the discipline that concerns the collection,<br> organization, analysis, interpretation, and 
-                    presentation of data.<br> In applying statistics to a scientific, industrial, or social problem,<br> it is conventional
-                     to begin with a statistical population or <br>a statistical model to be studied</h6>
-                  <p class="card-text" style="margin-top: 40px; margin-left: 100px; font-size:large; font-weight: bold; color: #11315f;"></p>
-                  
-                </div>
-              </div> -->
-
-            
-
-        <!-- </section> -->
   
     </body>
 </html>

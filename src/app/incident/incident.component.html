@@ -19,9 +19,9 @@
 
 <!-- style="background-color: #f4f4f4	;" -->
 <div class="outer">
-<nav class="navbar navbar-expand-lg bg-body-tertiary" style="background-color:black " >
-    <div class="container-fluid"  >
-      <a class="navbar-brand" [routerLink]="'../incident'" style="margin-left: 20px;">Incident</a>
+<nav id="nav1" class="navbar navbar-expand-lg bg-body-tertiary" style="background-color:black " >
+    <div id="mynavbar" class="container-fluid" style="background-color: rgb(240, 240, 240);" >
+      <a id="nav2" class="navbar-brand" [routerLink]="'../incident'" style="margin-left: 20px;">Incident</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -57,18 +57,35 @@
     </div>
   </nav>
 
-   
-  <br>
-  <br>
+  <!-- <div>
+ 
+    <img src="/../assets/finalticketpage.png" class="image" alt="...">
+    <a href="http://localhost:4200/incident#findsearch" class="searchbtn"> search </a>
   
-  <div class="whole" id="whole">
-    <br><br><br><br>
-    <div class="search1">
-      <mat-form-field id="searchfield" style="margin-left: 300px; width: 700px; background-color: #fff; color: #fff;">
-        <input id="mysearch" matInput (keyup)="applyFilter($any($event.target).value)" placeholder="Search">
-      </mat-form-field>
+    <span class="firstline">Raise. Await.</span>
+    <span class="secondline">Success.</span>
   </div>
   <br><br>
+  <br><br>
+  <br><br>
+  <br><br>
+  <br> -->
+
+<div id="findsearch" >
+  <p class="text"> Find the ticket you're looking for</p>
+</div>
+   
+
+  <div class="whole" id="whole">
+    <br><br>
+    <div class="search1">
+      <mat-form-field id="searchfield" style=" margin-left: 260px;width: 650px; background-color: #fff; color: #fff;">
+        <i class="fa-solid fa-magnifying-glass"></i>
+        <input id="mysearch" matInput (keyup)="applyFilter($any($event.target).value)" placeholder=" &nbsp; Search for tickets">
+      </mat-form-field>
+  </div>
+  <br><br><br><br>
+  <br>
   <div class="table1">
   <table id="mytable" style="width: 320px; " mat-table [dataSource]="dataSource" class="mat-elevation-z8"> 
   
