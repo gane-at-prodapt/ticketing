@@ -20,6 +20,7 @@ import { UpdateComponentComponent } from './update-component/update-component.co
 import { UpdateEmployeeComponent } from './update-employee/update-employee.component';
 import { UpdateGroupComponent } from './update-group/update-group.component';
 import { UpdateNetworkComponent } from './update-network/update-network.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { SettingsComponent } from './admin-home/settings/settings.component';
 import { Form, FormsModule } from '@angular/forms';
@@ -100,7 +101,8 @@ import { AdduserComponent } from './adduser/adduser.component';
     HttpClientModule,
     RouterModule,
     MatFormFieldModule,
-    MatSelectModule
+    MatSelectModule,
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

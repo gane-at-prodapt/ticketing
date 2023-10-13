@@ -49,6 +49,21 @@ export class CreateNetworkComponent{
   //   }
   // }
 
+  ngOnInit()
+  {
+    let mynavbar1= document.getElementById('nav1');
+    window.addEventListener('scroll', function(){
+      let value = window.scrollY;
+   
+      // if(navbar!=null){
+      //   navbar.style.top = value  + 'px';
+      // }
+      if(mynavbar1!=null){
+        mynavbar1.style.top =  value  + 'px';
+      }
+  })
+  }
+
   componentName:string="";
   networkID:number=0;
   

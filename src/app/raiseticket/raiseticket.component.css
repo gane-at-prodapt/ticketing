@@ -3,6 +3,10 @@
     box-shadow: 0 2px 8px 0 rgba(0,0,0,0.2);
     transition: 0.3s;
 }
+
+
+
+
 p {
     border:  1px solid;
 
@@ -13,13 +17,13 @@ p {
 
 .card-title
 {
-    font-family: sans-serif;
+    font-family: 'League Spartan', sans-serif;
     font-weight: 300;
     font-size: 14px;
     width: 300px;
     line-height: 24px;
-    margin-top: 40px;
-    margin-left: 80px;
+    margin-top: 20px;
+    margin-left: 40px;
     letter-spacing: 5px;
     
 
@@ -65,7 +69,7 @@ p {
     display: none;
     position: absolute;
     background-color: #f6f6f6;
-    min-width: 230px;
+    min-width: 23rem;
     border: 1px solid #ddd;
     z-index: 1;
   }
@@ -93,7 +97,7 @@ p {
 }
 .wrapper
 {
-  width: 30rem;
+  width: 23rem;
   margin: 0px;
   border-color: rgb(215, 214, 214);
   
@@ -106,7 +110,7 @@ p {
   margin-top: 10px;
   height: 35px;
   border: 1px solid;
-  width: 445px;
+  width: 23rem;
   border-radius: 4px;
   
     border-color: rgb(222, 220, 220);
@@ -116,6 +120,90 @@ p {
   margin-top: 5px;
   padding: 7px 12px;
 }
+
+#hiw:hover
+{
+
+  color:#128ce9;
+  transition: ease-in-out;
+  font-family: 'League Spartan', sans-serif;
+  font-size: larger;
+  letter-spacing: 2px;
+  cursor:pointer;
+
+}
+
+#point1:hover
+{
+  color:#128ce9;
+ transition: ease-in-out;
+ font-family: 'League Spartan', sans-serif;
+ font-size: larger;
+ letter-spacing: 2px;
+ cursor:pointer;
+
+}
+#point2:hover
+{
+  color:#128ce9;
+ transition: ease-in-out;
+ font-family: 'League Spartan', sans-serif;
+ font-size: larger;
+ letter-spacing: 2px;
+ cursor:pointer;
+
+}
+#point3:hover
+{
+  color:#128ce9;
+ transition: ease-in-out;
+ font-family: 'League Spartan', sans-serif;
+ font-size: larger;
+ letter-spacing: 2px;
+ cursor:pointer;
+
+}
+#point4:hover
+{
+  color:#128ce9;
+ transition: ease-in-out;
+ font-family: 'League Spartan', sans-serif;
+ font-size: larger;
+ letter-spacing: 2px;
+ cursor:pointer;
+
+}
+#point5:hover
+{
+  color:#128ce9;
+ transition: ease-in-out;
+ font-family: 'League Spartan', sans-serif;
+ font-size: larger;
+ letter-spacing: 2px;
+ cursor:pointer;
+
+}
+#point6:hover
+{
+  color:#128ce9;
+ transition: ease-in-out;
+ font-family: 'League Spartan', sans-serif;
+ font-size: larger;
+ letter-spacing: 2px;
+ cursor:pointer;
+
+}
+
+
+/* #myarrow:hover
+{
+  color: red;
+ transition: ease-in-out;
+  letter-spacing: 4px;
+  transform: scaleX(1.2);
+} */
+
+
 
 #arrow
 {
@@ -140,7 +228,7 @@ p {
   border-radius: 7px;
   background: #fff;
   margin-right: 20px;
-  width: 200px;
+  width: 23rem;
    
   justify-content: space-between;
   
@@ -166,7 +254,7 @@ p {
 
 #content
 {
-  width: 445px;
+  width: 23rem;
   margin-left: 0;
   margin-top: 40px;
   border: 1px solid;
@@ -216,7 +304,7 @@ p {
 .search input
 {
   outline: none;
-  width: 400px; 
+  width: 20rem; 
   height: 30px;
   margin-top: 10px;
   border-radius: 4px;

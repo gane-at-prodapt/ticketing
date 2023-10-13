@@ -20,7 +20,7 @@
 <!-- style="background-color: #f4f4f4	;" -->
 <div class="outer">
 <nav class="navbar navbar-expand-lg bg-body-tertiary" style="background-color:black " >
-    <div class="container-fluid"  >
+    <div class="container-fluid" style="font-family: 'League Spartan', sans-serif; background-color: rgb(240, 240, 240);">
       <a class="navbar-brand" [routerLink]="'../incident'" style="margin-left: 20px;">Incident</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -36,29 +36,56 @@
             <a class="nav-link" [routerLink]="'../ticket'">Raise ticket</a>
           </li>
           
-          <!-- <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-              Dropdown
-            </a>
-            <ul class="dropdown-menu">
-              <li><a class="dropdown-item" href="#add">Add Network Elements</a></li>
-              <li><a class="dropdown-item" href="#whole">Serach Network Elements</a></li>
-              <li><hr class="dropdown-divider"></li>
-              <li><a class="dropdown-item" href="#">Something else here</a></li>
-            </ul>
-          </li> -->
+      
          
         </ul>
-        <!-- <form class="d-flex" role="search">
-          <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-          <button class="btn btn-outline-success" type="submit">Search</button>
-        </form> -->
+       
       </div>
     </div>
   </nav>
+  <!-- <br>
+  <div class="container" style=" font-family: 'Albert Sans', sans-serif; font-size: 30px;" >
+    <marquee direction= "left" style="height: 40px;" >
+        Animation on moving text and stop on hover
+    </marquee>
+  </div>
+  <br><br> -->
+
+  <div class="row">
+    <div class="col-7">
+<!-- 
+      <p><a href="#" data-replace="Hover this link"><span id="hiw" style="font-family: 'Albert Sans', sans-serif; font-size: 0.8cm; font-weight: 200; border: none; margin-top: 100px; margin-left: 50px;
+        position: absolute;">Hover this link</span></a></p> -->
+
+        <!-- <p class="placeholder-glow" >
+          <span class="placeholder col-12"></span>
+          how it works
+        </p> -->
+<br>
+<br>
+
+      <p  id="hiw" style="font-family: 'Albert Sans', sans-serif; font-size: 0.8cm; font-weight: 200; border: none; margin-top: 60px; margin-left: 50px;
+      position: absolute;">
+        How it works &nbsp;
+
+        <i class="fa-solid fa-arrow-right" style="font-size: 0.6cm;  "></i></p><br><br>
+       <ul style="font-family: 'Albert Sans', sans-serif; font-size: 0.5cm; font-weight: 100; margin-top: 90px; margin-left: 35px;"  >
+        <li id="point6"> When something is not working or has failed you can raise a ticket</li><br>
+        <li id="point1" >Start by providing your name </li><br>
+        <li id="point5" >Select the network device with the issue </li><br>
+        <li id="point2" >Choose the group you wanna raise the ticket to</li><br>
+        <li id="point3" >Use a list and bullet points for easy communication.</li><br>
+        <li id="point4" >Inform us about the prioritization of this issue</li><br>
+      </ul>
+
+        
+      
+     
+    </div>
+    <div class="col-5">
 
    
-    <div class="card" style="width: 30rem; height: 34rem; position: absolute;  margin-top: 70px; margin-left: 400px;">
+    <div class="card" style="width: 25rem; height: 34rem; position: absolute;  margin-top: 10px; ">
         <div class="card-body">
           <h3 class="card-title" style="text-align: center; " >RAISE &nbsp; TICKET</h3>
           <!-- <h6 class="card-subtitle mb-2 text-body-secondary">Card subtitle</h6> -->
@@ -66,17 +93,16 @@
           <!-- <a href="#" class="card-link">Card link</a>
           <a href="#" class="card-link">Another link</a> -->
           <br>
-          <br>
           <form [formGroup]= "form">
 
           <div class="form-group" >
-            <input class="form-control" style="width: 28rem; " placeholder="Enter name"  formControlName="name" type="text" name="name" > 
+            <input class="form-control" style="width: 23rem; " placeholder="Enter name"  formControlName="name" type="text" name="name" > 
           </div>
           </form>
           <br>
 
           <div class="input-group mb-3"  >
-            <select style="width: 30rem;  border-color: rgb(215, 214, 214) ;border-radius: 4px;  height: 35px;font-weight:lighter; color: rgb(108, 108, 108); font-size: medium; font-family: sans-serif; letter-spacing: 0.3px; margin-bottom: 0px;" name="networkName" [(ngModel)]="networkID"  class="custom-select" id="inputGroupSelect">
+            <select style="width: 23rem;  border-color: rgb(215, 214, 214) ;border-radius: 4px;  height: 35px;font-weight:lighter; color: rgb(108, 108, 108); font-size: medium; font-family: sans-serif; letter-spacing: 0.3px; margin-bottom: 0px;" name="networkName" [(ngModel)]="networkID"  class="custom-select" id="inputGroupSelect">
             <!-- <option selected >Select</option> -->
          
 
@@ -87,7 +113,7 @@
        </div>
 
        <div class="input-group mb-3"  >
-         <select style="width: 30rem;  border-color: rgb(215, 214, 214) ; border-radius: 4px;  height: 35px;font-weight:lighter; color: rgb(108, 108, 108); font-size: medium; font-family: sans-serif; letter-spacing: 0.3px; margin-bottom: 0px; margin-top: 5px;" name="issueName" [(ngModel)]="issueName"  class="custom-select" id="inputGroupSelect">
+         <select style="width: 23rem;  border-color: rgb(215, 214, 214) ; border-radius: 4px;  height: 35px;font-weight:lighter; color: rgb(108, 108, 108); font-size: medium; font-family: sans-serif; letter-spacing: 0.3px; margin-bottom: 0px; margin-top: 5px;" name="issueName" [(ngModel)]="issueName"  class="custom-select" id="inputGroupSelect">
          <!-- <option selected >Select</option> -->
          <option type="text" placeholder="Search.." id="myInput" onkeyup="filterFunction()"></option>
 
@@ -99,7 +125,7 @@
 
 
         <div class="input-group mb-3"  >
-            <select style="width: 30rem;  border-color: rgb(215, 214, 214) ; border-radius: 4px;  height: 35px;font-weight:lighter; color: rgb(108, 108, 108); font-size: medium; font-family: sans-serif; letter-spacing: 0.3px; margin-top: 5px; " name="groupName" [(ngModel)]="groupName"  class="custom-select" id="inputGroupSelect">
+            <select style="width: 23rem;  border-color: rgb(215, 214, 214) ; border-radius: 4px;  height: 35px;font-weight:lighter; color: rgb(108, 108, 108); font-size: medium; font-family: sans-serif; letter-spacing: 0.3px; margin-top: 5px; " name="groupName" [(ngModel)]="groupName"  class="custom-select" id="inputGroupSelect">
             <!-- <option selected >Select</option> -->
          
    
@@ -122,7 +148,7 @@
                     </span> color:#909090; -->
 
                     <span id="arrow" class="material-symbols-outlined" style="color:#807f7f;">
-                      expand_more
+                      
                       </span>
               </div>
 
@@ -168,7 +194,7 @@
 
         <div class="row">
             <div class="col-2">
-            <p style="  color: rgb(108, 108, 108); font-size: medium; padding: 5px; font-family: sans-serif; letter-spacing: 0.5px; width: 90px;"> &nbsp; Priority  </p>
+            <p style="color: rgb(108, 108, 108); font-size: medium; padding: 5px; font-family: sans-serif; letter-spacing: 0.5px; width: 90px;"> &nbsp; Priority  </p>
            </div>
            
            <div class="col-2">
@@ -253,16 +279,16 @@
 
 
         </div>
-
-
+      </div>
+      </div>
         <br><br><br>
         <br><br><br>
         <br><br><br>
         <br><br><br>
-    </div>
+   
     
    
-
+  </div>
  </div>
 
 

@@ -1,51 +1,73 @@
+import { animate, state, style, transition, trigger } from '@angular/animations';
 import { Component,Renderer2, OnInit} from '@angular/core';
-import { Chart, ChartData, ChartOptions } from 'chart.js';
+import { Chart, ChartData, ChartOptions, Title } from 'chart.js';
 
 
 @Component({
   selector: 'app-homepage',
   templateUrl: './homepage.component.html',
-  styleUrls: ['./homepage.component.css']
+  styleUrls: ['./homepage.component.css'],
+  animations: [
+    trigger('inOutPaneAnimation', [
+      state('in', style({ transform: 'translateX(0)' })),
+      transition('void => *', [
+        style({ transform: 'translateX(-100%)' }),
+        animate(100)
+      ]),
+      transition('* => void', [
+        animate(100, style({ transform: 'translateX(100%)' }))
+      ])
+    ])
+  ]
 })
 export class HomepageComponent {
 
   
-  lineChart2Data: ChartData<'polarArea'> = {
-
+  lineChart2Data: ChartData<'doughnut'> = {
     labels: ['Open', 'Assigned', 'Ignored', 'Resolved', 'Closed'],
-
-
     datasets: [
 
-      { label: 'dataset', data: [25, 20, 12 , 15 , 18],  backgroundColor: ['rgb(151, 246, 245)','rgb(42, 205, 203)','rgb(55, 201, 239)', 'rgb(44, 146, 213)', 'rgb(19, 83, 138)'], hoverBackgroundColor:['rgba(151, 246, 245,0.6)','rgba(42, 205, 203,0.6)','rgba(55, 201, 239,0.6)', 'rgba(44, 146, 213,0.6)', 'rgba(19, 83, 138,0.6)' ], 
-      borderColor:['rgb(134, 234, 233)','rgb(62, 218, 216)','rgb(55, 201, 239)', 'rgb(44, 146, 213)', 'rgb(19, 83, 138)' ], 
-    hoverBorderColor:['rgb(134, 234, 233)','rgb(62, 218, 216)','rgb(55, 201, 239)', 'rgb(44, 146, 213)', 'rgb(19, 83, 138)'] },
-      // { label: 'Ignored', data: [12], backgroundColor:'rgb(255,255,0)'},
-      // { label: 'Resolved', data: [12], backgroundColor:'rgb(2, 180, 3)'},     
-      // { label: 'Closed', data: [9], backgroundColor:'rgb(103, 103, 202)'},
-    
+      { label: 'dataset', data: [25, 18, 12 , 15 , 18],  backgroundColor: ['rgb(7, 86, 101)','rgb(86, 155, 169)','rgb(7, 86, 101)', 'rgb(86, 155, 169)', 'rgb(108, 159, 169)'], hoverBackgroundColor:['rgba(151, 246, 245,0.6)','rgba(42, 205, 203,0.6)','rgba(55, 201, 239,0.6)', 'rgba(151, 246, 245,0.6)', 'rgba(42, 205, 203,0.6)' ], 
+      borderColor:['rgb(7, 86, 101)','rgb(86, 155, 169)','rgb(7, 86, 101)', 'rgb(86, 155, 169)', 'rgb(108, 159, 169)' ], 
+    hoverBorderColor:['rgba(151, 246, 245,0.6)','rgba(42, 205, 203,0.6)','rgba(55, 201, 239,0.6)', 'rgba(151, 246, 245,0.6)', 'rgba(42, 205, 203,0.6)'] }, 
       ],
-
-
-   
-
   };
-
- 
-
   lineChart2Options: ChartOptions = {
-
-  
-
     responsive:true,
-
     plugins:{
-
     },
-
-   
-
   }
+
+
+   barChartData: ChartData<'bar'> = {
+    labels: ['Group 1', 'Group 2', 'Group 3', 'Group 4', 'Group 5'],
+    datasets: [
+
+      { label: 'dataset', borderRadius: 2,  data: [70, 87, 69 , 75 , 80],  backgroundColor: ['rgb(7, 86, 101)','rgb(86, 155, 169)','rgb(7, 86, 101)', 'rgb(86, 155, 169)', 'rgb(108, 159, 169)'], hoverBackgroundColor:['rgba(151, 246, 245,0.6)','rgba(42, 205, 203,0.6)','rgba(55, 201, 239,0.6)', 'rgba(151, 246, 245,0.6)', 'rgba(42, 205, 203,0.6)' ], 
+      borderColor:['rgb(7, 86, 101)','rgb(86, 155, 169)','rgb(7, 86, 101)', 'rgb(86, 155, 169)', 'rgb(108, 159, 169)' ], 
+    hoverBorderColor:['rgba(151, 246, 245,0.6)','rgba(42, 205, 203,0.6)','rgba(55, 201, 239,0.6)', 'rgba(151, 246, 245,0.6)', 'rgba(42, 205, 203,0.6)'] }, 
+      ],
+  };
+    barChartDataOptions: ChartOptions = {
+      responsive:false,
+      plugins:{
+      },
+    }
+
+    lineChartData: ChartData<'line'> = {
+      labels: ['Group 1', 'Group 2', 'Group 3', 'Group 4', 'Group 5'],
+      datasets: [
+  
+        { label: 'dataset', data: [70, 87, 69 , 75 , 80],  backgroundColor: ['rgb(7, 86, 101)','rgb(86, 155, 169)','rgb(7, 86, 101)', 'rgb(86, 155, 169)', 'rgb(108, 159, 169)'], hoverBackgroundColor:['rgba(151, 246, 245,0.6)','rgba(42, 205, 203,0.6)','rgba(55, 201, 239,0.6)', 'rgba(151, 246, 245,0.6)', 'rgba(42, 205, 203,0.6)' ], 
+        borderColor:['rgb(7, 86, 101)','rgb(86, 155, 169)','rgb(7, 86, 101)', 'rgb(86, 155, 169)', 'rgb(108, 159, 169)' ], 
+      hoverBorderColor:['rgba(151, 246, 245,0.6)','rgba(42, 205, 203,0.6)','rgba(55, 201, 239,0.6)', 'rgba(151, 246, 245,0.6)', 'rgba(42, 205, 203,0.6)'] }, 
+        ],
+    };
+      lineChartDataOptions: ChartOptions = {
+        responsive:false,
+        plugins:{
+        },
+      }
 
   ngOnInit(){
     let stars = document.getElementById('stars');
@@ -62,6 +84,70 @@ export class HomepageComponent {
     let bubble6=document.getElementById('bubble6');
     let bubble7=document.getElementById('bubble7');
     let bubble8=document.getElementById('bubble8');
+
+    let piechart=document.getElementById('pie');
+    let piechart2=document.getElementById('pie2');
+    let piechart3=document.getElementById('pie3');
+    let pieArr = [piechart,piechart2,piechart3];
+    
+
+    // piechart?.addEventListener("click", () => {
+    //   if( piechart!= null)
+    //   {
+    //     piechart.classList.toggle("open");
+    //   }
+     
+    // });
+
+    // piechart?.addEventListener('click', function()
+    // {
+
+    // });
+
+
+
+
+    let mybutton1= document.getElementById('button1');
+    let mybutton2= document.getElementById('button2');
+    let mybutton3= document.getElementById('button3');
+    let buttonArr = [mybutton1,mybutton2,mybutton3];
+
+     let card= document.getElementById('statscard'); 
+   
+    
+
+
+    // mybutton1?.addEventListener( 'click', () =>
+    // {
+    //   if( piechart!= null)
+    //   {
+    //     piechart.classList.toggle("open");
+    //   }
+      
+    // });
+
+    let count = 0;
+    setInterval( function()
+    {
+      buttonArr[count%3]?.click();
+      if(buttonArr[count%3]!= null)
+      {
+        if(count!=0){
+          buttonArr[(count-1)%3]?.classList.toggle("open");
+          pieArr[(count-1)%3]?.classList.toggle("open");
+         
+         
+        }        
+        buttonArr[count%3]?.classList.toggle("open");
+        pieArr[count%3]?.classList.toggle("open");
+        
+      }
+      count+=1;
+    
+    },2000);
+
+
+    
     
 
     
@@ -97,19 +183,19 @@ export class HomepageComponent {
 
       if(bubble1!=null) {
         bubble1.style.top = -value  + 'px';
-        bubble1.style.opacity = 100 - (value*0.75) + '%';
+        bubble1.style.opacity =  70 -(value*0.75) + '%';
       }
       if(bubble2!=null) {
         bubble2.style.top = -value  + 'px';
-        bubble2.style.opacity = 100 - (value*0.75) + '%';
+        bubble2.style.opacity = 70- (value*0.75) + '%';
       }
       if(bubble3!=null) {
         bubble3.style.top = -value  + 'px';
-        bubble3.style.opacity = 100 - (value*0.75) + '%';
+        bubble3.style.opacity = 70- (value*0.75) + '%';
       }
       if(bubble4!=null) {
         bubble4.style.top = -value  + 'px';
-        bubble4.style.opacity = 100 - (value*0.75) + '%';
+        bubble4.style.opacity = 70 - (value*0.75) + '%';
       }
       if(bubble5!=null) {
         bubble5.style.top = -value  + 'px';
@@ -117,15 +203,15 @@ export class HomepageComponent {
       }
       if(bubble6!=null) {
         bubble6.style.top = -value  + 'px';
-        bubble6.style.opacity = 100 - (value*0.75) + '%';
+        bubble6.style.opacity = 70 - (value*0.75) + '%';
       }
       if(bubble7!=null) {
         bubble7.style.top = -value  + 'px';
-        bubble7.style.opacity = 100 - (value*0.75) + '%';
+        bubble7.style.opacity = 70 - (value*0.75) + '%';
       }
       if(bubble8!=null) {
         bubble8.style.top = -value  + 'px';
-        bubble8.style.opacity = 100 - (value*0.75) + '%';
+        bubble8.style.opacity = 70 - (value*0.75) + '%';
       }
       
       
