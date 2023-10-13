@@ -73,6 +73,7 @@ export class AdminLoginComponent implements OnInit{
       this.router.navigate(['/','homepage']);
     },
     error=>{
+      //need to display "invalid credentials, try again" in the bottom of the form. clear the password field
       console.log(error);
     });
   }
