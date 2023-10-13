@@ -41,4 +41,35 @@ export class IncidentComponent {
     this.dataSource.filter = filterValue.trim().toLowerCase();
   }
 
+  ngOnInit(){
+
+    let navbar = document.getElementById('mynavbar');
+    let mynavbar1= document.getElementById('nav1');
+    let mynavbar2= document.getElementById('nav2');
+
+    // const autoScroll=()=>
+    // {
+    //   window.scrollBy(0,5);
+    //   let scrolldelay= setTimeout(() => {
+        
+    //   }, 2000);
+    // }
+
+
+
+   
+
+    window.addEventListener('scroll', function(){
+      let value = window.scrollY;
+   
+      // if(navbar!=null){
+      //   navbar.style.top = value  + 'px';
+      // }
+      if(mynavbar1!=null){
+        mynavbar1.style.top =  value  + 'px';
+      }
+  })
+
 }
+}
+
