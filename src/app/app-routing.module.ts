@@ -18,6 +18,12 @@ import { ProblemComponent } from './problem/problem.component';
 import { RolesandaccessComponent } from './rolesandaccess/rolesandaccess.component';
 import { CreateissueComponent } from './createissue/createissue.component';
 import { AdduserComponent } from './adduser/adduser.component';
+import { NetworkHomepageComponent } from './network-homepage/network-homepage.component';
+import { IncidentHomepageComponent } from './incident-homepage/incident-homepage.component';
+import { GroupHomepageComponent } from './group-homepage/group-homepage.component';
+import { IssuesHomepageComponent } from './issues-homepage/issues-homepage.component';
+import { UsersHomepageComponent } from './users-homepage/users-homepage.component';
+import { RolesHomepageComponent } from './roles-homepage/roles-homepage.component';
 
 const routes: Routes = [
   { path: 'home', component: AdminHomeComponent },
@@ -37,7 +43,13 @@ const routes: Routes = [
   { path: 'addissue', component: CreateissueComponent},
   { path: 'login', component: AdminLoginComponent},
   { path: 'adduser', component:AdduserComponent },
-  { path: 'roles', component:RolesandaccessComponent }
+  { path: 'roles', component:RolesandaccessComponent },
+  { path: 'networkHome', component: NetworkHomepageComponent },
+  { path: 'incidentHome', component: IncidentHomepageComponent},
+  { path: 'groupHome', component: GroupHomepageComponent },
+  { path: 'issueHome', component: IssuesHomepageComponent },
+  { path: 'userHome', component: UsersHomepageComponent },
+  { path: 'roleHome', component: RolesHomepageComponent}
 
 
   

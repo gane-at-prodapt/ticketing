@@ -183,35 +183,35 @@ export class HomepageComponent {
 
       if(bubble1!=null) {
         bubble1.style.top = -value  + 'px';
-        bubble1.style.opacity =  70 -(value*0.75) + '%';
+        bubble1.style.opacity =  30 -(value*0.75) + '%';
       }
       if(bubble2!=null) {
         bubble2.style.top = -value  + 'px';
-        bubble2.style.opacity = 70- (value*0.75) + '%';
+        bubble2.style.opacity = 30- (value*0.75) + '%';
       }
       if(bubble3!=null) {
         bubble3.style.top = -value  + 'px';
-        bubble3.style.opacity = 70- (value*0.75) + '%';
+        bubble3.style.opacity = 30- (value*0.75) + '%';
       }
       if(bubble4!=null) {
         bubble4.style.top = -value  + 'px';
-        bubble4.style.opacity = 70 - (value*0.75) + '%';
+        bubble4.style.opacity = 30 - (value*0.75) + '%';
       }
       if(bubble5!=null) {
         bubble5.style.top = -value  + 'px';
-        bubble5.style.opacity = 100 - (value*0.75) + '%';
+        bubble5.style.opacity = 30 - (value*0.75) + '%';
       }
       if(bubble6!=null) {
         bubble6.style.top = -value  + 'px';
-        bubble6.style.opacity = 70 - (value*0.75) + '%';
+        bubble6.style.opacity = 30 - (value*0.75) + '%';
       }
       if(bubble7!=null) {
         bubble7.style.top = -value  + 'px';
-        bubble7.style.opacity = 70 - (value*0.75) + '%';
+        bubble7.style.opacity = 30 - (value*0.75) + '%';
       }
       if(bubble8!=null) {
         bubble8.style.top = -value  + 'px';
-        bubble8.style.opacity = 70 - (value*0.75) + '%';
+        bubble8.style.opacity = 30 - (value*0.75) + '%';
       }
       
       

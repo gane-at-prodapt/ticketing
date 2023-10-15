@@ -1,0 +1,258 @@
+<style>
+    .Name
+    {
+        margin-left: 50px;
+    }
+    .custom-select
+    {
+        width: 200px;
+        margin-bottom: 10px;
+      
+       
+    }
+    .submit
+    {
+        width:70px;
+        height: 10px;
+    }
+</style>
+
+
+<div class="outer">
+<!-- <nav id="nav1"  class="navbar navbar-expand-lg bg-body-tertiary" style="background-color:black " >
+    <div class="container-fluid" style=" font-family: 'League Spartan', sans-serif; background-color: rgb(240, 240, 240);" >
+      <a class="navbar-brand" [routerLink]="'../network'" style="margin-left: 20px;">Network</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" [routerLink]="'../addnetwork'">Add Network Device</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" [routerLink]="'../network'">Search Network Device</a>
+          </li>
+          
+         
+        </ul>
+       
+      </div>
+    </div>
+  </nav> -->
+
+  <nav id="nav1"  class="navbar navbar-expand-lg " style="margin-bottom: 0px;" >
+    <div class="container-fluid" style=" font-family: 'League Spartan', sans-serif;  background-color: white; margin-bottom: 0px;" >
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link" [routerLink]="'../addnetwork'">Customer Service</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" [routerLink]="'../network'">&nbsp; Search network element </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" [routerLink]="'../network'">&nbsp; Add network element</a>
+          </li>
+          <li class="nav-item" style="margin-left: 500px;">
+            <a class="nav-link" [routerLink]="'../network'">Homepage</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" [routerLink]="'../network'">Login</a>
+          </li>
+
+
+          
+         
+        </ul>
+       
+      </div>
+    </div>
+  </nav>
+  <br><br>
+  
+   <!-- <div style="font-family: 'Montserrat', sans-serif; font-weight: 600;" >
+      
+        <a style="margin-left: 450px; position: absolute;" class="nav-link">Home</a>
+        <a style="margin-left: 500px;" class="nav-link">/ Inventory</a>
+     
+       
+   </div> -->
+   <nav id="nav1"  class="navbar navbar-expand-lg" style="background-color: white;">
+    <div class="container-fluid" style=" font-family: 'Montserrat', sans-serif; font-weight: 800; background-color: white;" >
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0" >
+          <li class="nav-item" style="margin-left: 340px;">
+            <a class="nav-link" [routerLink]="'../addnetwork'">Inventory </a>
+          </li>
+          <li class="nav-item" style="margin-left: 20px;">
+            <a class="nav-link" [routerLink]="'../network'"> Incident </a>
+          </li>
+          <li class="nav-item" style="margin-left: 20px;">
+            <a class="nav-link" [routerLink]="'../network'"> Group </a>
+          </li>
+          <li class="nav-item" style="margin-left: 20px;">
+            <a class="nav-link" [routerLink]="'../network'"> Issues </a>
+          </li>
+          <li class="nav-item" style="margin-left: 20px;">
+            <a class="nav-link" [routerLink]="'../network'"> Users </a>
+          </li>
+          <li class="nav-item" style="margin-left: 20px;">
+            <a class="nav-link" [routerLink]="'../network'"> Roles </a>
+          </li>
+
+
+          
+         
+        </ul>
+       
+      </div>
+    </div>
+  </nav>
+  <div>
+    <ul class="navbar-nav me-auto mb-2 mb-lg-0" >
+        <li class="nav-item" style="margin-left: 550px;" >
+         <a class="nav-link"  style="position: absolute; font-family: 'Montserrat', sans-serif; font-weight:400" [routerLink]="'../addnetwork'">Home </a>
+         </li>
+         <li class="nav-item" style="margin-left: 600px;" >
+            <a class="nav-link"  style="color:red; font-family: 'Montserrat', sans-serif; font-weight:400" [routerLink]="'../addnetwork'"> / Inventory </a>
+            </li>
+         </ul>
+    </div>
+
+
+<div class="row">
+
+    <div class="col-3">
+  <div>
+    <br>
+    <ul class="navbar-nav me-auto mb-2 mb-lg-0" >
+        <li class="nav-item" style="margin-left: 30px;" >
+         <a class="nav-link"  style=" font-family: 'Montserrat', sans-serif; font-weight:bolder" [routerLink]="'../addnetwork'">Inventory </a>
+         </li>
+        <li class="nav-item" style="margin-left: 30px;">
+         <a class="nav-link" style="position: absolute; font-family: 'Montserrat', sans-serif; font-weight:200; margin-bottom: 0px;" [routerLink]="'../addnetwork'">Search network </a>    
+        </li>
+        <li class="nav-item" style="margin-left: 30px;">
+        <a class="nav-link" style="margin-top: 22px; font-family: 'Montserrat', sans-serif; font-weight:200; " [routerLink]="'../addnetwork'">Create new network</a>
+
+        </li>
+
+        <li class="nav-item" style="margin-left: 30px;" >
+            <a class="nav-link"  style=" font-family: 'Montserrat', sans-serif; font-weight:bolder" [routerLink]="'../addnetwork'">Incident </a>
+        </li>
+        <li class="nav-item" style="margin-left: 30px;">
+            <a class="nav-link" style="position: absolute; font-family: 'Montserrat', sans-serif; font-weight:200; margin-bottom: 0px;" [routerLink]="'../addnetwork'">Search incident </a>    
+           </li>
+           <li class="nav-item" style="margin-left: 30px;">
+           <a class="nav-link" style="margin-top: 22px; font-family: 'Montserrat', sans-serif; font-weight:200; " [routerLink]="'../addnetwork'">Create new incident </a>
+   
+        </li>
+
+        <li class="nav-item" style="margin-left: 30px;" >
+            <a class="nav-link"  style=" font-family: 'Montserrat', sans-serif; font-weight:bolder" [routerLink]="'../addnetwork'">Group </a>
+        </li>
+        <li class="nav-item" style="margin-left: 30px;">
+            <a class="nav-link" style="position: absolute; font-family: 'Montserrat', sans-serif; font-weight:200; margin-bottom: 0px;" [routerLink]="'../addnetwork'">Search groups </a>    
+           </li>
+           <li class="nav-item" style="margin-left: 30px;">
+           <a class="nav-link" style="margin-top: 22px; font-family: 'Montserrat', sans-serif; font-weight:200; " [routerLink]="'../addnetwork'">Create new group  </a>
+   
+        </li>
+
+        <li class="nav-item" style="margin-left: 30px;" >
+            <a class="nav-link"  style=" font-family: 'Montserrat', sans-serif; font-weight:bolder" [routerLink]="'../addnetwork'">Issues </a>
+        </li>
+        <li class="nav-item" style="margin-left: 30px;">
+            <a class="nav-link" style="position: absolute; font-family: 'Montserrat', sans-serif; font-weight:200; margin-bottom: 0px;" [routerLink]="'../addnetwork'">Search isuues </a>    
+           </li>
+           <li class="nav-item" style="margin-left: 30px;">
+           <a class="nav-link" style="margin-top: 22px; font-family: 'Montserrat', sans-serif; font-weight:200; " [routerLink]="'../addnetwork'">Create new issues </a>
+   
+        </li>
+
+        <li class="nav-item" style="margin-left: 30px;" >
+            <a class="nav-link"  style=" font-family: 'Montserrat', sans-serif; font-weight:bolder" [routerLink]="'../addnetwork'">Users </a>
+        </li>
+        <li class="nav-item" style="margin-left: 30px;">
+            <a class="nav-link" style="position: absolute; font-family: 'Montserrat', sans-serif; font-weight:200; margin-bottom: 0px;" [routerLink]="'../addnetwork'">Search users </a>    
+           </li>
+           <li class="nav-item" style="margin-left: 30px;">
+           <a class="nav-link" style="margin-top: 22px; font-family: 'Montserrat', sans-serif; font-weight:200; " [routerLink]="'../addnetwork'">Create new users </a>
+   
+        </li>
+
+        <li class="nav-item" style="margin-left: 30px;" >
+            <a class="nav-link"  style=" font-family: 'Montserrat', sans-serif; font-weight:bolder" [routerLink]="'../addnetwork'">Roles & Access </a>
+        </li>
+        <li class="nav-item" style="margin-left: 30px;">
+            <a class="nav-link" style="position: absolute; font-family: 'Montserrat', sans-serif; font-weight:200; margin-bottom: 0px;" [routerLink]="'../addnetwork'">Search roles </a>    
+           </li>
+           <li class="nav-item" style="margin-left: 30px;">
+           <a class="nav-link" style="margin-top: 22px; font-family: 'Montserrat', sans-serif; font-weight:200; " [routerLink]="'../addnetwork'">Add network </a>
+   
+        </li>
+       
+    </ul>
+
+  </div>
+
+
+</div>
+
+<div class="col-9">
+    <br><br>
+    <br><br>
+    <h1 style="font-family:'Montserrat', sans-serif; font-weight:bolder; letter-spacing: 2px; ">NETWORK ELEMENTS</h1>
+    <p style="font-family:'Montserrat', sans-serif;"> Network devices, also known as networking hardware, are physical devices that allow hardware on a 
+        computer network to communicate and interact with one another.A network device is a piece of hardware or software integral to communication between
+         a computer and an internet network. Network devices play two roles. The first is establishing a network connection</p>
+         <br><br>
+         <div class="row">
+            <div class="col-4">
+                <div class="card" style="width: 16rem; border-radius: 1px;">
+                    <div class="card-body">
+                      <h5 class="card-title">Card title</h5>
+                      <h6 class="card-subtitle mb-2 text-body-secondary">Card subtitle</h6>
+                      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                      <a href="#" class="card-link">Card link</a>
+                      <a href="#" class="card-link">Another link</a>
+                    </div>
+                  </div>
+        
+            </div>
+            <div class="col-4">
+                <div class="card" style="width: 16rem; border-radius: 1px;">
+                    <div class="card-body">
+                      <h5 class="card-title">Card title</h5>
+                      <h6 class="card-subtitle mb-2 text-body-secondary">Card subtitle</h6>
+                      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                      <a href="#" class="card-link">Card link</a>
+                      <a href="#" class="card-link">Another link</a>
+                    </div>
+                  </div>
+        
+            </div>
+            <div class="col-3">
+                <div class="card" style="width: 16rem; border-radius: 1px;">
+                    <div class="card-body">
+                      <h5 class="card-title">Card title</h5>
+                      <h6 class="card-subtitle mb-2 text-body-secondary">Card subtitle</h6>
+                      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                      <a href="#" class="card-link">Card link</a>
+                      <a href="#" class="card-link">Another link</a>
+                    </div>
+                  </div>
+        
+            </div>
+        
+        </div>
+</div>
+<br>
+
+
+
+
+</div>
+
+</div>

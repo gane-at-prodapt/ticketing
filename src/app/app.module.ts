@@ -48,6 +48,12 @@ import { RolesandaccessComponent } from './rolesandaccess/rolesandaccess.compone
 import { CreateissueComponent } from './createissue/createissue.component';
 import { RouterModule } from '@angular/router';
 import { AdduserComponent } from './adduser/adduser.component';
+import { NetworkHomepageComponent } from './network-homepage/network-homepage.component';
+import { IncidentHomepageComponent } from './incident-homepage/incident-homepage.component';
+import { GroupHomepageComponent } from './group-homepage/group-homepage.component';
+import { UsersHomepageComponent } from './users-homepage/users-homepage.component';
+import { IssuesHomepageComponent } from './issues-homepage/issues-homepage.component';
+import { RolesHomepageComponent } from './roles-homepage/roles-homepage.component';
 
 
 
@@ -84,7 +90,13 @@ import { AdduserComponent } from './adduser/adduser.component';
     ProblemComponent,
     RolesandaccessComponent,
     CreateissueComponent,
-    AdduserComponent
+    AdduserComponent,
+    NetworkHomepageComponent,
+    IncidentHomepageComponent,
+    GroupHomepageComponent,
+    UsersHomepageComponent,
+    IssuesHomepageComponent,
+    RolesHomepageComponent
   ],
   imports: [
     BrowserModule,
