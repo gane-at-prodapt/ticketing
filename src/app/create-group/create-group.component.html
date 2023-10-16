@@ -70,27 +70,27 @@
   <table id="mytable" style="width: 320px; " mat-table [dataSource]="dataSource" class="mat-elevation-z8"> 
   
     <!-- Position Column -->
-    <ng-container  matColumnDef="position">
-      <th  style=" width: 60px; text-align: center;" mat-header-cell  *matHeaderCellDef> S No </th>
-      <td   style=" text-align: center " mat-cell *matCellDef="let element"> {{element.position}} </td>
+    <ng-container  matColumnDef="id">
+      <th  style=" width: 60px; text-align: center;" mat-header-cell  *matHeaderCellDef> Group ID </th>
+      <td   style=" text-align: center " mat-cell *matCellDef="let element"> {{element.id}} </td>
     </ng-container>
   
     <!-- Name Column -->
     <ng-container matColumnDef="name">
-      <th  style=" width: 100px; text-align: center " mat-header-cell *matHeaderCellDef> Name </th>
+      <th  style=" width: 100px; text-align: center " mat-header-cell *matHeaderCellDef> Assignment Group </th>
       <td   style=" text-align: center " mat-cell *matCellDef="let element"> {{element.name}} </td>
     </ng-container>
   
     <!-- Weight Column -->
-    <ng-container matColumnDef="weight">
-      <th style=" width: 80px; text-align:center"  mat-header-cell *matHeaderCellDef> Weight </th>
-      <td  style=" text-align: center " mat-cell *matCellDef="let element"> {{element.weight}} </td>
+    <ng-container matColumnDef="issueName">
+      <th style=" width: 80px; text-align:center"  mat-header-cell *matHeaderCellDef> Issue Name </th>
+      <td  style=" text-align: center " mat-cell *matCellDef="let element"> {{element.issue.name}} </td>
     </ng-container>
   
     <!-- Symbol Column -->
-    <ng-container matColumnDef="symbol">
-      <th style=" width: 80px; text-align: center; border-radius: 10%; " mat-header-cell *matHeaderCellDef> Symbol </th>
-      <td  style=" text-align: center " mat-cell *matCellDef="let element"> {{element.symbol}} </td>
+    <ng-container matColumnDef="networkFamily">
+      <th style=" width: 80px; text-align: center; border-radius: 10%; " mat-header-cell *matHeaderCellDef> Network Family </th>
+      <td  style=" text-align: center " mat-cell *matCellDef="let element"> {{element.issue.network_family}} </td>
     </ng-container>
   
     <tr style="background-color: #fff;" mat-header-row *matHeaderRowDef="displayedColumns"></tr>

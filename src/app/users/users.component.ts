@@ -7,20 +7,11 @@ import { MatInputModule } from '@angular/material/input';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { HttpClient } from '@angular/common/http';
 import { Router, NavigationEnd } from '@angular/router';
+import { ServiceService,User } from '../service.service';
 
-export interface Role {
-  id: number;
-  name: string;
-  createdOn:number;
-}
 
-export interface userDetails {
-  id: number;
-  name: string;
-  email:string;
-  role:Role;
-  createdOn:number;
-}
+
+
 
 @Component({
   selector: 'app-users',
@@ -29,9 +20,9 @@ export interface userDetails {
 })
 export class UsersComponent implements OnInit{
   
-  DATA : userDetails[] = [];
+  DATA : User[] = [];
 
-  constructor(private httpClient : HttpClient, private router: Router) {
+  constructor(private httpClient : HttpClient, private router: Router, private service : ServiceService) {
     
   }
 
@@ -44,7 +35,7 @@ export class UsersComponent implements OnInit{
       window.scrollTo(0, 0) 
   }); 
 
-    this.httpClient.get<userDetails[]>('http://localhost:8088/api/v1/users/all').subscribe(Response=>{
+     this.service.getUsers().subscribe(Response=>{
       this.DATA=Response;
       console.log(this.DATA);
       this.dataSource=new MatTableDataSource(this.DATA);
