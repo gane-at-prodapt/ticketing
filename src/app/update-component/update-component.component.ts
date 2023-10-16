@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router, NavigationEnd } from '@angular/router';
 
 @Component({
   selector: 'app-update-component',
@@ -13,6 +14,16 @@ export class UpdateComponentComponent {
   networkElements:string[]=["Router","Modem","Firewall","Switch","OLT","ONT"];
   componentElements:string[]=["PC","VR","Projector","Smart Phone","Tablets","Smart Watch"];
 
+  constructor(private router: Router) { } 
+      
+  ngOnInit() { 
+      this.router.events.subscribe((event) => { 
+          if (!(event instanceof NavigationEnd)) { 
+              return; 
+          } 
+          window.scrollTo(0, 0) 
+      }); 
+  } 
  
   submit()
   {

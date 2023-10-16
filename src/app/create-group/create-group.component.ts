@@ -5,6 +5,7 @@ import {MatTableDataSource} from '@angular/material/table';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatPaginatorModule } from '@angular/material/paginator';
+import { Router, NavigationEnd } from '@angular/router';
 
 
 export interface PeriodicElement {
@@ -40,6 +41,15 @@ export class CreateGroupComponent {
   applyFilter(filterValue: string) {
     this.dataSource.filter = filterValue.trim().toLowerCase();
   }
-
+  constructor(private router: Router) { } 
+      
+  ngOnInit() { 
+      this.router.events.subscribe((event) => { 
+          if (!(event instanceof NavigationEnd)) { 
+              return; 
+          } 
+          window.scrollTo(0, 0) 
+      }); 
+  } 
 
 }

@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormControl, FormGroup, Validators } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
-
+import { NavigationEnd } from '@angular/router';
 
 import * as CryptoJS from 'crypto-js'
 
@@ -17,7 +17,14 @@ export class AdminLoginComponent implements OnInit{
   constructor(private httpClient : HttpClient,private router:Router) {
     
   }
-  ngOnInit(): void {
+ 
+  ngOnInit() {
+    this.router.events.subscribe((event) => { 
+      if (!(event instanceof NavigationEnd)) { 
+          return; 
+      } 
+      window.scrollTo(0, 0) 
+  }); 
   }
 
   email:string="";

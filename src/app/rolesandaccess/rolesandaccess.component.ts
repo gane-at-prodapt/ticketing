@@ -6,6 +6,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
+import { Router, NavigationEnd } from '@angular/router';
 
 export interface access{
   module: string;
@@ -82,6 +83,17 @@ export class RolesandaccessComponent {
   applyFilter(filterValue: string) {
     this.dataSource.filter = filterValue.trim().toLowerCase();
   }
+
+  constructor(private router: Router) { } 
+      
+  ngOnInit() { 
+      this.router.events.subscribe((event) => { 
+          if (!(event instanceof NavigationEnd)) { 
+              return; 
+          } 
+          window.scrollTo(0, 0) 
+      }); 
+  } 
 
 
 

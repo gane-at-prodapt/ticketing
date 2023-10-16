@@ -1,6 +1,7 @@
 import { Block } from '@angular/compiler';
 import { Component } from '@angular/core';
 import { AbstractControl, FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router, NavigationEnd } from '@angular/router';
 @Component({
   selector: 'app-raiseticket',
   templateUrl: './raiseticket.component.html',
@@ -12,6 +13,15 @@ export class RaiseticketComponent {
    "Germany", "Indonesia", "India", "China", "Finland"];
   searchresult:string[] = this.countries;
   selectedList:string="";
+  networkElements:string[]=["Router","Modem","Firewall","Switch","OLT","ONT"];
+  networkFamily:string="";
+
+  issue:string="";
+  Priority:string="";
+  Severity:string="";
+  flexRadioDefault:string="";
+ 
+  constructor(private router: Router) { } 
 
   updateName(selectedLi: string)
   {
@@ -25,14 +35,101 @@ export class RaiseticketComponent {
     //  }
   }
 
+
+
+
+  ticketName:string="";
+  form:FormGroup = new FormGroup(
+    {
+      ticketName:new FormControl("",[Validators.required]),
+      networkFamily:new FormControl("",[Validators.required]),
+      issue:new FormControl("",[Validators.required]),
+      Priority:new FormControl("",[Validators.required]),
+      flexRadioDefault:new FormControl("",[Validators.required]),
+      Severity:new FormControl("",[Validators.required]),
+    
+
+  })
+  select:FormControl = new FormControl(
+    {
+      networkFamily:new FormControl("",[Validators.required]),
+      issue:new FormControl("",[Validators.required]),
+      Priority:new FormControl("",[Validators.required]),
+      Severity:new FormControl("",[Validators.required]),
+
+    }
+  )
+
+  getticketName(control:any):string
+  {
+    this.ticketName= control.value
+    return '';
+  }
+  getnetworkFamily(control:any):string
+  {
+    this.networkFamily= control.value
+    return '';
+  }
+  getissueName(control:any):string
+  {
+    this.issue= control.value
+    return '';
+  }
+  getpriority(control:any):string
+  {
+    this.flexRadioDefault= control.value
+    return '';
+  }
+
+  getvalue(selected: string)
+  {
+    
+    this.issue= selected;
+    this.updateName(this.issue)
+
+  }
+
+  getPriority(value:string)
+  {
+      this.Priority= value;
+
+  }
+  getSeverity(value:string)
+  {
+      this.Severity= value;
+
+  }
+ 
+
+  submitData()
+  {
+    console.log(this.ticketName);
+    console.log(this.networkFamily);
+    console.log(this.issue);
+    console.log(this.Priority);
+    console.log(this.Severity);
+  
+
+    const raiseTicket:JSON = <JSON><unknown>{
+      "ticketName": this.ticketName,
+      "networkFamily":this.networkFamily,
+      "issue":this.issue,
+      "priority":this.Priority,
+      "severity":this.Severity
+    
+    }
+
+    console.log(raiseTicket);
+  }
+
   
 
 
-  form:FormGroup = new FormGroup(
-    {
-      
-    }
-  )
+
+  
+
+
+  
 
   ngOnInit(){
 
@@ -42,6 +139,18 @@ export class RaiseticketComponent {
     options= wrapper?.querySelector(".options");
 
     const content = document.getElementById("content");
+
+
+    
+
+    
+
+    this.router.events.subscribe((event) => { 
+      if (!(event instanceof NavigationEnd)) { 
+          return; 
+      } 
+      window.scrollTo(0, 0) 
+  }); 
 
   
 
@@ -92,21 +201,7 @@ export class RaiseticketComponent {
   function updateName(selectedLi: string)
   {
     console.log(selectedLi);
-    //  if(selectBtn!=null && selectBtn.firstElementChild!= null){
-        // selectBtn.firstElementChild.innerHTML = selectedLi.innerHTML;
-    //  }
   }
-  
-
-   
-
-   
-
-   
-    
-
-
-
   }
 
 
@@ -119,7 +214,6 @@ export class RaiseticketComponent {
   issueName:number=0;
   groupName:number=0;
   
-  networkElements:string[]= ["Select","Router","Modem","Firewall","Switch","OLT","ONT"];
   componentElements:string[]=["Select", "PC","VR","Projector","Smart Phone","Tablets","Smart Watch"];
   issueElements:string[]=["Select", "Network connectivity problem","Port not working","IP addresses issues", "Slow network speed", "DNS problems"]
   groupElements:string[]= ["Select","Group 1","Group 2","Group 3","Group 4","Group 5"];

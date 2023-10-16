@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 // import { FaCoffee } from '@fortawesome/angular-fontawesome'
+import { Router, NavigationEnd } from '@angular/router';
 
 
 @Component({
@@ -12,6 +13,7 @@ export class UpdateGroupComponent {
 
   data: string[] = ["HTML", "CSS", "Bootstrap", "React"];
   checkedValue:string[]=[];
+  constructor(private router: Router) { } 
   
 
 
@@ -24,6 +26,13 @@ export class UpdateGroupComponent {
       items = document.querySelectorAll(".item"),
       checkbox = document.querySelectorAll(".item"),
       checks= document.querySelector('item-text');
+
+      this.router.events.subscribe((event) => { 
+        if (!(event instanceof NavigationEnd)) { 
+            return; 
+        } 
+        window.scrollTo(0, 0) 
+    }); 
     
 
     
