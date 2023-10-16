@@ -1,6 +1,7 @@
 import { animate, state, style, transition, trigger } from '@angular/animations';
 import { Component,Renderer2, OnInit} from '@angular/core';
 import { Chart, ChartData, ChartOptions, Title } from 'chart.js';
+import { Router, NavigationEnd } from '@angular/router';
 
 
 @Component({
@@ -21,6 +22,8 @@ import { Chart, ChartData, ChartOptions, Title } from 'chart.js';
   ]
 })
 export class HomepageComponent {
+
+  constructor(private router: Router) { } 
 
   
   lineChart2Data: ChartData<'doughnut'> = {
@@ -89,6 +92,13 @@ export class HomepageComponent {
     let piechart2=document.getElementById('pie2');
     let piechart3=document.getElementById('pie3');
     let pieArr = [piechart,piechart2,piechart3];
+
+    this.router.events.subscribe((event) => { 
+      if (!(event instanceof NavigationEnd)) { 
+          return; 
+      } 
+      window.scrollTo(0, 0) 
+  }); 
     
 
     // piechart?.addEventListener("click", () => {

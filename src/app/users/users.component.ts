@@ -6,6 +6,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { HttpClient } from '@angular/common/http';
+import { Router, NavigationEnd } from '@angular/router';
 
 export interface Role {
   id: number;
@@ -30,11 +31,19 @@ export class UsersComponent implements OnInit{
   
   DATA : userDetails[] = [];
 
-  constructor(private httpClient : HttpClient) {
+  constructor(private httpClient : HttpClient, private router: Router) {
     
   }
 
   ngOnInit(): void {
+
+    this.router.events.subscribe((event) => { 
+      if (!(event instanceof NavigationEnd)) { 
+          return; 
+      } 
+      window.scrollTo(0, 0) 
+  }); 
+
     this.httpClient.get<userDetails[]>('http://localhost:8088/api/v1/users/all').subscribe(Response=>{
       this.DATA=Response;
       console.log(this.DATA);
@@ -45,6 +54,8 @@ export class UsersComponent implements OnInit{
       console.log(error);
     });
   }
+
+  
 
   displayedColumns: string[] = ['id', 'name', 'email', 'role'];
   dataSource = new MatTableDataSource(this.DATA);

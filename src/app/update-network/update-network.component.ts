@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router, NavigationEnd } from '@angular/router';
 
 @Component({
   selector: 'app-update-network',
@@ -7,6 +8,17 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
   styleUrls: ['./update-network.component.css']
 })
 export class UpdateNetworkComponent {
+
+  constructor(private router: Router) { } 
+      
+  ngOnInit() { 
+      this.router.events.subscribe((event) => { 
+          if (!(event instanceof NavigationEnd)) { 
+              return; 
+          } 
+          window.scrollTo(0, 0) 
+      }); 
+  } 
 
  
   networkName:string="";
@@ -82,6 +94,7 @@ export class UpdateNetworkComponent {
     "macAddress": this.macAddress
   }
   console.log(addNetwork);
+  
   }
  
  

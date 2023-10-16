@@ -5,7 +5,7 @@ import {MatTableDataSource} from '@angular/material/table';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatPaginatorModule } from '@angular/material/paginator';
-
+import { Router, NavigationEnd } from '@angular/router';
 
 export interface PeriodicElement {
   name: string;
@@ -34,6 +34,7 @@ export class CreateNetworkComponent{
   applyFilter(filterValue: string) {
     this.dataSource.filter = filterValue.trim().toLowerCase();
   }
+  constructor(private router: Router) { } 
 
   // ngOnInit(){
   //   let value = document.getElementById('mysearch');
@@ -45,6 +46,13 @@ export class CreateNetworkComponent{
 
   ngOnInit()
   {
+    this.router.events.subscribe((event) => { 
+      if (!(event instanceof NavigationEnd)) { 
+          return; 
+      } 
+      window.scrollTo(0, 0) 
+  }); 
+  
     let mynavbar1= document.getElementById('nav1');
     window.addEventListener('scroll', function(){
       let value = window.scrollY;

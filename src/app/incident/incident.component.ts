@@ -5,6 +5,7 @@ import {MatTableDataSource} from '@angular/material/table';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatPaginatorModule } from '@angular/material/paginator';
+import { Router, NavigationEnd } from '@angular/router';
 
 
 export interface PeriodicElement {
@@ -33,6 +34,7 @@ const ELEMENT_DATA: PeriodicElement[] = [
   styleUrls: ['./incident.component.css']
 })
 export class IncidentComponent {
+  constructor(private router: Router) { } 
 
   displayedColumns: string[] = ['position', 'name', 'weight', 'symbol'];
   dataSource = new MatTableDataSource(ELEMENT_DATA);
@@ -54,6 +56,12 @@ export class IncidentComponent {
         
     //   }, 2000);
     // }
+    this.router.events.subscribe((event) => { 
+      if (!(event instanceof NavigationEnd)) { 
+          return; 
+      } 
+      window.scrollTo(0, 0) 
+  }); 
 
 
 
@@ -69,6 +77,8 @@ export class IncidentComponent {
         mynavbar1.style.top =  value  + 'px';
       }
   })
+
+  
 
 }
 }
