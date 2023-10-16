@@ -36,7 +36,7 @@
             <a class="nav-link" [routerLink]="'../ticket'">Raise ticket</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" [routerLink]="'../resolve'">Resolve & close ticket</a>
+            <a class="nav-link" [routerLink]="'../ticket'">Resolve & close ticket</a>
           </li>
           
          
@@ -99,7 +99,7 @@
 
     <ng-container matColumnDef="assignmentGroup">
       <th style=" width: 80px; text-align: center; border-radius: 10%; " mat-header-cell *matHeaderCellDef> Assignment Group </th>
-      <td  style=" text-align: center " mat-cell *matCellDef="let element"> {{element.assignmentGroup.id}} </td>
+      <td  style=" text-align: center " mat-cell *matCellDef="let element"> {{element.assignmentGroup.name}} </td>
     </ng-container>
   
     <tr style="background-color: #fff;" mat-header-row *matHeaderRowDef="displayedColumns"></tr>
@@ -115,9 +115,3 @@
   <br><br>
   </div>
  </div>
-   
-
-
-
- 
-  
