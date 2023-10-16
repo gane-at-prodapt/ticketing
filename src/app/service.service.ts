@@ -159,6 +159,8 @@ export class ServiceService {
     return this.httpClient.post<Groupmembers>(this.groupmembersurl,G);
   }
 
+  //TODO: add groupmembers in bulk
+
   getMembersByGroup(id:number):Observable<Groupmembers[]>{
     return this.httpClient.get<Groupmembers[]>(this.groupmembersurl+"/group/"+id);
   }
@@ -169,17 +171,101 @@ export class ServiceService {
   deleteGroupMember(G:Groupmembers):Observable<String>{
     return this.httpClient.delete<String>(this.groupmembersurl,{body: G});
   }
-  
 
+  //incident
+  addIncident(I:Incident):Observable<Incident>{
+    return this.httpClient.post<Incident>(this.incidenturl,I);
+  }
+  putIncident(I:Incident):Observable<Incident>{
+    return this.httpClient.put<Incident>(this.incidenturl,I);
+  }
+  deleteIncident(I:Incident):Observable<Incident>{
+    return this.httpClient.delete<Incident>(this.incidenturl,{body:I});
+  }
+  getIncidents():Observable<Incident[]>{
+    return this.httpClient.get<Incident[]>(this.incidenturl+"/all");
+  }
+  getIncidentsByGroup(id:number):Observable<Incident[]>{
+    return this.httpClient.get<Incident[]>(this.incidenturl+"/group/"+id);
+  }
+  getIncidentsByMember(id:number):Observable<Incident[]>{
+    return this.httpClient.get<Incident[]>(this.incidenturl+"/member/"+id);
+  }
+  getIncidentsByMemberGroups(id:number):Observable<Incident[]>{
+    return this.httpClient.get<Incident[]>(this.incidenturl+"/member/groups/"+id);
+  }
+  getIncidentsByIssue(id:number):Observable<Incident[]>{
+    return this.httpClient.get<Incident[]>(this.incidenturl+"/issue/"+id);
+  }
 
+  //Issue
+  addIssue(I:Issue):Observable<Issue>{
+    return this.httpClient.post<Issue>(this.issueurl,I);
+  }
+  putIssue(I:Issue):Observable<Issue>{
+    return this.httpClient.put<Issue>(this.issueurl,I);
+  }
+  deleteIssue(I:Issue):Observable<Issue>{
+    return this.httpClient.delete<Issue>(this.issueurl,{body:I});
+  }
+  getIssues():Observable<Issue[]>{
+    return this.httpClient.get<Issue[]>(this.issueurl+"/all");
+  }
+  getIssuesByNetworkDevice():Observable<Issue[]>{
+    return this.httpClient.get<Issue[]>(this.issueurl+"/all");
+  }
 
-  //user
-  getUsers():Observable<User[]>{
-    return this.httpClient.get<User[]>(this.userurl+"/all");
+  //module 
+
+  addModule(M:Module):Observable<Module>{
+    return this.httpClient.post<Module>(this.moduleurl,M);
+  }
+  putModule(M:Module):Observable<Module>{
+    return this.httpClient.put<Module>(this.moduleurl,M);
+  }
+  deleteModule(M:Module):Observable<Module>{
+    return this.httpClient.delete<Module>(this.moduleurl,{body:M});
+  }
+  getModules():Observable<Module[]>{
+    return this.httpClient.get<Module[]>(this.moduleurl+"/all");
+  }
+
+  //networkelement
+  addNetworkElement(N:NetworkElement):Observable<NetworkElement>{
+    return this.httpClient.post<NetworkElement>(this.networkelementurl,N);
+  }
+  getNetworkElements():Observable<NetworkElement[]>{
+    return this.httpClient.get<NetworkElement[]>(this.networkelementurl+"/all");
+  }
+
+  //Role
+
+  addRole(R:Role):Observable<Role>{
+    return this.httpClient.post<Role>(this.roleurl,R);
+  }
+  putRole(R:Role):Observable<Role>{
+    return this.httpClient.put<Role>(this.roleurl,R);
+  }
+  getRoles():Observable<Role[]>{
+    return this.httpClient.get<Role[]>(this.roleurl+"/all");
   }
 
 
-
-
+  //User
+  addUser(U:User):Observable<User>{
+    return this.httpClient.post<User>(this.userurl,U);
+  }
+  putUser(U:User):Observable<User>{
+    return this.httpClient.put<User>(this.userurl,U);
+  }
+  deleteUser(U:User):Observable<User>{
+    return this.httpClient.delete<User>(this.userurl,{body:U});
+  }
+  getUsers():Observable<User[]>{
+    return this.httpClient.get<User[]>(this.userurl+"/all");
+  }
+  getUserByRole(id:number):Observable<User[]>{
+    return this.httpClient.get<User[]>(this.userurl+"/role/"+id);
+  }
 
 }
