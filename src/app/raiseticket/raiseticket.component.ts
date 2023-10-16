@@ -13,7 +13,7 @@ export class RaiseticketComponent {
    "Germany", "Indonesia", "India", "China", "Finland"];
   searchresult:string[] = this.countries;
   selectedList:string="";
-  networkElements:string[]=["Router","Modem","Firewall","Switch","OLT","ONT"];
+  networkElements:string[]=["Broadband cable","Wireless dongle", "Modem", "Router", "Ethernet Cable", "Wireless access point", "Opical Network terminal", "Splitter", "Fiber Optic cable","Network switch"];
   networkFamily:string="";
 
   issue:string="";
@@ -30,13 +30,7 @@ export class RaiseticketComponent {
     if(content!=null){
       content.innerText=selectedLi;
     }
-    //  if(selectBtn!=null && selectBtn.firstElementChild!= null){
-        // selectBtn.firstElementChild.innerHTML = selectedLi.innerHTML;
-    //  }
   }
-
-
-
 
   ticketName:string="";
   form:FormGroup = new FormGroup(
@@ -83,21 +77,17 @@ export class RaiseticketComponent {
 
   getvalue(selected: string)
   {
-    
     this.issue= selected;
     this.updateName(this.issue)
-
   }
 
   getPriority(value:string)
   {
       this.Priority= value;
-
   }
   getSeverity(value:string)
   {
       this.Severity= value;
-
   }
  
 
@@ -220,6 +210,21 @@ export class RaiseticketComponent {
 
   submit()
   {
+
+
+    // id: number; (NN)
+    // name: string;
+    // networkElement: NetworkElement;
+    // issue: Issue;
+    // severity: number;
+    // priority: number;
+    // resolution_comment : string;(NN)
+    // state: string;(default open)
+    // assignmentGroup: AssignmentGroup;
+    // assignedTo: User;(NN)
+    // raisedBy: User;(Enter user)
+    // modifiedOn: number;(Enter System time)
+
     console.log(this.networkID);
     console.log(this.componentName);
     
