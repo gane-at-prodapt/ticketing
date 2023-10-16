@@ -7,6 +7,9 @@ import { MatInputModule } from '@angular/material/input';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
 import { Router, NavigationEnd } from '@angular/router';
+import { HttpClient } from '@angular/common/http';
+import { ServiceService, Role } from '../service.service';
+import { numberFormat } from 'highcharts';
 
 export interface access{
   module: string;
@@ -28,9 +31,9 @@ const accessData: access[] =[
 
 
 
-export interface PeriodicElement {
-  name: string;
-  position: number;
+export interface roleswithbutton {
+  role: Role;
+  button: any;
   // weight: number;
   // symbol: string;
   // group: number;
@@ -42,18 +45,7 @@ export interface PeriodicElement {
 
 }
 
-const ELEMENT_DATA: PeriodicElement[] = [
-  {position: 1, name: 'Super Admin'   },
-  {position: 2, name: 'Network Admin'},
-  {position: 3, name: 'Network Engineer'},
-  {position: 4, name: 'Support Analyst'},
-  {position: 5, name: 'Observer'},
-  // {position: 6, name: 'Carbon', weight: 12.0107, symbol: 'C'},
-  // {position: 7, name: 'Nitrogen', weight: 14.0067, symbol: 'N'},
-  // {position: 8, name: 'Oxygen', weight: 15.9994, symbol: 'O'},
-  // {position: 9, name: 'Fluorine', weight: 18.9984, symbol: 'F'},
-  // {position: 10, name: 'Neon', weight: 20.1797, symbol: 'Ne'},
-];
+
 
 
 
@@ -74,17 +66,16 @@ export class RolesandaccessComponent {
    console.log(element);
   }
   
-  displayedColumns: string[] = ['position', 'name'];
-  dataSource = new MatTableDataSource(ELEMENT_DATA);
+
+  DATA: roleswithbutton[] =[];
+
 
   secondTable: string[] = ['module', 'moduleaccess']
   seconddataSource = new MatTableDataSource(accessData);
 
-  applyFilter(filterValue: string) {
-    this.dataSource.filter = filterValue.trim().toLowerCase();
-  }
 
-  constructor(private router: Router) { } 
+
+  constructor(private router: Router, private httpClient : HttpClient, private service : ServiceService) { } 
       
   ngOnInit() { 
       this.router.events.subscribe((event) => { 
@@ -93,7 +84,30 @@ export class RolesandaccessComponent {
           } 
           window.scrollTo(0, 0) 
       }); 
+
+      this.service.getRoles().subscribe(Response=>{
+        Response.forEach((element)=>{
+          this.DATA.push({
+            role: element,
+            button : "access"
+            }
+          )
+        });
+        console.log(this.DATA);
+        this.dataSource=new MatTableDataSource(this.DATA);
+      
+      },
+      error=>{
+        //need to display "invalid credentials, try again" in the bottom of the form. clear the password field
+        console.log(error);
+      });
   } 
+  displayedColumns: string[] = ['id', 'name','button'];
+  dataSource = new MatTableDataSource(this.DATA);
+
+  applyFilter(filterValue: string) {
+    this.dataSource.filter = filterValue.trim().toLowerCase();
+  }
 
 
 

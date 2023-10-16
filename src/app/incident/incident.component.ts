@@ -6,6 +6,8 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { Router, NavigationEnd } from '@angular/router';
+import { HttpClient } from '@angular/common/http';
+import { ServiceService, Incident } from '../service.service';
 
 
 export interface PeriodicElement {
@@ -34,14 +36,11 @@ const ELEMENT_DATA: PeriodicElement[] = [
   styleUrls: ['./incident.component.css']
 })
 export class IncidentComponent {
-  constructor(private router: Router) { } 
 
-  displayedColumns: string[] = ['position', 'name', 'weight', 'symbol'];
-  dataSource = new MatTableDataSource(ELEMENT_DATA);
+  DATA : Incident[] =[];
+  constructor(private router: Router,private httpClient : HttpClient, private service : ServiceService) { } 
 
-  applyFilter(filterValue: string) {
-    this.dataSource.filter = filterValue.trim().toLowerCase();
-  }
+  
 
   ngOnInit(){
 
@@ -49,37 +48,38 @@ export class IncidentComponent {
     let mynavbar1= document.getElementById('nav1');
     let mynavbar2= document.getElementById('nav2');
 
-    // const autoScroll=()=>
-    // {
-    //   window.scrollBy(0,5);
-    //   let scrolldelay= setTimeout(() => {
-        
-    //   }, 2000);
-    // }
+   
     this.router.events.subscribe((event) => { 
       if (!(event instanceof NavigationEnd)) { 
           return; 
       } 
       window.scrollTo(0, 0) 
   }); 
+  this.service.getIncidents().subscribe(Response=>{
+    this.DATA=Response;
+    console.log(this.DATA);
+    this.dataSource=new MatTableDataSource(this.DATA);
+  
+  },
+  error=>{
+    //need to display "invalid credentials, try again" in the bottom of the form. clear the password field
+    console.log(error);
+  });
 
-
-
-   
 
     window.addEventListener('scroll', function(){
       let value = window.scrollY;
-   
-      // if(navbar!=null){
-      //   navbar.style.top = value  + 'px';
-      // }
       if(mynavbar1!=null){
         mynavbar1.style.top =  value  + 'px';
       }
-  })
+  });
+}
 
-  
+displayedColumns: string[] = ['id', 'name','issue','priority', 'severity', 'assignmentGroup'];
+dataSource = new MatTableDataSource(this.DATA);
 
+applyFilter(filterValue: string) {
+  this.dataSource.filter = filterValue.trim().toLowerCase();
 }
 }
 

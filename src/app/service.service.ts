@@ -103,7 +103,7 @@ export class ServiceService {
   private moduleurl = this.baseurl+"module";
   private networkelementurl = this.baseurl+"networkelement";
   private roleurl = this.baseurl+"role";
-  private userurl = this.baseurl+"user";
+  private userurl = this.baseurl+"users";
 
 
   constructor(private httpClient: HttpClient) {
@@ -209,10 +209,10 @@ export class ServiceService {
     return this.httpClient.delete<Issue>(this.issueurl,{body:I});
   }
   getIssues():Observable<Issue[]>{
-    return this.httpClient.get<Issue[]>(this.issueurl+"/all");
+    return this.httpClient.get<Issue[]>(this.issueurl);
   }
-  getIssuesByNetworkDevice():Observable<Issue[]>{
-    return this.httpClient.get<Issue[]>(this.issueurl+"/all");
+  getIssuesByNetworkDevice(name:string):Observable<Issue[]>{
+    return this.httpClient.get<Issue[]>(this.issueurl+"/network/"+name);
   }
 
   //module 
@@ -235,7 +235,7 @@ export class ServiceService {
     return this.httpClient.post<NetworkElement>(this.networkelementurl,N);
   }
   getNetworkElements():Observable<NetworkElement[]>{
-    return this.httpClient.get<NetworkElement[]>(this.networkelementurl+"/all");
+    return this.httpClient.get<NetworkElement[]>(this.networkelementurl);
   }
 
   //Role
@@ -247,7 +247,7 @@ export class ServiceService {
     return this.httpClient.put<Role>(this.roleurl,R);
   }
   getRoles():Observable<Role[]>{
-    return this.httpClient.get<Role[]>(this.roleurl+"/all");
+    return this.httpClient.get<Role[]>(this.roleurl);
   }
 
 

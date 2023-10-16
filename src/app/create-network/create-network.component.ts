@@ -30,44 +30,10 @@ const ELEMENT_DATA: PeriodicElement[] = [
 })
 export class CreateNetworkComponent{
 
-  displayedColumns: string[] = ['position', 'name', 'weight', 'symbol'];
-  dataSource = new MatTableDataSource(ELEMENT_DATA);
+  DATA : NetworkElement[] =[];
 
-  applyFilter(filterValue: string) {
-    this.dataSource.filter = filterValue.trim().toLowerCase();
-  }
-  constructor(private router: Router,) { } 
-
-  // ngOnInit(){
-  //   let value = document.getElementById('mysearch');
-  //   if( value!= null)
-  //   {
-  //     return value;
-  //   }
-  // }
-
-  ngOnInit()
-  {
-    this.router.events.subscribe((event) => { 
-      if (!(event instanceof NavigationEnd)) { 
-          return; 
-      } 
-      window.scrollTo(0, 0) 
-  }); 
-
-    let mynavbar1= document.getElementById('nav1');
-    window.addEventListener('scroll', function(){
-      let value = window.scrollY;
-   
-      // if(navbar!=null){
-      //   navbar.style.top = value  + 'px';
-      // }
-      if(mynavbar1!=null){
-        mynavbar1.style.top =  value  + 'px';
-      }
-  })
-  }
-
+ 
+  constructor(private router: Router,private httpClient : HttpClient, private service : ServiceService) { } 
   componentName:string="";
   networkID:number=0;
   
@@ -89,4 +55,43 @@ export class CreateNetworkComponent{
 
  
 
+
+  ngOnInit()
+  {
+    this.router.events.subscribe((event) => { 
+      if (!(event instanceof NavigationEnd)) { 
+          return; 
+      } 
+      window.scrollTo(0, 0) 
+  }); 
+
+  
+  this.service.getNetworkElements().subscribe(Response=>{
+    this.DATA=Response;
+    console.log(this.DATA);
+    this.dataSource=new MatTableDataSource(this.DATA);
+  
+  },
+  error=>{
+    //need to display "invalid credentials, try again" in the bottom of the form. clear the password field
+    console.log(error);
+  });
+
+  
+  let mynavbar1= document.getElementById('nav1');
+  window.addEventListener('scroll', function(){
+    let value = window.scrollY;
+ 
+    if(mynavbar1!=null){
+      mynavbar1.style.top =  value  + 'px';
+    }
+   });
+  }
+  displayedColumns: string[] = ['id', 'name', 'deviceFamily','ipv4Address','macAddress'];
+  dataSource = new MatTableDataSource(this.DATA);
+
+  applyFilter(filterValue: string) {
+    this.dataSource.filter = filterValue.trim().toLowerCase();
+  }
 }
+

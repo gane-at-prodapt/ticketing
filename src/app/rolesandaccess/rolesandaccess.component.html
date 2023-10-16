@@ -67,9 +67,9 @@
   <table id="mytable" mat-table [dataSource]="dataSource" class="mat-elevation-z8"> 
     
     <!-- Position Column -->
-    <ng-container  matColumnDef="position">
+    <ng-container  matColumnDef="id">
       <th  style=" width: 100px; text-align: center;" mat-header-cell  *matHeaderCellDef> Role ID </th>
-      <td  (click)="test(element.position)" style=" text-align: center; cursor: pointer;" mat-cell *matCellDef="let element"> {{element.position}} </td>
+      <td  style=" text-align: center; cursor: pointer;" mat-cell *matCellDef="let element"> {{element.role.id}} </td>
     </ng-container>
 
     
@@ -78,9 +78,15 @@
        
        
       <th  style=" width: 100px; text-align: center " mat-header-cell *matHeaderCellDef> Role Name </th>
-      <td  style=" text-align: center " mat-cell *matCellDef="let element"> {{element.name}} </td>
+      <td  style=" text-align: center " mat-cell *matCellDef="let element"> {{element.role.name}} </td>
       
-   
+    </ng-container>
+
+    <ng-container  matColumnDef="button">
+      <th  style=" width: 100px; text-align: center;" mat-header-cell  *matHeaderCellDef> Access </th>
+      <td  style=" text-align: center; cursor: pointer;" mat-cell *matCellDef="let element">
+       <button mat-raised  style="border: none; box-shadow:  0 4px 4px 0 rgba(0,0,0,0.2);;">{{element.button}}</button>
+    </td>
     </ng-container>
    
   
@@ -115,7 +121,7 @@
 
 </div>
 
-<div class="buttons">
+<!-- <div class="buttons">
     
 <div class="modal fade" id="exampleModalToggleSA" aria-hidden="true" aria-labelledby="exampleModalToggleLabelSA" tabindex="-1">
     <div class="modal-dialog modal-dialog-centered">
@@ -131,7 +137,7 @@
           <div class="table2">
             <table id="mysecondtable" mat-table [dataSource]="seconddataSource" class="mat-elevation-z8"> 
               
-              <!-- Position Column -->
+            
               <ng-container  matColumnDef="position">
                 <th  style=" width: 100px; text-align: center;" mat-header-cell  *matHeaderCellDef> Role ID </th>
                 <td  style=" text-align: center; cursor: pointer;" mat-cell *matCellDef="let element"> {{element.module}} </td>
@@ -156,9 +162,7 @@
           
           </div>
         </div>
-        <!-- <div class="modal-footer">
-          <button class="btn btn-primary" data-bs-toggle="modal">Open second modal</button>
-        </div> -->
+      
       </div>   
     </div>
   </div>
@@ -175,7 +179,7 @@
             <div class="table2">
                 <table id="mysecondtable" mat-table [dataSource]="seconddataSource" class="mat-elevation-z8"> 
                   
-                  <!-- Position Column -->
+              
                   <ng-container  matColumnDef="position">
                     <th  style=" width: 100px; text-align: center;" mat-header-cell  *matHeaderCellDef> Role ID </th>
                     <td  style=" text-align: center; cursor: pointer;" mat-cell *matCellDef="let element"> {{element.module}} </td>
@@ -200,9 +204,7 @@
               
               </div>
         </div>
-        <!-- <div class="modal-footer">
-          <button class="btn btn-primary" data-bs-toggle="modal">Open second modal</button>
-        </div> -->
+       
       </div>
     </div>
   </div>
@@ -218,9 +220,7 @@
           Show a second modal and hide this one with the button below.
           Network Engineer access
         </div>
-        <!-- <div class="modal-footer">
-          <button class="btn btn-primary" data-bs-toggle="modal">Open second modal</button>
-        </div> -->
+       
       </div>
     </div>
   </div>
@@ -236,9 +236,7 @@
           Show a second modal and hide this one with the button below.
           Support Analyst
         </div>
-        <!-- <div class="modal-footer">
-          <button class="btn btn-primary" data-bs-toggle="modal">Open second modal</button>
-        </div> -->
+      
       </div>
     </div>
   </div>
@@ -254,9 +252,7 @@
           Show a second modal and hide this one with the button below.
           Observer Access
         </div>
-        <!-- <div class="modal-footer">
-          <button class="btn btn-primary" data-bs-toggle="modal">Open second modal</button>
-        </div> -->
+    
       </div>
     </div>
   </div>
@@ -278,7 +274,7 @@
 </div>
   
  
-  </div>
+  </div> -->
   
   <br><br>
   <br><br>

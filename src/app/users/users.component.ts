@@ -22,7 +22,7 @@ export class UsersComponent implements OnInit{
   
   DATA : User[] = [];
 
-  constructor(private httpClient : HttpClient, private router: Router, private service : ServiceService) {
+  constructor(private router: Router, private service : ServiceService) {
     
   }
 
