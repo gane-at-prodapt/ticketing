@@ -6,6 +6,8 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { Router, NavigationEnd } from '@angular/router';
+import { HttpClient } from '@angular/common/http';
+import { ServiceService, AssignmentGroup } from '../service.service';
 
 
 export interface PeriodicElement {
@@ -34,14 +36,10 @@ const ELEMENT_DATA: PeriodicElement[] = [
   styleUrls: ['./create-group.component.css']
 })
 export class CreateGroupComponent {
+  DATA : AssignmentGroup[] = [];
 
-  displayedColumns: string[] = ['position', 'name', 'weight', 'symbol'];
-  dataSource = new MatTableDataSource(ELEMENT_DATA);
 
-  applyFilter(filterValue: string) {
-    this.dataSource.filter = filterValue.trim().toLowerCase();
-  }
-  constructor(private router: Router) { } 
+  constructor(private router: Router,private httpClient : HttpClient, private service : ServiceService) { } 
       
   ngOnInit() { 
       this.router.events.subscribe((event) => { 
@@ -50,6 +48,25 @@ export class CreateGroupComponent {
           } 
           window.scrollTo(0, 0) 
       }); 
+
+      this.service.getAssignmentGroups().subscribe(Response=>{
+        this.DATA=Response;
+        console.log(this.DATA);
+        this.dataSource=new MatTableDataSource(this.DATA);
+      
+      },
+      error=>{
+        //need to display "invalid credentials, try again" in the bottom of the form. clear the password field
+        console.log(error);
+      });
   } 
+  displayedColumns: string[] = ['id', 'name', 'issueName','networkFamily'];
+  dataSource = new MatTableDataSource(this.DATA);
+
+  applyFilter(filterValue: string) {
+    this.dataSource.filter = filterValue.trim().toLowerCase();
+  }
+
+  
 
 }

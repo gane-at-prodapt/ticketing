@@ -131,7 +131,7 @@ export class ServiceService {
     return this.httpClient.get<AssignmentGroup[]>(this.assignmentrgroupurl+"/issue/"+id);
   }
   
-  getAssignmentGroups(id:number):Observable<AssignmentGroup[]>{
+  getAssignmentGroups():Observable<AssignmentGroup[]>{
     return this.httpClient.get<AssignmentGroup[]>(this.assignmentrgroupurl+"/all");
   }
   deleteAssignmentGroups(A:AssignmentGroup):Observable<String>{
