@@ -54,6 +54,7 @@ import { GroupHomepageComponent } from './group-homepage/group-homepage.componen
 import { UsersHomepageComponent } from './users-homepage/users-homepage.component';
 import { IssuesHomepageComponent } from './issues-homepage/issues-homepage.component';
 import { RolesHomepageComponent } from './roles-homepage/roles-homepage.component';
+import { ResolveTicketComponent } from './resolve-ticket/resolve-ticket.component';
 
 
 
@@ -96,7 +97,8 @@ import { RolesHomepageComponent } from './roles-homepage/roles-homepage.componen
     GroupHomepageComponent,
     UsersHomepageComponent,
     IssuesHomepageComponent,
-    RolesHomepageComponent
+    RolesHomepageComponent,
+    ResolveTicketComponent
   ],
   imports: [
     BrowserModule,

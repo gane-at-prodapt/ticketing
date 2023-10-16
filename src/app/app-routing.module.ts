@@ -24,6 +24,7 @@ import { GroupHomepageComponent } from './group-homepage/group-homepage.componen
 import { IssuesHomepageComponent } from './issues-homepage/issues-homepage.component';
 import { UsersHomepageComponent } from './users-homepage/users-homepage.component';
 import { RolesHomepageComponent } from './roles-homepage/roles-homepage.component';
+import { ResolveTicketComponent } from './resolve-ticket/resolve-ticket.component';
 
 const routes: Routes = [
   { path: 'home', component: AdminHomeComponent },
@@ -49,7 +50,8 @@ const routes: Routes = [
   { path: 'groupHome', component: GroupHomepageComponent },
   { path: 'issueHome', component: IssuesHomepageComponent },
   { path: 'userHome', component: UsersHomepageComponent },
-  { path: 'roleHome', component: RolesHomepageComponent}
+  { path: 'roleHome', component: RolesHomepageComponent},
+  { path: 'resolve', component: ResolveTicketComponent }
 
 
   

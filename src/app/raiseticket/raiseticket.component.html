@@ -35,6 +35,9 @@
           <li class="nav-item">
             <a class="nav-link" [routerLink]="'../ticket'">Raise ticket</a>
           </li>
+          <li class="nav-item">
+            <a class="nav-link" [routerLink]="'../resolve'">Resolve & close ticket</a>
+          </li>
           
       
          
@@ -96,16 +99,17 @@
           <form [formGroup]= "form">
 
             <div class="form-group" >
-              <input class="form-control" style="width: 23rem; " placeholder="Enter name"  formControlName="ticketName" type="text" name="ticketName" > 
-              <span class="text-danger" *ngIf= "getticketName(form.get('ticketName'))">
+              <input class="form-control" style="width: 23rem; " placeholder="Enter name"  formControlName="userName" type="text" name="userName" > 
+              <span class="text-danger" *ngIf= "getuserName(form.get('userName'))">
                 {{
-                  getticketName(form.get('ticketName'))
+                  getuserName(form.get('userName'))
                 }}
               </span>
             </div>
+            <br>
 
           <div class="form-group" >
-            <input class="form-control" style="width: 23rem; " placeholder="Enter name"  formControlName="ticketName" type="text" name="ticketName" > 
+            <input class="form-control" style="width: 23rem; " placeholder="Enter ticket name"  formControlName="ticketName" type="text" name="ticketName" > 
             <span class="text-danger" *ngIf= "getticketName(form.get('ticketName'))">
               {{
                 getticketName(form.get('ticketName'))

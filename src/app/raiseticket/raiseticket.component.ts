@@ -15,7 +15,7 @@ export class RaiseticketComponent {
   selectedList:string="";
   networkElements:string[]=["Router","Modem","Firewall","Switch","OLT","ONT"];
   networkFamily:string="";
-
+  userName:string="";
   issue:string="";
   Priority:string="";
   Severity:string="";
@@ -41,6 +41,7 @@ export class RaiseticketComponent {
   ticketName:string="";
   form:FormGroup = new FormGroup(
     {
+      userName:new FormControl("",[Validators.required]),
       ticketName:new FormControl("",[Validators.required]),
       networkFamily:new FormControl("",[Validators.required]),
       issue:new FormControl("",[Validators.required]),
@@ -59,6 +60,11 @@ export class RaiseticketComponent {
 
     }
   )
+  getuserName(control:any):string
+  {
+    this.userName= control.value
+    return '';
+  }
 
   getticketName(control:any):string
   {
@@ -103,6 +109,7 @@ export class RaiseticketComponent {
 
   submitData()
   {
+    console.log(this.userName);
     console.log(this.ticketName);
     console.log(this.networkFamily);
     console.log(this.issue);
@@ -111,6 +118,7 @@ export class RaiseticketComponent {
   
 
     const raiseTicket:JSON = <JSON><unknown>{
+      "userName":this.userName,
       "ticketName": this.ticketName,
       "networkFamily":this.networkFamily,
       "issue":this.issue,
