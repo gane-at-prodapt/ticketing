@@ -191,9 +191,11 @@ export class ServiceService {
   getIncidentsByMember(id:number):Observable<Incident[]>{
     return this.httpClient.get<Incident[]>(this.incidenturl+"/member/"+id);
   }
+  
   getIncidentsByMemberGroups(id:number):Observable<Incident[]>{
     return this.httpClient.get<Incident[]>(this.incidenturl+"/member/groups/"+id);
   }
+
   getIncidentsByIssue(id:number):Observable<Incident[]>{
     return this.httpClient.get<Incident[]>(this.incidenturl+"/issue/"+id);
   }
