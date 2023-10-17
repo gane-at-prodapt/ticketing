@@ -122,7 +122,19 @@
         <select (change)="setNetworkFamily($any($event.target).value)" [formGroup]= "form" id="networkFamilySelect" style="width: 370px; height: 34px; border-radius: 4px; border-color: rgb(211, 211, 211);" formControlName="networkFamily" name="networkFamily" > 
           
           <option value="" disabled selected hidden>Select Network Family</option>
-          <option *ngFor="let i of networkElements; let in= index" value={{in}}>{{i}}</option>
+          <option *ngFor="let i of  networkFamilies; let in= index" value={{in}}>{{i}}</option>
+        
+        </select>
+      </div>
+
+      <br>
+
+      <div class="form-group">
+                   
+        <select (change)="setNetworkDevice($any($event.target).value)" [formGroup]= "form" id="networkDeviceSelect" style="display: none; width: 370px; height: 34px; border-radius: 4px; border-color: rgb(211, 211, 211);" formControlName="networkFamily" name="networkFamily" > 
+          
+          <option value="" disabled selected hidden>Select Network Device</option>
+          <option *ngFor="let i of  networkElements; let in= index" value={{in}}>{{i.name}}</option>
         
         </select>
       </div>

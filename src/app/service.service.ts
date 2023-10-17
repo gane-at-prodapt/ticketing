@@ -74,16 +74,16 @@ export interface Groupmembers{
 }
 
 export interface Incident{
-  id: number;
+  id?: number;
   name: string;
   networkElement: NetworkElement;
   issue: Issue;
   severity: number;
   priority: number;
-  resolution_comment : string;
+  resolution_comment?: string;
   state: string;
   assignmentGroup: AssignmentGroup;
-  assignedTo: User;
+  assignedTo?: User;
   raisedBy: User;
   modifiedOn: number;
 }
@@ -238,6 +238,9 @@ export class ServiceService {
   }
   getNetworkElements():Observable<NetworkElement[]>{
     return this.httpClient.get<NetworkElement[]>(this.networkelementurl);
+  }
+  getNetworkElementsByFamily(family:string):Observable<NetworkElement[]>{
+    return this.httpClient.get<NetworkElement[]>(this.networkelementurl+"/"+family);
   }
 
   //Role

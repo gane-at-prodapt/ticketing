@@ -2,7 +2,7 @@ import { Block } from '@angular/compiler';
 import { Component } from '@angular/core';
 import { AbstractControl, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router, NavigationEnd } from '@angular/router';
-import { AssignmentGroup, Issue, ServiceService } from '../service.service';
+import { AssignmentGroup, Issue, Incident, ServiceService,NetworkElement} from '../service.service';
 import { getCookie} from 'typescript-cookie'
 @Component({
   selector: 'app-raiseticket',
@@ -11,12 +11,9 @@ import { getCookie} from 'typescript-cookie'
 })
 export class RaiseticketComponent {
 
-  countries:string[]= ["Colombia", "Africa", "United Kingdom", "South Korea","Canada","Japan", "Australia", "Denmark", 
-   "Germany", "Indonesia", "India", "China", "Finland"];
-  searchresult:string[] = this.countries;
-  selectedList:string="";
-
-  networkElements:string[]=["Broadband cable","Wireless dongle", "Modem", "Router", "Ethernet Cable", "Wireless access point", "Opical Network terminal", "Splitter", "Fiber Optic cable","Network switch"];
+  networkFamilies:string[]=["Broadband cable","Wireless dongle", "Modem", "Router", "Ethernet Cable", "Wireless access point", "Opical Network terminal", "Splitter", "Fiber Optic cable","Network switch"];
+  networkElements:NetworkElement[]=[];
+  networkDevice:NetworkElement|undefined;
   issues:Issue[]=[];
   groups:AssignmentGroup[]=[];
   networkFamily:string="";
@@ -83,7 +80,19 @@ export class RaiseticketComponent {
   }
 
   setNetworkFamily(id:number){
-    this.networkFamily= this.networkElements[id];
+    this.networkFamily= this.networkFamilies[id];
+    this.service.getNetworkElementsByFamily(this.networkFamily).subscribe((Response)=>{
+      this.networkElements=Response;
+      console.log(this.networkElements);
+    });
+    let networkDeviceDropDown = document.getElementById("networkDeviceSelect");
+    if(networkDeviceDropDown!=null){
+      networkDeviceDropDown.style.display="block";
+    }
+  }
+
+  setNetworkDevice(id:number){
+    this.networkDevice = this.networkElements[id];
     this.service.getIssuesByNetworkDevice(this.networkFamily).subscribe((Response)=>{
       this.issues=Response;
       console.log(this.issues);
@@ -92,6 +101,7 @@ export class RaiseticketComponent {
     if(issueDropDown!=null){
       issueDropDown.style.display="block";
     }
+
   }
 
   setIssue(id:number){
@@ -139,18 +149,7 @@ export class RaiseticketComponent {
     console.log(this.Priority);
     console.log(this.Severity);
   
-
-    const raiseTicket:JSON = <JSON><unknown>{
-      "userName":this.userName,
-      "ticketName": this.ticketName,
-      "networkFamily":this.networkFamily,
-      "issue":this.issue,
-      "priority":this.Priority,
-      "severity":this.Severity
     
-    }
-
-    console.log(raiseTicket);
   }
 
   
@@ -200,33 +199,33 @@ export class RaiseticketComponent {
 
   
 
-    searchInp?.addEventListener("keyup", () =>{
+    // searchInp?.addEventListener("keyup", () =>{
       
-      // let arr =[];
-      let arr: string[];
+    //   // let arr =[];
+    //   let arr: string[];
 
-      let searchedVal = searchInp.value;
-      arr = this.countries.filter( data => 
-        {
-          return data.toLowerCase().startsWith(searchedVal);
-        }).map( data => data);
-      console.log(arr);  
-      this.searchresult=arr;
-      // options?.innerHTML= arr;
-    })
+    //   let searchedVal = searchInp.value;
+    //   arr = this.countries.filter( data => 
+    //     {
+    //       return data.toLowerCase().startsWith(searchedVal);
+    //     }).map( data => data);
+    //   console.log(arr);  
+    //   this.searchresult=arr;
+    //   // options?.innerHTML= arr;
+    // })
 
 
-    selectBtn?.addEventListener("click",() =>
-    {
-      if(content?.style.display=="none"){
-        content.style.display='block';
-      }else{
-        if(content!=null){
-          content.style.display='none';
-        }
-      }
-      // wrapper?.classList.toggle("active");
-    });
+    // selectBtn?.addEventListener("click",() =>
+    // {
+    //   if(content?.style.display=="none"){
+    //     content.style.display='block';
+    //   }else{
+    //     if(content!=null){
+    //       content.style.display='none';
+    //     }
+    //   }
+    //   // wrapper?.classList.toggle("active");
+    // });
 
 
   function updateName(selectedLi: string)
