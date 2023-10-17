@@ -30,8 +30,11 @@ export class MyticketComponent {
 
   groups: AssignmentGroup[]=[];
   group: AssignmentGroup | undefined;
+  raisedBy:User|undefined;
 
-  solution:string="";
+  selectedIncident: Incident | undefined;
+
+  movecause:string="";
   rootcause:string="";
   reason:string="";
 
@@ -53,14 +56,83 @@ export class MyticketComponent {
     }
   }
 
+  resolveTicket(I:Incident){
+    this.selectedIncident=I;
+  }
+
+  moveTicket(I:Incident){
+    this.selectedIncident=I;
+    this.service.getAssignmentGroups().subscribe(Response=>{
+      this.groups=Response;
+    },
+    error=>{
+      console.log(error);
+    });
+  }
+  closeMove(){
+    this.groups=[];
+  }
+  IgnoreTicket(I:Incident){
+    this.selectedIncident=I;
+  }
+
   setGroup(index:number)
   {
     this.group= this.groups[index];
   }
 
+  moveTicketSubmit(){
+    let tempTicket = this.selectedIncident;
+    if(tempTicket!=undefined){
+      tempTicket.state="Moved";
+      tempTicket.assignedTo=undefined;
+      tempTicket.assignmentGroup=this.group;
+      tempTicket.resolution_comment=this.movecause;
+      tempTicket.raisedBy=this.raisedBy;
+      this.service.putIncident(tempTicket).subscribe((Response)=>{
+        console.log(Response);
+      },
+    error=>{
+      console.log(error);
+    });
+    }
+  }
+
+  resolveTicketSubmit(){
+    let tempTicket = this.selectedIncident;
+    if(tempTicket!=undefined){
+      tempTicket.state="Resolved";
+      tempTicket.resolution_comment=this.rootcause;
+      this.service.putIncident(tempTicket).subscribe((Response)=>{
+        console.log(Response);
+      },
+    error=>{
+      console.log(error);
+    });
+    }
+  }
+
+  ignoreTicketSubmit(){
+    let tempTicket = this.selectedIncident;
+    if(tempTicket!=undefined){
+      tempTicket.state="Ignored";
+      tempTicket.resolution_comment=this.reason;
+      this.service.putIncident(tempTicket).subscribe((Response)=>{
+        console.log(Response);
+      },
+    error=>{
+      console.log(error);
+    });
+    }
+  }
+
+
+
+  
+
   form:FormGroup = new FormGroup(
     {
-      solution:new FormControl("",[Validators.required]),
+      movecause:new FormControl("",[Validators.required]),
       rootcause:new FormControl("",[Validators.required]),
       reason:new FormControl("",[Validators.required]),
     })
@@ -68,8 +140,8 @@ export class MyticketComponent {
     setRootcause(value:string){
       this.rootcause=value;
     }
-    setSolution(value:string){
-      this.solution=value;
+    setMovecause(value:string){
+      this.movecause=value;
     }
     setReason(value:string){
       this.reason=value;
@@ -78,9 +150,11 @@ export class MyticketComponent {
   ngOnInit(){
 
     let mynavbar1= document.getElementById('nav1');
- 
 
-   
+    this.service.getUserById(Number(getCookie("userId"))).subscribe((Response)=>{
+      this.raisedBy=Response;
+    });
+
     this.router.events.subscribe((event) => { 
       if (!(event instanceof NavigationEnd)) { 
           return; 
@@ -88,16 +162,18 @@ export class MyticketComponent {
       window.scrollTo(0, 0) 
     }); 
 
-  this.service.getIncidentsByMemberGroups(Number(getCookie("userId"))).subscribe(Response=>{
+  this.service.getIncidentsByMember(Number(getCookie("userId"))).subscribe(Response=>{
     console.log(Number(getCookie("userId")));
     Response.forEach((element)=>{
-      this.DATA.push({
-        ticket: element,
-        resolveButton: "resolve",
-        moveButton:"move",
-        ignoreButton:"ignore"
-        }
-      )
+      if(element.state=="Assigned"){
+        this.DATA.push({
+          ticket: element,
+          resolveButton: "resolve",
+          moveButton:"move",
+          ignoreButton:"ignore"
+          }
+        );
+      }
     });
 
     
@@ -106,22 +182,8 @@ export class MyticketComponent {
   
   },
   error=>{
-    //need to display "invalid credentials, try again" in the bottom of the form. clear the password field
     console.log(error);
   });
-
-  this.service.getAssignmentGroups().subscribe(Response=>{
-    this.groups=Response;
-    console.log(this.groups);
-   
-  
-  },
-  error=>{
-    //need to display "invalid credentials, try again" in the bottom of the form. clear the password field
-    console.log(error);
-  });
-
-
 
   }
   displayedColumns: string[] = ['id', 'name', 'issue', 'priority', 'severity', 'assignmentGroup','assignedTo' ,'resolveButton', 'moveButton', 'ignoreButton'];

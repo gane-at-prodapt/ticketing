@@ -116,14 +116,14 @@
       <ng-container  matColumnDef="resolveButton">
           <th  style=" width: 100px; text-align: center;" mat-header-cell  *matHeaderCellDef> Resolve </th>
           <td  style=" text-align: center; cursor: pointer;" mat-cell *matCellDef="let element">
-          <button  type="button" data-bs-toggle="modal" data-bs-target="#exampleModal1"  style="width: 50px; height: 20px; border: none; box-shadow:  0 4px 4px 0 rgba(0,0,0,0.2);">{{element.resolveButton}}</button>
+          <button (click)="resolveTicket(element.ticket)" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal1"  style="width: 50px; height: 20px; border: none; box-shadow:  0 4px 4px 0 rgba(0,0,0,0.2);">{{element.resolveButton}}</button>
         </td>
       </ng-container>
 
       <ng-container  matColumnDef="moveButton">
         <th  style=" width: 100px; text-align: center;" mat-header-cell  *matHeaderCellDef> Move </th>
         <td  style=" text-align: center; cursor: pointer;" mat-cell *matCellDef="let element">
-        <button  type="button" data-bs-toggle="modal" data-bs-target="#exampleModal2"  style="width: 50px; height: 20px; border: none; box-shadow:  0 4px 4px 0 rgba(0,0,0,0.2);">{{element.moveButton}}</button>
+        <button (click)="moveTicket(element.ticket)" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal2"  style="width: 50px; height: 20px; border: none; box-shadow:  0 4px 4px 0 rgba(0,0,0,0.2);">{{element.moveButton}}</button>
       </td>
       
     </ng-container>
@@ -131,7 +131,7 @@
     <ng-container  matColumnDef="ignoreButton">
         <th  style=" width: 100px; text-align: center;" mat-header-cell  *matHeaderCellDef> Ignore </th>
         <td  style=" text-align: center; cursor: pointer;" mat-cell *matCellDef="let element">
-        <button  type="button" data-bs-toggle="modal" data-bs-target="#exampleModal3"  style="width: 50px; height: 20px; border: none; box-shadow:  0 4px 4px 0 rgba(0,0,0,0.2);">{{element.ignoreButton}}</button>
+        <button (click)="IgnoreTicket(element.ticket)" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal3"  style="width: 50px; height: 20px; border: none; box-shadow:  0 4px 4px 0 rgba(0,0,0,0.2);">{{element.ignoreButton}}</button>
       </td>
       
     </ng-container>
@@ -168,16 +168,11 @@
                   <form [formGroup]= "form">
 
                     <div class="form-group" >
-                      <input (change)="setRootcause($any($event.target).value)" class="form-control" style="width: 28rem; " placeholder="Root cause"  formControlName="rootcause" type="text" name="rootcause" > 
+                      
+                      <input (change)="setRootcause($any($event.target).value)" class="form-control" style="width: 28rem; " placeholder="Resolution Comments"  formControlName="rootcause" type="text" name="rootcause" > 
                       
                     </div>
-                    <br>
-
-                    <div class="form-group" >
-                        <input (change)="setSolution($any($event.target).value)" class="form-control" style="width: 28rem; " placeholder="Solution"  formControlName="solution" type="text" name="solution" > 
-                        
-                      </div>
-                    <br>
+                
                   </form>
 
 
@@ -186,7 +181,7 @@
             </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" style="width: 120px; height: 25px; padding: 0px 0px;">Close</button>
-              <button type="button" class="btn btn-primary"  style="width: 120px;height: 25px; margin-right: 100px; padding: 0px 0px;">Submit</button>
+              <button (click)="resolveTicketSubmit()" type="button" class="btn btn-primary"  style="width: 120px;height: 25px; margin-right: 100px; padding: 0px 0px;">Submit</button>
             </div>
           </div>
         </div>
@@ -199,28 +194,35 @@
           <div class="modal-content">
             <div class="modal-header">
               <h3 class="modal-title fs-5" id="exampleModalLabel">Move the ticket</h3>
-              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              <button (click)="closeMove()" type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body" style="height: 250px;">
                <span style="font-weight:200; font-size:medium; font-family: 'Montserrat', sans-serif;">You have the option of moving this ticket <br>to another group if you think this particular ticket is not suitable for your group or it requires the attention of another group </span> 
                 <br>
                 <br>
                 <form [formGroup]= "form">
-
-                    
-                <select (change)="setGroup($any($event.target).value)" [formGroup]= "form" id="exampleFormControl" style="width: 28rem; height: 34px; line-height: 3;  border-radius: 4px; border-color: rgb(211, 211, 211);" formControlName="users" name="users" > 
+                  <select (change)="setGroup($any($event.target).value)" [formGroup]= "form" id="exampleFormControl" style="width: 28rem; height: 34px; line-height: 3;  border-radius: 4px; border-color: rgb(211, 211, 211);" formControlName="users" name="users" > 
             
                     <option style="font-family: sans-serif; letter-spacing: 2px; " *ngFor="let i of groups; let in= index" value={{in}}>{{i.name}}</option>
                   
                   </select>
+                  <br>
+                  <br>
+
+                  <div class="form-group" >
+                      
+                    <input (change)="setMovecause($any($event.target).value)" class="form-control" style="width: 28rem; " placeholder="Resolution Comments"  formControlName="movecause" type="text" name="movecause" > 
+                    
+                  </div>
+
                 </form>
 
 
                 
             </div>
             <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" style="width: 120px; height: 25px; padding: 0px 0px;">Close</button>
-              <button type="button" class="btn btn-primary"  style="width: 120px;height: 25px; margin-right: 100px; padding: 0px 0px;">Submit</button>
+              <button (click)="closeMove()" type="button" class="btn btn-secondary" data-bs-dismiss="modal" style="width: 120px; height: 25px; padding: 0px 0px;">Close</button>
+              <button (click)="moveTicketSubmit()" type="button" class="btn btn-primary"  style="width: 120px;height: 25px; margin-right: 100px; padding: 0px 0px;">Submit</button>
             </div>
           </div>
         </div>
@@ -247,7 +249,7 @@
             </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" style="width: 120px; height: 25px; padding: 0px 0px;">Close</button>
-              <button type="button" class="btn btn-primary"  style="width: 120px;height: 25px; margin-right: 100px; padding: 0px 0px;">Submit</button>
+              <button (click)="ignoreTicketSubmit()" type="button" class="btn btn-primary"  style="width: 120px;height: 25px; margin-right: 100px; padding: 0px 0px;">Submit</button>
             </div>
           </div>
         </div>
