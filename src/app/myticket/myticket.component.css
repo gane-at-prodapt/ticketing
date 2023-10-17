@@ -1,0 +1,20 @@
+.searchbtn
+{
+    position: absolute;
+    margin-top: 345px;
+    margin-left: 165px;
+    font-family: 'League Spartan', sans-serif;
+    font-size: .75cm;
+    color: gray;
+    text-decoration: none;
+    z-index: 15;
+}
+
+.text
+{
+    text-align: center;
+    font-family: 'League Spartan', sans-serif;
+    font-size: 0.70cm;
+    position: relative;
+    margin-top: 100px;   
+}

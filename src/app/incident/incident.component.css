@@ -1,7 +1,4 @@
-*
-{
-    font-family: 'League Spartan', sans-serif;
-}
+
 
 #mynavbar1
 {
@@ -23,14 +20,13 @@
     font-family: 'League Spartan', sans-serif;
     font-size: .75cm;
     color: gray;
-    text-decoration: none;
-    z-index: 15;
+
 }
 
 #mysearch
 {
     position: absolute;
-    z-index: 15;
+ 
 }
 
 /* #superAdmin

@@ -61,8 +61,8 @@
       <br><br>
       <div class="search1">
         <mat-form-field id="searchfield" style=" margin-left: 260px;width: 650px; background-color: #fff; color: #fff;">
-          <i class="fa-solid fa-magnifying-glass"></i>
-          <input id="mysearch" matInput (keyup)="applyFilter($any($event.target).value)" placeholder=" &nbsp; Search for tickets">
+          <i style="position: absolute;" class="fa-solid fa-magnifying-glass"></i>
+          <input style="position: absolute; margin-left: 10px; padding: 0px 0px;" id="mysearch" matInput (keyup)="applyFilter($any($event.target).value)" placeholder=" &nbsp; Search for tickets">
         </mat-form-field>
     </div>
     <br><br><br><br>
@@ -156,8 +156,8 @@
               <h3 class="modal-title fs-5" id="exampleModalLabel">Resolve the ticket</h3>
               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-            <div class="modal-body" style="height: 150px;">
-               <span style="font-weight:200; font-size:medium; font-family: 'Montserrat', sans-serif;">You have the option of assigning the ticket <br>to yourself or one of your group members</span> 
+            <div class="modal-body" style="height: 250px;">
+               <span style="font-weight:200; font-size:medium; font-family: 'Montserrat', sans-serif;">You have the option of resolving this ticket <br>by providing the rootcause and solution of this ticket. The admin will analyze your response and close the ticket if it is correct </span> 
                 <br>
                 <br>
                 <!-- <select (change)="setUser($any($event.target).value)" [formGroup]= "form" id="exampleFormControl" style="width: 23rem; height: 34px;  border-radius: 4px; border-color: rgb(211, 211, 211);" formControlName="users" name="users" > 
@@ -165,6 +165,24 @@
                     <option style=" font-family: sans-serif; letter-spacing: 2px;" *ngFor="let i of users; let in= index" value={{in}}>{{i.name}}</option>
                   
                   </select> -->
+                  <form [formGroup]= "form">
+
+                    <div class="form-group" >
+                      <input (change)="setRootcause($any($event.target).value)" class="form-control" style="width: 28rem; " placeholder="Root cause"  formControlName="rootcause" type="text" name="rootcause" > 
+                      
+                    </div>
+                    <br>
+
+                    <div class="form-group" >
+                        <input (change)="setSolution($any($event.target).value)" class="form-control" style="width: 28rem; " placeholder="Solution"  formControlName="solution" type="text" name="solution" > 
+                        
+                      </div>
+                    <br>
+                  </form>
+
+
+
+
             </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" style="width: 120px; height: 25px; padding: 0px 0px;">Close</button>
@@ -183,15 +201,22 @@
               <h3 class="modal-title fs-5" id="exampleModalLabel">Move the ticket</h3>
               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-            <div class="modal-body" style="height: 150px;">
-               <span style="font-weight:200; font-size:medium; font-family: 'Montserrat', sans-serif;">You have the option of assigning the ticket <br>to yourself or one of your group members</span> 
+            <div class="modal-body" style="height: 250px;">
+               <span style="font-weight:200; font-size:medium; font-family: 'Montserrat', sans-serif;">You have the option of moving this ticket <br>to another group if you think this particular ticket is not suitable for your group or it requires the attention of another group </span> 
                 <br>
                 <br>
-                <!-- <select (change)="setUser($any($event.target).value)" [formGroup]= "form" id="exampleFormControl" style="width: 23rem; height: 34px;  border-radius: 4px; border-color: rgb(211, 211, 211);" formControlName="users" name="users" > 
-                
-                    <option style=" font-family: sans-serif; letter-spacing: 2px;" *ngFor="let i of users; let in= index" value={{in}}>{{i.name}}</option>
+                <form [formGroup]= "form">
+
+                    
+                <select (change)="setGroup($any($event.target).value)" [formGroup]= "form" id="exampleFormControl" style="width: 28rem; height: 34px; line-height: 3;  border-radius: 4px; border-color: rgb(211, 211, 211);" formControlName="users" name="users" > 
+            
+                    <option style="font-family: sans-serif; letter-spacing: 2px; " *ngFor="let i of groups; let in= index" value={{in}}>{{i.name}}</option>
                   
-                  </select> -->
+                  </select>
+                </form>
+
+
+                
             </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" style="width: 120px; height: 25px; padding: 0px 0px;">Close</button>
@@ -209,14 +234,16 @@
               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body" style="height: 150px;">
-               <span style="font-weight:200; font-size:medium; font-family: 'Montserrat', sans-serif;">You have the option of assigning the ticket <br>to yourself or one of your group members</span> 
+               <span style="font-weight:200; font-size:medium; font-family: 'Montserrat', sans-serif;">You have the option of ignoring the ticket. Please state your resaon for ignoring this ticket.</span> 
                 <br>
                 <br>
-                <!-- <select (change)="setUser($any($event.target).value)" [formGroup]= "form" id="exampleFormControl" style="width: 23rem; height: 34px;  border-radius: 4px; border-color: rgb(211, 211, 211);" formControlName="users" name="users" > 
-                
-                    <option style=" font-family: sans-serif; letter-spacing: 2px;" *ngFor="let i of users; let in= index" value={{in}}>{{i.name}}</option>
-                  
-                  </select> -->
+                <form [formGroup]= "form">
+
+                    <div class="form-group" >
+                      <input (change)="setReason($any($event.target).value)" class="form-control" style="width: 28rem; " placeholder="Reason"  formControlName="reason" type="text" name="reason" > 
+                      
+                    </div>
+                </form>
             </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" style="width: 120px; height: 25px; padding: 0px 0px;">Close</button>
