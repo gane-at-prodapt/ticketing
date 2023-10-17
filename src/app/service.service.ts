@@ -27,18 +27,18 @@ export interface Access{
 }
 
 export interface User {
-  id: number;
-  name: string;
-  email:string;
-  role:Role;
-  createdOn:number;
+  id?: number;
+  name?: string;
+  email?:string;
+  role?:Role;
+  createdOn?:number;
 }
 
 export interface Auth{
-  id:number;
-  user:User;
-  authToken:string;
-  modifiedOn:number;
+  id?:number;
+  user?:User;
+  authToken?:string;
+  modifiedOn?:number;
 }
 
 export interface NetworkElement{
@@ -144,7 +144,7 @@ export class ServiceService {
     return this.httpClient.post<Auth>(this.authurl+"/login",data);
   }
   addAuth(A:Auth):Observable<Auth>{
-    return this.httpClient.post<Auth>(this.authurl,A);
+    return this.httpClient.post<Auth>(this.authurl+"/add",A);
   }
   putAuth(A:Auth):Observable<Auth>{
     return this.httpClient.put<Auth>(this.authurl,A);

@@ -1,8 +1,10 @@
 import { Component } from '@angular/core';
 import { AbstractControl, FormControl, FormGroup, Validators } from '@angular/forms';
-import { Role, ServiceService } from '../service.service';
+import { Role, ServiceService, User,Auth } from '../service.service';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
+import { error } from 'highcharts';
+import * as CryptoJS from 'crypto-js';
 
 @Component({
   selector: 'app-adduser',
@@ -12,7 +14,9 @@ import { Router } from '@angular/router';
 export class AdduserComponent {
   userName:string="";
   email:string="";
+  password:string="";
   role: Role| undefined;
+  user:User|undefined;
 
   roles: Role[]=[];
 
@@ -48,6 +52,13 @@ export class AdduserComponent {
   
     }
 
+    setPassword(pass:string){
+      this.password=pass;
+    }
+    passwordSubmit(){
+
+    }
+
     getuserName(control:any):string
     {
       this.userName= control.value
@@ -70,11 +81,31 @@ export class AdduserComponent {
     }
     submit()
     {
-      console.log(this.userName);
-      console.log(this.role);
-      console.log(this.email);
-      
+      let createUser:User ={
+        name:this.userName,
+        email:this.email,
+        role:this.role,
+        createdOn: Math.floor(Date.now() / 1000)
+      };
+      this.service.addUser(createUser).subscribe((Response)=>{
+        this.user=Response;
+      },
+      error=>{
 
+      });
+    }
+    PasswordSubmit(){
+      let createAuth:Auth={
+        user:this.user,
+        authToken:CryptoJS.SHA256(this.password).toString(CryptoJS.enc.Hex),
+        modifiedOn: Math.floor(Date.now() / 1000)
+      };
+      this.service.addAuth(createAuth).subscribe((Response)=>{
+        console.log(Response);
+      },
+      error=>{
+
+      });
     }
 
     ngOnInit(){
@@ -85,7 +116,6 @@ export class AdduserComponent {
       
       },
       error=>{
-        //need to display "invalid credentials, try again" in the bottom of the form. clear the password field
         console.log(error);
       });
     

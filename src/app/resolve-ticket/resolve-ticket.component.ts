@@ -56,7 +56,7 @@ export class ResolveTicketComponent {
   }
 
   getAssignedUser(u:User|undefined):string{
-    if(u!=undefined){
+    if(u!=undefined && u.name!=undefined){
       return u.name;
     }else{
       return "-";

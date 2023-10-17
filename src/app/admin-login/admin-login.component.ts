@@ -77,8 +77,10 @@ export class AdminLoginComponent implements OnInit{
 
     this.service.login(JSON.stringify(data)).subscribe(Response=>{
       setCookie("token",Response.authToken);
-      setCookie("userId",Response.user.id);
-      setCookie("userEmail",Response.user.email);
+      if(Response.user!=undefined){
+        setCookie("userId",Response.user.id);
+        setCookie("userEmail",Response.user.email);
+      }
       this.router.navigate(['/','homepage']);
     },
     error=>{
