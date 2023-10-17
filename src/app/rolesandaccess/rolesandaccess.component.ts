@@ -34,15 +34,6 @@ const accessData: access[] =[
 export interface roleswithbutton {
   role: Role;
   button: any;
-  // weight: number;
-  // symbol: string;
-  // group: number;
-  // network: string;
-  // incident: string;
-  // issues:string;
-  // groups: string;
-
-
 }
 
 

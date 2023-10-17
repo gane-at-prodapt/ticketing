@@ -99,7 +99,7 @@ import { ResolveTicketComponent } from './resolve-ticket/resolve-ticket.componen
     UsersHomepageComponent,
     IssuesHomepageComponent,
     RolesHomepageComponent,
-    ResolveTicketComponent,
+    ResolveTicketComponent
   ],
   imports: [
     BrowserModule,
@@ -118,10 +118,7 @@ import { ResolveTicketComponent } from './resolve-ticket/resolve-ticket.componen
     MatFormFieldModule,
     MatSelectModule,
     BrowserAnimationsModule,
-<<<<<<< HEAD
-    MatButtonModule
-=======
->>>>>>> 47b4bb3610c95cfc0fb53853259294db1bcbaca6
+    MatButtonModule 
   ],
   providers: [],
   bootstrap: [AppComponent]

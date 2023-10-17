@@ -73,7 +73,7 @@
 
         <select (change)="setRole($any($event.target).value)" [formGroup]= "form" id="exampleFormControl" style="width: 370px; height: 34px; border-radius: 4px; border-color: rgb(211, 211, 211);" formControlName="roles" name="roles" > 
         
-            <option *ngFor="let i of roles; let in= index" value={{i}}>{{i}}</option>
+            <option *ngFor="let i of roles; let in= index" value={{i}}>{{i.name}}</option>
           
           </select>
 
