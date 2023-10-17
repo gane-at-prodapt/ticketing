@@ -74,18 +74,18 @@ export interface Groupmembers{
 }
 
 export interface Incident{
-  id: number;
-  name: string;
-  networkElement: NetworkElement;
-  issue: Issue;
-  severity: number;
-  priority: number;
-  resolution_comment : string;
-  state: string;
-  assignmentGroup: AssignmentGroup;
-  assignedTo: User;
-  raisedBy: User;
-  modifiedOn: number;
+  id?: number;
+  name?: string;
+  networkElement?: NetworkElement;
+  issue?: Issue;
+  severity?: number;
+  priority?: number;
+  resolution_comment?: string;
+  state?: string;
+  assignmentGroup?: AssignmentGroup;
+  assignedTo?: User;
+  raisedBy?: User;
+  modifiedOn?: number;
 }
 
 @Injectable({
@@ -239,6 +239,9 @@ export class ServiceService {
   getNetworkElements():Observable<NetworkElement[]>{
     return this.httpClient.get<NetworkElement[]>(this.networkelementurl);
   }
+  getNetworkElementsByFamily(family:string):Observable<NetworkElement[]>{
+    return this.httpClient.get<NetworkElement[]>(this.networkelementurl+"/"+family);
+  }
 
   //Role
 
@@ -260,11 +263,14 @@ export class ServiceService {
   putUser(U:User):Observable<User>{
     return this.httpClient.put<User>(this.userurl,U);
   }
-  deleteUser(U:User):Observable<User>{
-    return this.httpClient.delete<User>(this.userurl,{body:U});
+  deleteUser(U:User):Observable<string>{
+    return this.httpClient.delete<string>(this.userurl,{body:U});
   }
   getUsers():Observable<User[]>{
     return this.httpClient.get<User[]>(this.userurl+"/all");
+  }
+  getUserById(id:number):Observable<User>{
+    return this.httpClient.get<User>(this.userurl+"/"+id);
   }
   getUserByRole(id:number):Observable<User[]>{
     return this.httpClient.get<User[]>(this.userurl+"/role/"+id);
