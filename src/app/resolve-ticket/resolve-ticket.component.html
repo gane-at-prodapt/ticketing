@@ -69,13 +69,13 @@
     <!-- Position Column -->
     <ng-container  matColumnDef="id">
       <th  style=" width: 60px; text-align: center;" mat-header-cell  *matHeaderCellDef> Ticket ID </th>
-      <td   style=" text-align: center " mat-cell *matCellDef="let element"> {{element.id}} </td>
+      <td   style=" text-align: center " mat-cell *matCellDef="let element"> {{element.ticket.id}} </td>
     </ng-container>
   
     <!-- Name Column -->
     <ng-container matColumnDef="name">
       <th  style=" width: 100px; text-align: center " mat-header-cell *matHeaderCellDef> Name </th>
-      <td   style=" text-align: center " mat-cell *matCellDef="let element"> {{element.name}} </td>
+      <td   style=" text-align: center " mat-cell *matCellDef="let element"> {{element.ticket.name}} </td>
     
     
     </ng-container>
@@ -83,31 +83,41 @@
     <!-- Weight Column -->
     <ng-container matColumnDef="issue">
       <th style=" width: 80px; text-align:center"  mat-header-cell *matHeaderCellDef> Issue </th>
-      <td  style=" text-align: center " mat-cell *matCellDef="let element"> {{element.issue.name}} </td>
+      <td  style=" text-align: center " mat-cell *matCellDef="let element"> {{element.ticket.issue.name}} </td>
     </ng-container>
   
     <!-- Symbol Column -->
     <ng-container matColumnDef="priority">
       <th style=" width: 80px; text-align: center; border-radius: 10%; " mat-header-cell *matHeaderCellDef> Priority </th>
-      <td  style=" text-align: center " mat-cell *matCellDef="let element"> {{element.priority}} </td>
+      <td  style=" text-align: center " mat-cell *matCellDef="let element"> {{getLevel(element.ticket.priority)}} </td>
     </ng-container>
 
     <ng-container matColumnDef="severity">
       <th style=" width: 80px; text-align: center; border-radius: 10%; " mat-header-cell *matHeaderCellDef> Severity </th>
-      <td  style=" text-align: center " mat-cell *matCellDef="let element"> {{element.severity}} </td>
+      <td  style=" text-align: center " mat-cell *matCellDef="let element"> {{getLevel(element.ticket.severity)}} </td>
     </ng-container>
 
     <ng-container matColumnDef="assignmentGroup">
       <th style=" width: 80px; text-align: center; border-radius: 10%; " mat-header-cell *matHeaderCellDef> Assignment Group </th>
-      <td  style=" text-align: center " mat-cell *matCellDef="let element"> {{element.assignmentGroup.name}} </td>
+      <td  style=" text-align: center " mat-cell *matCellDef="let element" > {{element.ticket.assignmentGroup.name}} </td>
     </ng-container>
 
-    <ng-container  matColumnDef="resolveButton">
+    <ng-container matColumnDef="assignedTo">
+        <th style=" width: 80px; text-align: center; border-radius: 10%; " mat-header-cell *matHeaderCellDef> Assigned User </th>
+        <td  style=" text-align: center " mat-cell *matCellDef="let element"> - </td>
+      </ng-container>
+
+      
+
+    <ng-container  matColumnDef="assignButton">
         <th  style=" width: 100px; text-align: center;" mat-header-cell  *matHeaderCellDef> Resolve </th>
         <td  style=" text-align: center; cursor: pointer;" mat-cell *matCellDef="let element">
-        <button style="width: 50px; height: 20px; border: none; box-shadow:  0 4px 4px 0 rgba(0,0,0,0.2);">{{element.resolveButton}}</button>
+        <button  type="button" data-bs-toggle="modal" data-bs-target="#exampleModal"  style="width: 50px; height: 20px; border: none; box-shadow:  0 4px 4px 0 rgba(0,0,0,0.2);">{{element.assignButton}}</button>
       </td>
+      
     </ng-container>
+
+  
   
     <tr style="background-color: #fff;" mat-header-row *matHeaderRowDef="displayedColumns"></tr>
     <tr style="background-color: #fff;" mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
@@ -120,5 +130,31 @@
   <br><br>
   <br><br>
   <br><br>
+  
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" >
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h3 class="modal-title fs-5" id="exampleModalLabel">Assign the ticket</h3>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body" style="height: 150px;">
+           <span style="font-weight:200; font-size:medium; font-family: 'Montserrat', sans-serif;">You have the option of assigning the ticket <br>to yourself or one of your group members</span> 
+            <br>
+            <br>
+            <select (change)="setUser($any($event.target).value)" [formGroup]= "form" id="exampleFormControl" style="width: 23rem; height: 34px;  border-radius: 4px; border-color: rgb(211, 211, 211);" formControlName="users" name="users" > 
+            
+                <option style=" font-family: sans-serif; letter-spacing: 2px;" *ngFor="let i of users; let in= index" value={{in}}>{{i.name}}</option>
+              
+              </select>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" style="width: 120px; height: 25px; padding: 0px 0px;">Close</button>
+          <button type="button" class="btn btn-primary"  style="width: 120px;height: 25px; margin-right: 100px; padding: 0px 0px;">Submit</button>
+        </div>
+      </div>
+    </div>
+  </div>
   </div>
  </div>

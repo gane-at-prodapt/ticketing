@@ -7,13 +7,14 @@ import { MatInputModule } from '@angular/material/input';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { Router, NavigationEnd } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
-import { ServiceService, Incident } from '../service.service';
+import { ServiceService, Incident, User } from '../service.service';
 import { MatButton } from '@angular/material/button';
+import { FormGroup } from '@angular/forms';
 
 export interface ticketwithbuttons
 {
   ticket: Incident;
-  resolveButton: any;
+  assignButton: any;
 }
 
 @Component({
@@ -24,8 +25,40 @@ export interface ticketwithbuttons
 export class ResolveTicketComponent {
 
   DATA : ticketwithbuttons[] =[];
+  users : User[]=[];
+  user: User | undefined;
+
+
+  
   constructor(private router: Router,private httpClient : HttpClient, private service : ServiceService) 
   { } 
+
+  form:FormGroup = new FormGroup(
+  {
+  })
+  
+  getLevel(n:number): string
+  {
+    if(n==0)
+    {
+      return "Low";
+    }
+    else if(n==1)
+    {
+      return "Medium";
+    }
+    else
+    {
+      return "High";
+    }
+  }
+
+
+  setUser(index:number)
+  {
+    this.user= this.users[index];
+  }
+
 
   ngOnInit(){
 
@@ -44,7 +77,8 @@ export class ResolveTicketComponent {
     Response.forEach((element)=>{
       this.DATA.push({
         ticket: element,
-        resolveButton: "resolve"
+        assignButton: "assign",
+        
         }
       )
     });
@@ -57,6 +91,18 @@ export class ResolveTicketComponent {
     console.log(error);
   });
 
+  this.service.getUsers().subscribe(Response=>{
+    this.users=Response;
+    console.log(this.users);
+   
+  
+  },
+  error=>{
+    //need to display "invalid credentials, try again" in the bottom of the form. clear the password field
+    console.log(error);
+  });
+
+
 
   //   window.addEventListener('scroll', function(){
   //     let value = window.scrollY;
@@ -66,7 +112,7 @@ export class ResolveTicketComponent {
   // });
 }
 
-displayedColumns: string[] = ['id', 'name', 'issue', 'priority', 'severity', 'assignmentGroup' ,'resolveButton'];
+displayedColumns: string[] = ['id', 'name', 'issue', 'priority', 'severity', 'assignmentGroup','assignedTo' ,'assignButton'];
 dataSource = new MatTableDataSource(this.DATA);
 
 applyFilter(filterValue: string) {

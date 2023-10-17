@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { AbstractControl, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Role, ServiceService } from '../service.service';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
@@ -11,6 +11,7 @@ import { Router } from '@angular/router';
 })
 export class AdduserComponent {
   userName:string="";
+  email:string="";
   role: Role| undefined;
 
   roles: Role[]=[];
@@ -22,7 +23,30 @@ export class AdduserComponent {
   form:FormGroup = new FormGroup(
     {
       userName:new FormControl("",[Validators.required]),
+      email:new FormControl("",[Validators.required, this.customEmailValidator])
     })
+
+    getError(control:any): string
+    {
+      this.email=control.value;
+      if(control.errors?.required && control.touched)
+        return 'Field is required';
+      else if(control.errors?.emailError && control.touched)
+        return 'Please Enter valid Email ID'
+      else return '';
+    }
+
+    customEmailValidator(control:AbstractControl)
+    {
+      const pattern= /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/;
+      const value= control.value;
+      if(!pattern.test(value) && control.touched)
+        return{
+          emailError:true
+        }
+      else return null;
+  
+    }
 
     getuserName(control:any):string
     {
@@ -30,21 +54,27 @@ export class AdduserComponent {
       return '';
     }
 
+
+    getuserEmail(control:any):string
+    {
+      this.email= control.value
+      return '';
+    }
+
+    
+
+    setRole(index:number)
+    {
+      this.role= this.roles[index];
+
+    }
     submit()
     {
       console.log(this.userName);
-      const newuserDetails:JSON = <JSON><unknown>{
-        "userName":this.userName,
+      console.log(this.role);
+      console.log(this.email);
+      
 
-      }
-      console.log(newuserDetails);
-
-
-    }
-
-    setRole(id:number)
-    {
-      this.role= this.roles[id];
     }
 
     ngOnInit(){

@@ -71,12 +71,23 @@
         </div>
         <br>
 
-        <select (change)="setRole($any($event.target).value)" [formGroup]= "form" id="exampleFormControl" style="width: 370px; height: 34px; border-radius: 4px; border-color: rgb(211, 211, 211);" formControlName="roles" name="roles" > 
+        <select (change)="setRole($any($event.target).value)" [formGroup]= "form" id="exampleFormControl" style="width: 18rem; height: 34px; border-radius: 4px; border-color: rgb(211, 211, 211);" formControlName="roles" name="roles" > 
         
-            <option *ngFor="let i of roles; let in= index" value={{i}}>{{i.name}}</option>
+            <option *ngFor="let i of roles; let in= index" value={{in}}>{{i.name}}</option>
           
           </select>
+          <br>
+          <br>
+          
 
+          <div class="form-group" >
+            <input class="form-control" style="width: 18rem; " placeholder="Enter email"  formControlName="email" type="text" name="email" > 
+            <span class="text-danger" *ngIf= "getuserEmail(form.get('email'))">
+              {{
+                getuserEmail(form.get('email'))
+              }}
+            </span>
+          </div>
 
       </form>
       

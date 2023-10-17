@@ -56,6 +56,7 @@ import { UsersHomepageComponent } from './users-homepage/users-homepage.componen
 import { IssuesHomepageComponent } from './issues-homepage/issues-homepage.component';
 import { RolesHomepageComponent } from './roles-homepage/roles-homepage.component';
 import { ResolveTicketComponent } from './resolve-ticket/resolve-ticket.component';
+import { MyticketComponent } from './myticket/myticket.component';
 
 
 
@@ -99,7 +100,8 @@ import { ResolveTicketComponent } from './resolve-ticket/resolve-ticket.componen
     UsersHomepageComponent,
     IssuesHomepageComponent,
     RolesHomepageComponent,
-    ResolveTicketComponent
+    ResolveTicketComponent,
+    MyticketComponent
   ],
   imports: [
     BrowserModule,
