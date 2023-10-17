@@ -9,6 +9,7 @@ import { Router, NavigationEnd } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { ServiceService, Incident } from '../service.service';
 import { MatButton } from '@angular/material/button';
+import { getCookie} from 'typescript-cookie'
 
 export interface ticketwithbuttons
 {
@@ -38,9 +39,9 @@ export class ResolveTicketComponent {
           return; 
       } 
       window.scrollTo(0, 0) 
-  }); 
+    }); 
 
-  this.service.getIncidents().subscribe(Response=>{
+  this.service.getIncidentsByMemberGroups(Number(getCookie("userId"))).subscribe(Response=>{
     Response.forEach((element)=>{
       this.DATA.push({
         ticket: element,
@@ -48,6 +49,7 @@ export class ResolveTicketComponent {
         }
       )
     });
+    
     console.log(this.DATA);
     this.dataSource=new MatTableDataSource(this.DATA);
   
