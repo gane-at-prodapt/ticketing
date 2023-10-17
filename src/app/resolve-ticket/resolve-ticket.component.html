@@ -101,6 +101,13 @@
       <th style=" width: 80px; text-align: center; border-radius: 10%; " mat-header-cell *matHeaderCellDef> Assignment Group </th>
       <td  style=" text-align: center " mat-cell *matCellDef="let element"> {{element.assignmentGroup.name}} </td>
     </ng-container>
+
+    <ng-container  matColumnDef="resolveButton">
+        <th  style=" width: 100px; text-align: center;" mat-header-cell  *matHeaderCellDef> Resolve </th>
+        <td  style=" text-align: center; cursor: pointer;" mat-cell *matCellDef="let element">
+        <button style="width: 50px; height: 20px; border: none; box-shadow:  0 4px 4px 0 rgba(0,0,0,0.2);">{{element.resolveButton}}</button>
+      </td>
+    </ng-container>
   
     <tr style="background-color: #fff;" mat-header-row *matHeaderRowDef="displayedColumns"></tr>
     <tr style="background-color: #fff;" mat-row *matRowDef="let row; columns: displayedColumns;"></tr>

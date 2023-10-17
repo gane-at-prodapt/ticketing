@@ -38,6 +38,7 @@ import {  MatTableModule  } from '@angular/material/table';
 import { MatFormField } from '@angular/material/form-field';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
+import { MatButton, MatButtonModule } from '@angular/material/button';
 import { MatSelect, MatSelectModule } from '@angular/material/select';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { IncidentComponent } from './incident/incident.component';
@@ -116,7 +117,8 @@ import { ResolveTicketComponent } from './resolve-ticket/resolve-ticket.componen
     RouterModule,
     MatFormFieldModule,
     MatSelectModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    MatButtonModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -8,6 +8,13 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { Router, NavigationEnd } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { ServiceService, Incident } from '../service.service';
+import { MatButton } from '@angular/material/button';
+
+export interface ticketwithbuttons
+{
+  ticket: Incident;
+  resolveButton: any;
+}
 
 @Component({
   selector: 'app-resolve-ticket',
@@ -16,15 +23,14 @@ import { ServiceService, Incident } from '../service.service';
 })
 export class ResolveTicketComponent {
 
-  DATA : Incident[] =[];
+  DATA : ticketwithbuttons[] =[];
   constructor(private router: Router,private httpClient : HttpClient, private service : ServiceService) 
   { } 
 
   ngOnInit(){
 
-    let navbar = document.getElementById('mynavbar');
     let mynavbar1= document.getElementById('nav1');
-    let mynavbar2= document.getElementById('nav2');
+ 
 
    
     this.router.events.subscribe((event) => { 
@@ -33,8 +39,15 @@ export class ResolveTicketComponent {
       } 
       window.scrollTo(0, 0) 
   }); 
-  this.service.getIncidentsByGroup(7).subscribe(Response=>{
-    this.DATA=Response;
+
+  this.service.getIncidents().subscribe(Response=>{
+    Response.forEach((element)=>{
+      this.DATA.push({
+        ticket: element,
+        resolveButton: "resolve"
+        }
+      )
+    });
     console.log(this.DATA);
     this.dataSource=new MatTableDataSource(this.DATA);
   
@@ -45,15 +58,15 @@ export class ResolveTicketComponent {
   });
 
 
-    window.addEventListener('scroll', function(){
-      let value = window.scrollY;
-      if(mynavbar1!=null){
-        mynavbar1.style.top =  value  + 'px';
-      }
-  });
+  //   window.addEventListener('scroll', function(){
+  //     let value = window.scrollY;
+  //     if(mynavbar1!=null){
+  //       mynavbar1.style.top =  value  + 'px';
+  //     }
+  // });
 }
 
-displayedColumns: string[] = ['id', 'name','issue','priority', 'severity', 'assignmentGroup'];
+displayedColumns: string[] = ['id', 'name', 'issue', 'priority', 'severity', 'assignmentGroup' ,'resolveButton'];
 dataSource = new MatTableDataSource(this.DATA);
 
 applyFilter(filterValue: string) {

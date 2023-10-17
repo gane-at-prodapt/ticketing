@@ -22,7 +22,7 @@
 <div class="outer">
 <nav class="navbar navbar-expand-lg bg-body-tertiary" style="background-color:black " >
     <div class="container-fluid" style="background-color: rgb(240, 240, 240);" >
-      <a class="navbar-brand" [routerLink]="'../roles'">Roles</a>
+      <a class="navbar-brand" [routerLink]="'../roleHome'">Roles</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -85,7 +85,7 @@
     <ng-container  matColumnDef="button">
       <th  style=" width: 100px; text-align: center;" mat-header-cell  *matHeaderCellDef> Access </th>
       <td  style=" text-align: center; cursor: pointer;" mat-cell *matCellDef="let element">
-       <button mat-raised  style="border: none; box-shadow:  0 4px 4px 0 rgba(0,0,0,0.2);;">{{element.button}}</button>
+       <button mat-raised style="border: none; box-shadow:  0 4px 4px 0 rgba(0,0,0,0.2);">{{element.button}}</button>
     </td>
     </ng-container>
    
