@@ -69,13 +69,13 @@
     <!-- Position Column -->
     <ng-container  matColumnDef="id">
       <th  style=" width: 60px; text-align: center;" mat-header-cell  *matHeaderCellDef> Ticket ID </th>
-      <td   style=" text-align: center " mat-cell *matCellDef="let element"> {{element.id}} </td>
+      <td   style=" text-align: center " mat-cell *matCellDef="let element"> {{element.ticket.id}} </td>
     </ng-container>
   
     <!-- Name Column -->
     <ng-container matColumnDef="name">
       <th  style=" width: 100px; text-align: center " mat-header-cell *matHeaderCellDef> Name </th>
-      <td   style=" text-align: center " mat-cell *matCellDef="let element"> {{element.name}} </td>
+      <td   style=" text-align: center " mat-cell *matCellDef="let element"> {{element.ticket.name}} </td>
     
     
     </ng-container>
@@ -83,23 +83,23 @@
     <!-- Weight Column -->
     <ng-container matColumnDef="issue">
       <th style=" width: 80px; text-align:center"  mat-header-cell *matHeaderCellDef> Issue </th>
-      <td  style=" text-align: center " mat-cell *matCellDef="let element"> {{element.issue.name}} </td>
+      <td  style=" text-align: center " mat-cell *matCellDef="let element"> {{element.ticket.issue.name}} </td>
     </ng-container>
   
     <!-- Symbol Column -->
     <ng-container matColumnDef="priority">
       <th style=" width: 80px; text-align: center; border-radius: 10%; " mat-header-cell *matHeaderCellDef> Priority </th>
-      <td  style=" text-align: center " mat-cell *matCellDef="let element"> {{element.priority}} </td>
+      <td  style=" text-align: center " mat-cell *matCellDef="let element"> {{element.ticket.priority}} </td>
     </ng-container>
 
     <ng-container matColumnDef="severity">
       <th style=" width: 80px; text-align: center; border-radius: 10%; " mat-header-cell *matHeaderCellDef> Severity </th>
-      <td  style=" text-align: center " mat-cell *matCellDef="let element"> {{element.severity}} </td>
+      <td  style=" text-align: center " mat-cell *matCellDef="let element"> {{element.ticket.severity}} </td>
     </ng-container>
 
     <ng-container matColumnDef="assignmentGroup">
       <th style=" width: 80px; text-align: center; border-radius: 10%; " mat-header-cell *matHeaderCellDef> Assignment Group </th>
-      <td  style=" text-align: center " mat-cell *matCellDef="let element"> {{element.assignmentGroup.name}} </td>
+      <td  style=" text-align: center " mat-cell *matCellDef="let element"> {{element.ticket.assignmentGroup.name}} </td>
     </ng-container>
 
     <ng-container  matColumnDef="resolveButton">
