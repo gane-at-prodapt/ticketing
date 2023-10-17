@@ -210,12 +210,25 @@
     <br><br>
     <br><br>
     <h1 style="font-family:'Montserrat', sans-serif; font-weight:bolder; letter-spacing: 2px; ">INCIDENTS</h1>
-    <p style="font-family:'Montserrat', sans-serif;"> Network devices, also known as networking hardware, are physical devices that allow hardware on a 
-        computer network to communicate and interact with one another.A network device is a piece of hardware or software integral to communication between
-         a computer and an internet network. Network devices play two roles. The first is establishing a network connection</p>
+    <p style="font-family:'Montserrat', sans-serif;"> Incident, also known as tickets, are raised when a network or a component is not working and you need help fixing it. After a ticket is raised,
+        The intial state of the tciket is 'open' it means the issue is with us and we will be taking action. Your ticket will be directed to the particular group. The ticked can be ignored or resolved. 
+        When the ticket is 'resolved' it means a Support Analyst resolved your ticket by providing a rootcause and solution. After the the ticket is resolved, it will send to the Super Admin and Network Admin, 
+        they can analyze the solution provided by support analyst and if it is correct, they will close the ticket. </p>
          <br><br>
          <div class="row">
-            <div class="col-4">
+            <div class="col-4" *ngFor="let i of incidents ; let in= index" style="font-family:'Montserrat', sans-serif;">
+                <div class="card" style="width: 16rem; border-radius: 1px; font-family:'Montserrat', sans-serif;">
+                    <div class="card-body" style="font-family:'Montserrat', sans-serif;">
+                      <h3 class="card-title" style="font-family:'Montserrat', sans-serif;">{{i.name}}</h3>
+                      <h5 class="card-subtitle mb-2 text-body-secondary" style="font-family:'Montserrat', sans-serif;" > <b>Issue : {{i.issue?.name}}</b></h5>
+                      <p class="card-text" ><b>Assigned Group : </b> {{i.assignmentGroup?.name}} <br><b>Raised by: </b> {{i.raisedBy?.email}}
+                        <br><b>Priority : </b> {{getLevel(i.priority)}} <br> <b>Severity : </b>{{getLevel(i.severity)}}</p>
+                      
+                    </div>
+                  </div>
+        
+            </div>
+            <!-- <div class="col-4">
                 <div class="card" style="width: 16rem; border-radius: 1px;">
                     <div class="card-body">
                       <h5 class="card-title">Card title</h5>
@@ -226,8 +239,8 @@
                     </div>
                   </div>
         
-            </div>
-            <div class="col-4">
+            </div> -->
+            <!-- <div class="col-3">
                 <div class="card" style="width: 16rem; border-radius: 1px;">
                     <div class="card-body">
                       <h5 class="card-title">Card title</h5>
@@ -238,19 +251,7 @@
                     </div>
                   </div>
         
-            </div>
-            <div class="col-3">
-                <div class="card" style="width: 16rem; border-radius: 1px;">
-                    <div class="card-body">
-                      <h5 class="card-title">Card title</h5>
-                      <h6 class="card-subtitle mb-2 text-body-secondary">Card subtitle</h6>
-                      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                      <a href="#" class="card-link">Card link</a>
-                      <a href="#" class="card-link">Another link</a>
-                    </div>
-                  </div>
-        
-            </div>
+            </div> -->
         
         </div>
 </div>
