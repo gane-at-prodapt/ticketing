@@ -217,12 +217,12 @@
          <br><br>
          <div class="row">
             <div class="col-4" *ngFor="let i of incidents ; let in= index" style="font-family:'Montserrat', sans-serif;">
-                <div class="card" style="width: 16rem; border-radius: 1px; font-family:'Montserrat', sans-serif;">
+                <div class="card" style="width: 16rem; border-radius: 1px; margin-bottom: 20px;  font-family:'Montserrat', sans-serif;">
                     <div class="card-body" style="font-family:'Montserrat', sans-serif;">
                       <h3 class="card-title" style="font-family:'Montserrat', sans-serif;">{{i.name}}</h3>
                       <h5 class="card-subtitle mb-2 text-body-secondary" style="font-family:'Montserrat', sans-serif;" > <b>Issue : {{i.issue?.name}}</b></h5>
-                      <p class="card-text" ><b>Assigned Group : </b> {{i.assignmentGroup?.name}} <br><b>Raised by: </b> {{i.raisedBy?.email}}
-                        <br><b>Priority : </b> {{getLevel(i.priority)}} <br> <b>Severity : </b>{{getLevel(i.severity)}}</p>
+                      <span class="card-text" ><b>Assigned Group : </b> {{i.assignmentGroup?.name}} <br><b>Raised by: </b> {{i.raisedBy?.email}}
+                        <br><b>Priority : </b> {{getLevel(i.priority)}} <br> <b>Severity : </b>{{getLevel(i.severity)}}</span>
                       
                     </div>
                   </div>

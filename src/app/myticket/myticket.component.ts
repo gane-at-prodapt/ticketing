@@ -186,7 +186,7 @@ export class MyticketComponent {
   });
 
   }
-  displayedColumns: string[] = ['id', 'name', 'issue', 'priority', 'severity', 'assignmentGroup','assignedTo' ,'resolveButton', 'moveButton', 'ignoreButton'];
+  displayedColumns: string[] = ['id', 'name', 'issue', 'priority', 'severity','state', 'assignmentGroup','assignedTo' ,'resolveButton', 'moveButton', 'ignoreButton'];
   dataSource = new MatTableDataSource(this.DATA);
 
 applyFilter(filterValue: string) {

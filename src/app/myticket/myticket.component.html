@@ -105,6 +105,11 @@
         <th style=" width: 80px; text-align: center; border-radius: 10%; " mat-header-cell *matHeaderCellDef> Assignment Group </th>
         <td  style=" text-align: center " mat-cell *matCellDef="let element" > {{element.ticket.assignmentGroup.name}} </td>
       </ng-container>
+
+      <ng-container matColumnDef="state">
+        <th style=" width: 80px; text-align: center; border-radius: 10%; " mat-header-cell *matHeaderCellDef> Ticekt status </th>
+        <td  style=" text-align: center " mat-cell *matCellDef="let element"> {{element.ticket.state}} </td>
+      </ng-container>
   
       <ng-container matColumnDef="assignedTo">
           <th style=" width: 80px; text-align: center; border-radius: 10%; " mat-header-cell *matHeaderCellDef> Assigned User </th>

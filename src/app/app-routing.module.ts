@@ -26,6 +26,8 @@ import { UsersHomepageComponent } from './users-homepage/users-homepage.componen
 import { RolesHomepageComponent } from './roles-homepage/roles-homepage.component';
 import { ResolveTicketComponent } from './resolve-ticket/resolve-ticket.component';
 import { MyticketComponent } from './myticket/myticket.component';
+import { SuccessMessageComponent } from './success-message/success-message.component';
+import { FailMessageComponent } from './fail-message/fail-message.component';
 
 const routes: Routes = [
   { path: 'home', component: AdminHomeComponent },
@@ -53,7 +55,9 @@ const routes: Routes = [
   { path: 'userHome', component: UsersHomepageComponent },
   { path: 'roleHome', component: RolesHomepageComponent},
   { path: 'resolve', component: ResolveTicketComponent },
-  { path: 'myticket', component: MyticketComponent }
+  { path: 'myticket', component: MyticketComponent },
+  { path: 'success', component: SuccessMessageComponent },
+  { path: 'fail', component: FailMessageComponent }
 
 
   
