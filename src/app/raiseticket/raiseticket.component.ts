@@ -2,6 +2,8 @@ import { Block } from '@angular/compiler';
 import { Component } from '@angular/core';
 import { AbstractControl, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router, NavigationEnd } from '@angular/router';
+import { AssignmentGroup, Issue, ServiceService } from '../service.service';
+import { getCookie} from 'typescript-cookie'
 @Component({
   selector: 'app-raiseticket',
   templateUrl: './raiseticket.component.html',
@@ -13,15 +15,20 @@ export class RaiseticketComponent {
    "Germany", "Indonesia", "India", "China", "Finland"];
   searchresult:string[] = this.countries;
   selectedList:string="";
-  networkElements:string[]=["Router","Modem","Firewall","Switch","OLT","ONT"];
+
+  networkElements:string[]=["Broadband cable","Wireless dongle", "Modem", "Router", "Ethernet Cable", "Wireless access point", "Opical Network terminal", "Splitter", "Fiber Optic cable","Network switch"];
+  issues:Issue[]=[];
+  groups:AssignmentGroup[]=[];
   networkFamily:string="";
   userName:string="";
-  issue:string="";
+  userId:number|undefined;
+  issue:Issue|undefined;
+  group:AssignmentGroup|undefined;
   Priority:string="";
   Severity:string="";
   flexRadioDefault:string="";
  
-  constructor(private router: Router) { } 
+  constructor(private router: Router, private service:ServiceService) { } 
 
   updateName(selectedLi: string)
   {
@@ -30,13 +37,7 @@ export class RaiseticketComponent {
     if(content!=null){
       content.innerText=selectedLi;
     }
-    //  if(selectBtn!=null && selectBtn.firstElementChild!= null){
-        // selectBtn.firstElementChild.innerHTML = selectedLi.innerHTML;
-    //  }
   }
-
-
-
 
   ticketName:string="";
   form:FormGroup = new FormGroup(
@@ -71,48 +72,70 @@ export class RaiseticketComponent {
     this.ticketName= control.value
     return '';
   }
-  getnetworkFamily(control:any):string
-  {
-    this.networkFamily= control.value
-    return '';
-  }
-  getissueName(control:any):string
-  {
-    this.issue= control.value
-    return '';
-  }
-  getpriority(control:any):string
-  {
-    this.flexRadioDefault= control.value
-    return '';
-  }
-
-  getvalue(selected: string)
-  {
-    
-    this.issue= selected;
-    this.updateName(this.issue)
-
-  }
 
   getPriority(value:string)
   {
       this.Priority= value;
-
   }
   getSeverity(value:string)
   {
       this.Severity= value;
+  }
 
+  setNetworkFamily(id:number){
+    this.networkFamily= this.networkElements[id];
+    this.service.getIssuesByNetworkDevice(this.networkFamily).subscribe((Response)=>{
+      this.issues=Response;
+      console.log(this.issues);
+    });
+    let issueDropDown = document.getElementById("IssueSelect");
+    if(issueDropDown!=null){
+      issueDropDown.style.display="block";
+    }
+  }
+
+  setIssue(id:number){
+    this.issue=this.issues[id];
+    this.service.getAssignmentGroupsByIssue(this.issue.id).subscribe((Response)=>{
+      this.groups=Response;
+      console.log(this.issues);
+    });
+    let groupDropDown = document.getElementById("GroupSelect");
+    if(groupDropDown!=null){
+      groupDropDown.style.display="block";
+    }
+
+  }
+
+  setGroup(id:number){
+    this.group=this.groups[id];
   }
  
 
   submitData()
   {
+
+     // id: number; (NN)
+    // name: string;
+    // networkElement: NetworkElement;
+    // issue: Issue;
+    // severity: number;
+    // priority: number;
+    // resolution_comment : string;(NN)
+    // state: string;(default open)
+    // assignmentGroup: AssignmentGroup;
+    // assignedTo: User;(NN)
+    // raisedBy: User;(Enter user)
+    // modifiedOn: number;(Enter System time)
+
+    this.userId = Number(getCookie("userId"));
+
     console.log(this.userName);
     console.log(this.ticketName);
     console.log(this.networkFamily);
     console.log(this.issue);
+    console.log(this.group);
+    console.log(this.userId);
     console.log(this.Priority);
     console.log(this.Severity);
   

@@ -5,6 +5,8 @@ import { Router } from '@angular/router';
 import { NavigationEnd } from '@angular/router';
 
 import * as CryptoJS from 'crypto-js'
+import { ServiceService } from '../service.service';
+import { setCookie } from 'typescript-cookie'
 
 
 @Component({
@@ -14,7 +16,7 @@ import * as CryptoJS from 'crypto-js'
 })
 export class AdminLoginComponent implements OnInit{
 
-  constructor(private httpClient : HttpClient,private router:Router) {
+  constructor(private httpClient : HttpClient,private router:Router, private service:ServiceService) {
     
   }
  
@@ -69,14 +71,14 @@ export class AdminLoginComponent implements OnInit{
   submit(){
     console.log(this.email,this.pass);
     let data = {"email":this.email,"token":CryptoJS.SHA256(this.pass).toString(CryptoJS.enc.Hex)};
-
-
     data["email"]=this.email;
     data["token"]=CryptoJS.SHA256(this.pass).toString(CryptoJS.enc.Hex);
-
   
 
-    this.httpClient.post('http://localhost:8088/api/v1/auth/login',JSON.stringify(data)).subscribe(Response=>{
+    this.service.login(JSON.stringify(data)).subscribe(Response=>{
+      setCookie("token",Response.authToken);
+      setCookie("userId",Response.user.id);
+      setCookie("userEmail",Response.user.email);
       this.router.navigate(['/','homepage']);
     },
     error=>{
