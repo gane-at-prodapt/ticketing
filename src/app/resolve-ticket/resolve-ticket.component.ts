@@ -7,7 +7,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { Router, NavigationEnd } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
-import { ServiceService, Incident, User } from '../service.service';
+import { ServiceService, Incident, User, AssignmentGroup } from '../service.service';
 import { MatButton } from '@angular/material/button';
 import { getCookie} from 'typescript-cookie'
 import { FormGroup } from '@angular/forms';
@@ -28,6 +28,7 @@ export class ResolveTicketComponent {
   DATA : ticketwithbuttons[] =[];
   users : User[]=[];
   user: User | undefined;
+  selectedIncident : Incident|undefined;
 
 
   
@@ -58,6 +59,40 @@ export class ResolveTicketComponent {
   setUser(index:number)
   {
     this.user= this.users[index];
+  }
+
+  closeModal(){
+    this.users=[];
+  }
+
+  assignTicket(I:Incident){
+    this.selectedIncident = I;
+    console.log(I);
+    let group = I.assignmentGroup;
+    if(group!=undefined)
+    this.service.getMembersByGroup(group.id).subscribe(Response=>{
+      Response.forEach(element=>{
+        this.users.push(element.groupMember);
+      });
+    },
+    error=>{
+      //need to display "invalid credentials, try again" in the bottom of the form. clear the password field
+      console.log(error);
+    });
+  }
+
+  submitButton(){
+    if(this.selectedIncident!=undefined){
+      this.selectedIncident.assignedTo=this.user;
+      this.selectedIncident.state="Assigned";
+      this.service.putIncident(this.selectedIncident).subscribe((Response)=>{
+        console.log(Response);
+      },
+      error=>{
+        console.log(error);
+      })
+    }
+    
   }
 
 
@@ -94,16 +129,7 @@ export class ResolveTicketComponent {
     console.log(error);
   });
 
-  this.service.getUsers().subscribe(Response=>{
-    this.users=Response;
-    console.log(this.users);
-   
   
-  },
-  error=>{
-    //need to display "invalid credentials, try again" in the bottom of the form. clear the password field
-    console.log(error);
-  });
 
 
 

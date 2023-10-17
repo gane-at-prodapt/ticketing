@@ -165,8 +165,6 @@ export class RaiseticketComponent {
       raisedBy:this.raisedBy,
       modifiedOn: Math.floor(Date.now() / 1000)
     };
-
-    console.log(I);
     
     this.service.addIncident(I).subscribe((Response)=>{
       console.log(Response);

@@ -68,8 +68,8 @@ export interface AssignmentGroup{
 
 export interface Groupmembers{
   id:number;
-  assignmentGroup: AssignmentGroup;
-  GroupMember: User;
+  group: AssignmentGroup;
+  groupMember: User;
   modifiedOn: number;
 }
 
