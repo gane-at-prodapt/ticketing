@@ -104,6 +104,11 @@
       <th style=" width: 80px; text-align: center; border-radius: 10%; " mat-header-cell *matHeaderCellDef> Assignment Group </th>
       <td  style=" text-align: center " mat-cell *matCellDef="let element"> {{element.assignmentGroup.name}} </td>
     </ng-container>
+
+    <ng-container matColumnDef="state">
+      <th style=" width: 80px; text-align: center; border-radius: 10%; " mat-header-cell *matHeaderCellDef> Ticket status </th>
+      <td  style=" text-align: center " mat-cell *matCellDef="let element"> {{element.state}} </td>
+    </ng-container>
   
     <tr style="background-color: #fff;" mat-header-row *matHeaderRowDef="displayedColumns"></tr>
     <tr style="background-color: #fff;" mat-row *matRowDef="let row; columns: displayedColumns;"></tr>

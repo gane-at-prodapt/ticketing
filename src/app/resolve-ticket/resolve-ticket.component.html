@@ -20,7 +20,7 @@
 <!-- style="background-color: #f4f4f4	;" -->
 <div class="outer">
 <nav id="nav1" class="navbar navbar-expand-lg bg-body-tertiary" style="background-color:black " >
-    <div id="mynavbar" class="container-fluid" style="background-color: rgb(240, 240, 240);" >
+    <div id="mynavbar" class="container-fluid" style="font-family: 'League Spartan', sans-serif; background-color: rgb(240, 240, 240);" >
       <a id="nav2" class="navbar-brand" [routerLink]="'../incidentHome'" style="margin-left: 20px;">Incident</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -105,10 +105,17 @@
       <td  style=" text-align: center " mat-cell *matCellDef="let element" > {{element.ticket.assignmentGroup.name}} </td>
     </ng-container>
 
+    <ng-container matColumnDef="state">
+        <th style=" width: 80px; text-align: center; border-radius: 10%; " mat-header-cell *matHeaderCellDef> Ticekt status </th>
+        <td  style=" text-align: center " mat-cell *matCellDef="let element"> {{element.ticket.state}} </td>
+      </ng-container>
+
     <ng-container matColumnDef="assignedTo">
         <th style=" width: 80px; text-align: center; border-radius: 10%; " mat-header-cell *matHeaderCellDef> Assigned User </th>
         <td  style=" text-align: center " mat-cell *matCellDef="let element"> {{getAssignedUser(element.ticket.assignedTo)}} </td>
       </ng-container>
+
+     
 
       
 

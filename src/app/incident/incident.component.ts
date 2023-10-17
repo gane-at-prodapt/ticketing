@@ -89,7 +89,7 @@ export class IncidentComponent {
   });
 }
 
-displayedColumns: string[] = ['id', 'name','issue','priority', 'severity', 'assignmentGroup'];
+displayedColumns: string[] = ['id', 'name','issue','priority', 'severity', 'assignmentGroup','state'];
 dataSource = new MatTableDataSource(this.DATA);
 
 applyFilter(filterValue: string) {

@@ -149,7 +149,7 @@ export class ResolveTicketComponent {
   // });
 }
 
-displayedColumns: string[] = ['id', 'name', 'issue', 'priority', 'severity', 'assignmentGroup','assignedTo' ,'assignButton'];
+displayedColumns: string[] = ['id', 'name', 'issue', 'priority', 'severity', 'assignmentGroup','state', 'assignedTo' ,'assignButton'];
 dataSource = new MatTableDataSource(this.DATA);
 
 applyFilter(filterValue: string) {

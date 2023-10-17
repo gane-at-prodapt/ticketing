@@ -57,6 +57,8 @@ import { IssuesHomepageComponent } from './issues-homepage/issues-homepage.compo
 import { RolesHomepageComponent } from './roles-homepage/roles-homepage.component';
 import { ResolveTicketComponent } from './resolve-ticket/resolve-ticket.component';
 import { MyticketComponent } from './myticket/myticket.component';
+import { SuccessMessageComponent } from './success-message/success-message.component';
+import { FailMessageComponent } from './fail-message/fail-message.component';
 
 
 
@@ -101,7 +103,9 @@ import { MyticketComponent } from './myticket/myticket.component';
     IssuesHomepageComponent,
     RolesHomepageComponent,
     ResolveTicketComponent,
-    MyticketComponent
+    MyticketComponent,
+    SuccessMessageComponent,
+    FailMessageComponent
   ],
   imports: [
     BrowserModule,
