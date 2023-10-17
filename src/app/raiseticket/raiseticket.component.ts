@@ -124,12 +124,21 @@ export class RaiseticketComponent {
   setGroup(id:number){
     this.group=this.groups[id];
   }
+
+  success()
+  {
+    this.router.navigate(['/', 'success']);
+    alert
+  } 
  
 
   submitData()
   {
 
+
     this.userId = Number(getCookie("userId"));
+
+ 
     let I:Incident = {
       name:this.ticketName,
       networkElement:this.networkDevice,
@@ -141,9 +150,14 @@ export class RaiseticketComponent {
       raisedBy:this.raisedBy,
       modifiedOn: Math.floor(Date.now() / 1000)
     };
+
+    console.log(I);
     
     this.service.addIncident(I).subscribe((Response)=>{
       console.log(Response);
+      this.router.navigate(['/', 'success']);
+
+
     },
     error=>{
       //need to display "invalid credentials, try again" in the bottom of the form. clear the password field
