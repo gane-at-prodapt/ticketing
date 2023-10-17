@@ -107,7 +107,7 @@
 
     <ng-container matColumnDef="assignedTo">
         <th style=" width: 80px; text-align: center; border-radius: 10%; " mat-header-cell *matHeaderCellDef> Assigned User </th>
-        <td  style=" text-align: center " mat-cell *matCellDef="let element"> - </td>
+        <td  style=" text-align: center " mat-cell *matCellDef="let element"> {{getAssignedUser(element.ticket.assignedTo)}} </td>
       </ng-container>
 
       
@@ -115,7 +115,7 @@
     <ng-container  matColumnDef="assignButton">
         <th  style=" width: 100px; text-align: center;" mat-header-cell  *matHeaderCellDef> Resolve </th>
         <td  style=" text-align: center; cursor: pointer;" mat-cell *matCellDef="let element">
-        <button (click)="assignTicket(element.ticket)" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal"  style="width: 50px; height: 20px; border: none; box-shadow:  0 4px 4px 0 rgba(0,0,0,0.2);">{{element.assignButton}}</button>
+        <button [disabled]="(element.ticket.assignedTo!=undefined)" (click)="assignTicket(element.ticket)" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal"  style="width: 50px; height: 20px; border: none; box-shadow:  0 4px 4px 0 rgba(0,0,0,0.2);">{{element.assignButton}}</button>
       </td>
       
     </ng-container>
