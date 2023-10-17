@@ -37,7 +37,7 @@ export interface User {
 export interface Auth{
   id:number;
   user:User;
-  authToken:String;
+  authToken:string;
   modifiedOn:number;
 }
 
@@ -140,8 +140,8 @@ export class ServiceService {
 
   //Auth
 
-  login(data:JSON){
-    return this.httpClient.post<Auth>(this.authurl,JSON.stringify(data));
+  login(data:string):Observable<Auth>{
+    return this.httpClient.post<Auth>(this.authurl+"/login",data);
   }
   addAuth(A:Auth):Observable<Auth>{
     return this.httpClient.post<Auth>(this.authurl,A);
