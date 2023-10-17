@@ -129,31 +129,7 @@ export class RaiseticketComponent {
   submitData()
   {
 
-     // id: number; (NN)
-    // name: string;
-    // networkElement: NetworkElement;
-    // issue: Issue;
-    // severity: number;
-    // priority: number;
-    // resolution_comment : string;(NN)
-    // state: string;(default open)
-    // assignmentGroup: AssignmentGroup;
-    // assignedTo: User;(NN)
-    // raisedBy: User;(Enter user)
-    // modifiedOn: number;(Enter System time)
-
     this.userId = Number(getCookie("userId"));
-
-    // console.log(this.userName);
-    // console.log(this.ticketName);
-    // console.log(this.networkFamily);
-    // console.log(this.networkDevice);
-    // console.log(this.issue);
-    // console.log(this.group);
-    // console.log(this.userId);
-    // console.log(this.Priority);
-    // console.log(this.Severity);
-    
     let I:Incident = {
       name:this.ticketName,
       networkElement:this.networkDevice,

@@ -40,7 +40,21 @@ export class IncidentComponent {
   DATA : Incident[] =[];
   constructor(private router: Router,private httpClient : HttpClient, private service : ServiceService) { } 
 
-  
+  getLevel(n:number): string
+  {
+    if(n==0)
+    {
+      return "Low";
+    }
+    else if(n==1)
+    {
+      return "Medium";
+    }
+    else
+    {
+      return "High";
+    }
+  }
 
   ngOnInit(){
 
