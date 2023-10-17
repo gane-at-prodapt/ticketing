@@ -36,7 +36,10 @@
             <a class="nav-link" [routerLink]="'../ticket'">Raise ticket</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" [routerLink]="'../resolve'">Resolve & close ticket</a>
+            <a class="nav-link" [routerLink]="'../resolve'">Assign ticket</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" [routerLink]="'../myticket'">My tickets</a>
           </li>
           
       
@@ -64,8 +67,7 @@
           <span class="placeholder col-12"></span>
           how it works
         </p> -->
-<br>
-<br>
+
 
       <p  id="hiw" style="font-family: 'Albert Sans', sans-serif; font-size: 0.8cm; font-weight: 200; border: none; margin-top: 60px; margin-left: 50px;
       position: absolute;">
@@ -73,13 +75,44 @@
 
         <i class="fa-solid fa-arrow-right" style="font-size: 0.6cm;  "></i></p><br><br>
        <ul style="font-family: 'Albert Sans', sans-serif; font-size: 0.5cm; font-weight: 100; margin-top: 90px; margin-left: 35px;"  >
-        <li id="point6"> When something is not working or has failed you can raise a ticket</li><br>
-        <li id="point1" >Start by providing your name </li><br>
-        <li id="point5" >Select the network device with the issue </li><br>
-        <li id="point2" >Choose the group you wanna raise the ticket to</li><br>
-        <li id="point3" >Use a list and bullet points for easy communication.</li><br>
-        <li id="point4" >Inform us about the prioritization of this issue</li><br>
-      </ul>
+        <li id="point1"> When something is not working you can raise a ticket</li><br>
+        <li id="point1" >Start by providing us a description of the issue </li><br>
+        <li id="point1" >Select the network device with the issue </li><br>
+        <li id="point1" >Choose the group you wanna raise the ticket to</li><br>
+        <li id="point1" >Use a list and bullet points for easy communication.</li><br>
+        <li id="point1" >Inform us about the prioritization of this issue</li><br>
+        <li id="point1" >Once the ticket is ope it either be resolved or ignored</li><br>
+      </ul> 
+      <!-- <div class="card" style="width: 35rem; height: 20rem; position: absolute;  margin-top: 50px; margin-left: 25px; border-radius: 1px; ">
+        <div class="card-body">
+      <div class="row">
+        <div class="col-4">
+          <div id="list-example" class="list-group">
+            <a class="list-group-item list-group-item-action" href="#list-item-1">Item 1</a>
+            <a class="list-group-item list-group-item-action" href="#list-item-2">Item 2</a>
+            <a class="list-group-item list-group-item-action" href="#list-item-3">Item 3</a>
+            <a class="list-group-item list-group-item-action" href="#list-item-4">Item 4</a>
+          </div>
+        </div>
+        <div class="col-8" style="height: 0px; margin-bottom: 20px;">
+          <div id="content" data-bs-spy="scroll" data-bs-target="#list-example" data-bs-smooth-scroll="true" class="scrollspy-example" tabindex="0">
+            <h4 id="list-item-1">Item 1</h4>
+            <p style="border: none;">This is some placeholder content for the scrollspy page. Note that as you scroll down the page, the appropriate navigation link is highlighted. It's repeated throughout the component example. 
+              We keep adding some more example copy here to emphasize the scrolling and highlighting</p>
+            <h4 id="list-item-2">Item 2</h4>
+            <p style="border: none;">This is some placeholder content for the scrollspy page. Note that as you scroll down the page, the appropriate navigation link is highlighted. It's repeated throughout the component example. We keep adding some more example copy here to emphasize the scrolling and highlighting
+
+            </p>
+            <h4 id="list-item-3">Item 3</h4>
+            <p style="border: none;">This is some placeholder content for the scrollspy page. Note that as you scroll down the page, the appropriate navigation link is highlighted. It's repeated throughout the component example. We keep adding some more example copy here to emphasize the scrolling and highlighting</p>
+            <h4 id="list-item-4">Item 4</h4>
+            <p style="border: none;">This is some placeholder content for the scrollspy page. Note that as you scroll down the page, the appropriate navigation link is highlighted. It's repeated throughout the component example. We keep adding some more example copy here to emphasize the scrolling and highlighting</p>
+          </div>
+        </div>
+      </div>
+        </div>
+      </div>
+     -->
 
         
       
@@ -88,7 +121,7 @@
     <div class="col-5">
 
    
-    <div class="card" style="width: 25rem; height: 34rem; position: absolute;  margin-top: 10px; ">
+    <div class="card" id="card" style="width: 25rem; height: 30rem; position: absolute;  margin-top: 10px; ">
         <div class="card-body">
           <h3 class="card-title" style="text-align: center; " >RAISE &nbsp; TICKET</h3>
           <!-- <h6 class="card-subtitle mb-2 text-body-secondary">Card subtitle</h6> -->
@@ -202,7 +235,7 @@
         </div>
             <div class="col-2">
                 <div class="form-check" style="padding: 5px;">
-                    <input class="form-check-input" type="radio" name="flexRadioDefault" (click)="getPriority('Medium')" id="flexRadioDefault2" checked>
+                    <input class="form-check-input" type="radio" name="flexRadioDefault" (click)="getPriority('Medium')" id="flexRadioDefault2">
                     <label class="form-check-label" for="flexRadioDefault2">
                       Medium
                     </label>
@@ -212,7 +245,7 @@
             <div class="col-2">
                 
                 <div class="form-check" style="padding: 5px;">
-                    <input class="form-check-input" type="radio" name="flexRadioDefault" (click)="getPriority('Low')" id="flexRadioDefault2" checked>
+                    <input class="form-check-input" type="radio" name="flexRadioDefault" (click)="getPriority('Low')" id="flexRadioDefault2">
                     <label class="form-check-label" for="flexRadioDefault2">
                      Low
                     </label>
@@ -241,7 +274,7 @@
         </div>
             <div class="col-2">
                 <div class="form-check" style="padding: 5px;">
-                    <input class="form-check-input" type="radio" name="flexRadioDefault1" (click)="getSeverity('Medium')"  id="flexRadioDefault5" checked>
+                    <input class="form-check-input" type="radio" name="flexRadioDefault1" (click)="getSeverity('Medium')"  id="flexRadioDefault5">
                     <label class="form-check-label" for="flexRadioDefault5">
                       Medium
                     </label>
@@ -251,7 +284,7 @@
             <div class="col-2">
                 
                 <div class="form-check" style="padding: 5px;">
-                    <input class="form-check-input" type="radio" name="flexRadioDefault1" (click)="getSeverity('Low')"  id="flexRadioDefault6" checked>
+                    <input class="form-check-input" type="radio" name="flexRadioDefault1" (click)="getSeverity('Low')"  id="flexRadioDefault6">
                     <label class="form-check-label" for="flexRadioDefault6">
                      Low
                     </label>
@@ -260,7 +293,7 @@
         </div>
       </form>
 
-      <button type="button"(click)="submitData()"  class="btn btn-primary btn-sm">Submit</button>
+      <button id="submitButton" type="button"(click)="submitData()"  class="btn btn-primary btn-sm">Submit</button>
 
         
         

@@ -473,7 +473,8 @@ section img#bubble88
    
    
     border-radius: 10%;
-    transition-timing-function: ease-in-out;
+    transition: ease-in-out;
+    transition: 0.7s;
     
 }
 
@@ -484,7 +485,8 @@ section img#bubble88
     /* background-color: rgba(125, 165, 133, 0.2); */
     border-radius: 20%;
    
-    transition-timing-function: ease-in-out;
+    transition: ease-in-out;
+    transition: 0.7s;
     
     
 }
@@ -496,7 +498,8 @@ section img#bubble88
     /* background-color: rgba(216, 140, 140 , 0.2); */
    
     border-radius: 10%;
-    transition-timing-function: ease-in-out;
+    transition: ease-in-out;
+    transition:0.7s;
 }
 
 

@@ -75,6 +75,7 @@ export class ResolveTicketComponent {
     }); 
 
   this.service.getIncidentsByMemberGroups(Number(getCookie("userId"))).subscribe(Response=>{
+    console.log(Number(getCookie("userId")));
     Response.forEach((element)=>{
       this.DATA.push({
         ticket: element,
