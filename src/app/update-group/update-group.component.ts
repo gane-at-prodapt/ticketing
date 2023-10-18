@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 // import { FaCoffee } from '@fortawesome/angular-fontawesome'
 import { Router, NavigationEnd } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 
 
 @Component({
@@ -13,7 +14,7 @@ export class UpdateGroupComponent {
 
   data: string[] = ["HTML", "CSS", "Bootstrap", "React"];
   checkedValue:string[]=[];
-  constructor(private router: Router) { } 
+  constructor(private router: Router,) { } 
   
 
 

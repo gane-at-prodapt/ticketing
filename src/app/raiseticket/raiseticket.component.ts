@@ -4,6 +4,7 @@ import { AbstractControl, FormControl, FormGroup, Validators } from '@angular/fo
 import { Router, NavigationEnd } from '@angular/router';
 import { AssignmentGroup, Issue, Incident, ServiceService,NetworkElement, User} from '../service.service';
 import { getCookie} from 'typescript-cookie'
+import { ToastrService } from 'ngx-toastr';
 @Component({
   selector: 'app-raiseticket',
   templateUrl: './raiseticket.component.html',
@@ -26,7 +27,7 @@ export class RaiseticketComponent {
   Severity:number|undefined;
   flexRadioDefault:string="";
  
-  constructor(private router: Router, private service:ServiceService) { } 
+  constructor(private router: Router, private service:ServiceService, private toastr: ToastrService ) { } 
 
   updateName(selectedLi: string)
   {
@@ -36,6 +37,11 @@ export class RaiseticketComponent {
       content.innerText=selectedLi;
     }
   }
+
+  // showSuccess()
+  // {
+  //   this.toastr.success('Ticket raised successfully');
+  // }
 
   ticketName:string="";
   form:FormGroup = new FormGroup(
@@ -125,11 +131,7 @@ export class RaiseticketComponent {
     this.group=this.groups[id];
   }
 
-  success()
-  {
-    this.router.navigate(['/', 'success']);
-    alert
-  } 
+ 
  
 
   submitData()
@@ -153,15 +155,18 @@ export class RaiseticketComponent {
 
     console.log(I);
     
+    
     this.service.addIncident(I).subscribe((Response)=>{
       console.log(Response);
-      this.router.navigate(['/', 'success']);
+      this.toastr.success('Ticket raised successfully');
+
 
 
     },
     error=>{
       //need to display "invalid credentials, try again" in the bottom of the form. clear the password field
       console.log(error);
+      this.toastr.error('Failed to raise ticket');
     });
   
     
