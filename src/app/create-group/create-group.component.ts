@@ -31,7 +31,7 @@ export class CreateGroupComponent {
    memberButton(G:AssignmentGroup)
   { this.selectedGroup= G;
 
-    this.service.getGroupsByMember(this.selectedGroup.id).subscribe(Response=>{
+    this.service.getMembersByGroup(this.selectedGroup.id).subscribe(Response=>{
       this.DATA1=Response;
       console.log(Response);
       
