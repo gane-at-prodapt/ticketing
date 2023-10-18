@@ -11,12 +11,15 @@ import { ServiceService, Incident, User, AssignmentGroup } from '../service.serv
 import { MatButton } from '@angular/material/button';
 import { getCookie} from 'typescript-cookie'
 import { FormGroup } from '@angular/forms';
+import { ToastrService } from 'ngx-toastr';
+import { ViewChild } from '@angular/core';
 
 export interface ticketwithbuttons
 {
   ticket: Incident;
   assignButton: any;
 }
+
 
 @Component({
   selector: 'app-resolve-ticket',
@@ -25,6 +28,8 @@ export interface ticketwithbuttons
 })
 export class ResolveTicketComponent {
 
+  @ViewChild('myModalClose') modalClose;
+
   DATA : ticketwithbuttons[] =[];
   users : User[]=[];
   user: User | undefined;
@@ -32,7 +37,7 @@ export class ResolveTicketComponent {
 
 
   
-  constructor(private router: Router,private httpClient : HttpClient, private service : ServiceService) 
+  constructor(private router: Router,private httpClient : HttpClient, private service : ServiceService,private toastr: ToastrService ) 
   { } 
 
   form:FormGroup = new FormGroup(
@@ -94,10 +99,12 @@ export class ResolveTicketComponent {
       this.selectedIncident.assignedTo=this.user;
       this.selectedIncident.state="Assigned";
       this.service.putIncident(this.selectedIncident).subscribe((Response)=>{
-        console.log(Response);
+        this.toastr.success('User assigned successfully');
+        this.modalClose.nativeElement.click();
       },
       error=>{
         console.log(error);
+        this.modalClose.nativeElement.click();
       })
     }
     
