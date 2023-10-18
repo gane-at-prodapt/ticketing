@@ -82,6 +82,7 @@ export class AdminLoginComponent implements OnInit{
         setCookie("userEmail",Response.user.email);
         setCookie("userName", Response.user.name);
         setCookie("userRole", Response.user.role?.name);
+        setCookie("userRoleId", Response.user.role?.id);
       }
       this.router.navigate(['/','homepage']);
     },

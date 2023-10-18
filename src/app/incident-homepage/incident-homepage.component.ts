@@ -14,6 +14,7 @@ export class IncidentHomepageComponent {
   incidents: Incident[]=[];
 
   constructor(private router: Router, private httpClient : HttpClient, private service : ServiceService) { } 
+  
   getLevel(n: undefined | number): string
   {
     if(n==0)

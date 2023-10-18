@@ -106,7 +106,7 @@ export class AdduserComponent {
         this.toastr.success('New user added successfully');
       },
       error=>{
-        this.toastr.error('Failed to add new user')
+        this.toastr.error('Failed to add new user');
 
       });
     }
