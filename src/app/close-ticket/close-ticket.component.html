@@ -118,21 +118,21 @@
     <ng-container  matColumnDef="reviewButton">
         <th  style=" width: 100px; text-align: center;" mat-header-cell  *matHeaderCellDef> Review </th>
         <td  style=" text-align: center; cursor: pointer;" mat-cell *matCellDef="let element">
-        <button type="button" data-bs-toggle="modal" data-bs-target="#exampleModal"  style="width: 50px; height: 20px; border: none; box-shadow:  0 4px 4px 0 rgba(0,0,0,0.2);">{{element.reviewButton}}</button>
+        <button  type="button" data-bs-toggle="modal" data-bs-target="#exampleModal"  style="width: 50px; height: 20px; border: none; box-shadow:  0 4px 4px 0 rgba(0,0,0,0.2);">{{element.reviewButton}}</button>
       </td> 
     </ng-container>
 
     <ng-container  matColumnDef="movebackButton">
         <th  style=" width: 100px; text-align: center;" mat-header-cell  *matHeaderCellDef> Move back </th>
         <td  style=" text-align: center; cursor: pointer;" mat-cell *matCellDef="let element">
-        <button type="button" data-bs-toggle="modal" data-bs-target="#exampleModal"  style="width: 80px; height: 20px; border: none; box-shadow:  0 4px 4px 0 rgba(0,0,0,0.2);">{{element.movebackButton}}</button>
+        <button (click)="moveBack(element)" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal"  style="width: 80px; height: 20px; border: none; box-shadow:  0 4px 4px 0 rgba(0,0,0,0.2);">{{element.movebackButton}}</button>
       </td> 
     </ng-container>
 
     <ng-container  matColumnDef="closeButton">
         <th  style=" width: 100px; text-align: center;" mat-header-cell  *matHeaderCellDef> Close </th>
         <td  style=" text-align: center; cursor: pointer;" mat-cell *matCellDef="let element">
-        <button type="button" data-bs-toggle="modal" data-bs-target="#exampleModal"  style="width: 50px; height: 20px; border: none; box-shadow:  0 4px 4px 0 rgba(0,0,0,0.2);">{{element.closeButton}}</button>
+        <button (click)="closeTicket(element)" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal"  style="width: 50px; height: 20px; border: none; box-shadow:  0 4px 4px 0 rgba(0,0,0,0.2);">{{element.closeButton}}</button>
       </td> 
     </ng-container>
 

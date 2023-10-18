@@ -3,6 +3,7 @@ import { Component } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
 import { NavigationEnd, Router } from '@angular/router';
 import { Incident, ServiceService } from '../service.service';
+import { ToastrService } from 'ngx-toastr';
 
 export interface closeTicket
 {
@@ -20,7 +21,7 @@ export interface closeTicket
 export class CloseTicketComponent {
 
   DATA : closeTicket[] =[];
-  constructor(private router: Router,private httpClient : HttpClient, private service : ServiceService) { } 
+  constructor(private router: Router,private httpClient : HttpClient, private service : ServiceService, private toastr: ToastrService) { } 
 
   getLevel(n:number): string
   {
@@ -36,6 +37,36 @@ export class CloseTicketComponent {
     {
       return "High";
     }
+  }
+
+  deleteItem(I:closeTicket){
+    this.DATA=this.DATA.filter(obj=>obj.ticket.id!=I.ticket.id);
+    this.dataSource= new MatTableDataSource(this.DATA);
+  }
+
+  closeTicket(I:closeTicket){
+    let tempTicket = I.ticket;
+    this.service.deleteIncident(tempTicket).subscribe((Response)=>{
+      this.deleteItem(I);
+      this.toastr.success('Ticket closed successfully');
+    },
+    error=>{
+
+    });
+  }
+
+  moveBack(I:closeTicket){
+    let tempTicket=I.ticket;
+    tempTicket.state="Assigned";
+    tempTicket.resolution_comment="Not Accepted";
+    tempTicket.modifiedOn=Math.floor(Date.now() / 1000);
+    this.service.putIncident(tempTicket).subscribe((Response)=>{
+      this.deleteItem(I);
+      this.toastr.success('Ticket moved back');
+    },
+    error=>{
+
+    });
   }
 
   ngOnInit(){

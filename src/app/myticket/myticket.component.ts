@@ -113,12 +113,16 @@ export class MyticketComponent {
       tempTicket.assignmentGroup=this.group;
       tempTicket.resolution_comment=this.movecause;
       tempTicket.raisedBy=this.raisedBy;
+      tempTicket.modifiedOn=Math.floor(Date.now() / 1000);
       this.service.putIncident(tempTicket).subscribe((Response)=>{
         console.log(Response);
         console.log("works");
         this.toastr.success('Ticket moved');
-        
         this.modalClosemove.nativeElement.click();
+        
+        if(tempTicket!=undefined)
+        this.delete(tempTicket);
+
       },
     error=>{
       console.log(error);
@@ -132,10 +136,15 @@ export class MyticketComponent {
     if(tempTicket!=undefined){
       tempTicket.state="Resolved";
       tempTicket.resolution_comment=this.rootcause;
+      tempTicket.modifiedOn=Math.floor(Date.now() / 1000);
       this.service.putIncident(tempTicket).subscribe((Response)=>{
         console.log(Response);
         this.toastr.success('Ticket resolved');
         this.modalClose.nativeElement.click();
+        
+        if(tempTicket!=undefined)
+        this.delete(tempTicket);
+
       },
     error=>{
       console.log(error);
@@ -149,16 +158,49 @@ export class MyticketComponent {
     if(tempTicket!=undefined){
       tempTicket.state="Ignored";
       tempTicket.resolution_comment=this.reason;
+      tempTicket.modifiedOn=Math.floor(Date.now() / 1000);
       this.service.putIncident(tempTicket).subscribe((Response)=>{
         console.log(Response);
         this.toastr.success('Ticket ignored');
         this.modalCloseignore.nativeElement.click();
+
+        if(tempTicket!=undefined)
+        this.delete(tempTicket);
+
       },
     error=>{
       console.log(error);
       this.modalCloseignore.nativeElement.click();
     });
     }
+  }
+
+  delete(I:Incident){
+    this.DATA = this.DATA.filter(obj=>obj.ticket.id!=I.id);
+    this.dataSource=new MatTableDataSource(this.DATA);
+  }
+
+  refresh(){
+    this.service.getIncidentsByMember(Number(getCookie("userId"))).subscribe(Response=>{
+      console.log(Number(getCookie("userId")));
+      if(Response!=null)
+      Response.forEach((element)=>{
+        if(element.state=="Assigned"){
+          this.DATA.push({
+            ticket: element,
+            resolveButton: "resolve",
+            moveButton:"move",
+            ignoreButton:"ignore"
+            }
+          );
+        }
+      });    
+      this.dataSource=new MatTableDataSource(this.DATA);
+    
+    },
+    error=>{
+      console.log(error);
+    });
   }
 
 
@@ -197,29 +239,7 @@ export class MyticketComponent {
       window.scrollTo(0, 0) 
     }); 
 
-  this.service.getIncidentsByMember(Number(getCookie("userId"))).subscribe(Response=>{
-    console.log(Number(getCookie("userId")));
-    if(Response!=null)
-    Response.forEach((element)=>{
-      if(element.state=="Assigned"){
-        this.DATA.push({
-          ticket: element,
-          resolveButton: "resolve",
-          moveButton:"move",
-          ignoreButton:"ignore"
-          }
-        );
-      }
-    });
-
-    
-    console.log(this.DATA);
-    this.dataSource=new MatTableDataSource(this.DATA);
-  
-  },
-  error=>{
-    console.log(error);
-  });
+    this.refresh();
 
   }
   displayedColumns: string[] = ['id', 'name', 'issue', 'priority', 'severity','state', 'assignmentGroup','assignedTo' ,'resolveButton', 'moveButton', 'ignoreButton'];
