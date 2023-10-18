@@ -6,6 +6,7 @@ import { Router } from '@angular/router';
 import { error } from 'highcharts';
 import * as CryptoJS from 'crypto-js';
 import { ToastrService } from 'ngx-toastr';
+import { ViewChild } from '@angular/core';
 
 @Component({
   selector: 'app-adduser',
@@ -13,6 +14,10 @@ import { ToastrService } from 'ngx-toastr';
   styleUrls: ['./adduser.component.css']
 })
 export class AdduserComponent {
+
+  @ViewChild('myModalClose') modalClose;
+
+  
   userName:string="";
   email:string="";
   password:string="";
@@ -39,6 +44,10 @@ export class AdduserComponent {
       else if(control.errors?.emailError && control.touched)
         return 'Please Enter valid Email ID'
       else return '';
+    }
+
+    closeModal(){
+      this.roles=[];
     }
 
     customEmailValidator(control:AbstractControl)
@@ -104,9 +113,11 @@ export class AdduserComponent {
       this.service.addAuth(createAuth).subscribe((Response)=>{
         console.log(Response);
         this.toastr.success('New user added successfully');
+        this.modalClose.nativeElement.click();
       },
       error=>{
         this.toastr.error('Failed to add new user');
+        this.modalClose.nativeElement.click();
 
       });
     }

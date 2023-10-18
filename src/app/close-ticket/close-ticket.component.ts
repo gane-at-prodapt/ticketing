@@ -1,24 +1,25 @@
-import { Component } from '@angular/core';
-import {MatTableModule} from '@angular/material/table';
-import {MatSort} from '@angular/material/sort';
-import {MatTableDataSource} from '@angular/material/table';
-import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatInputModule } from '@angular/material/input';
-import { MatPaginatorModule } from '@angular/material/paginator';
-import { Router, NavigationEnd } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
-import { ServiceService, Incident } from '../service.service';
+import { Component } from '@angular/core';
+import { MatTableDataSource } from '@angular/material/table';
+import { NavigationEnd, Router } from '@angular/router';
+import { Incident, ServiceService } from '../service.service';
 
-
+export interface closeTicket
+{
+  ticket: Incident;
+  closeButton: any;
+  reviewButton:any;
+  movebackButton:any;
+}
 
 @Component({
-  selector: 'app-incident',
-  templateUrl: './incident.component.html',
-  styleUrls: ['./incident.component.css']
+  selector: 'app-close-ticket',
+  templateUrl: './close-ticket.component.html',
+  styleUrls: ['./close-ticket.component.css']
 })
-export class IncidentComponent {
+export class CloseTicketComponent {
 
-  DATA : Incident[] =[];
+  DATA : closeTicket[] =[];
   constructor(private router: Router,private httpClient : HttpClient, private service : ServiceService) { } 
 
   getLevel(n:number): string
@@ -51,9 +52,24 @@ export class IncidentComponent {
       window.scrollTo(0, 0) 
   }); 
   this.service.getIncidents().subscribe(Response=>{
-    this.DATA=Response;
+    
+    // this.DATA=Response;
+    // console.log(this.DATA);
+    // this.dataSource=new MatTableDataSource(this.DATA);
+    Response.forEach((element)=>{
+      if(element.state=="Resolved" || element.state=="Ignored"){
+      this.DATA.push(
+        {
+          ticket:element,
+          closeButton:"close",
+          reviewButton:"review",
+          movebackButton:"moveback"
+        }
+      );
+      }
+    });
     console.log(this.DATA);
-    this.dataSource=new MatTableDataSource(this.DATA);
+    this.dataSource= new MatTableDataSource(this.DATA)
   
   },
   error=>{
@@ -70,11 +86,11 @@ export class IncidentComponent {
   });
 }
 
-displayedColumns: string[] = ['id', 'name','issue','priority', 'severity', 'assignmentGroup','state'];
+displayedColumns: string[] = ['id', 'name','issue','priority', 'severity', 'assignmentGroup','state','reviewButton','movebackButton','closeButton'];
 dataSource = new MatTableDataSource(this.DATA);
 
 applyFilter(filterValue: string) {
   this.dataSource.filter = filterValue.trim().toLowerCase();
 }
-}
 
+}

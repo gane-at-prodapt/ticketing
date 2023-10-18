@@ -64,7 +64,7 @@
     <div class="search1">
       <mat-form-field id="searchfield" style=" margin-left: 260px;width: 650px; background-color: #fff; color: #fff;">
         <i class="fa-solid fa-magnifying-glass"></i>
-        <input id="mysearch" matInput (keyup)="applyFilter($any($event.target).value)" placeholder=" &nbsp; Search for tickets">
+        <input style="position: absolute; margin-left: 10px;" id="mysearch" matInput (keyup)="applyFilter($any($event.target).value)" placeholder=" &nbsp; Search for tickets">
       </mat-form-field>
   </div>
   <br><br><br><br>
@@ -105,28 +105,38 @@
 
     <ng-container matColumnDef="assignmentGroup">
       <th style=" width: 80px; text-align: center; border-radius: 10%; " mat-header-cell *matHeaderCellDef> Assignment Group </th>
-      <td  style=" text-align: center " mat-cell *matCellDef="let element" > {{element.ticket.assignmentGroup.name}} </td>
+      <td  style=" text-align: center " mat-cell *matCellDef="let element"> {{element.ticket.assignmentGroup.name}} </td>
     </ng-container>
 
-    <ng-container matColumnDef="assignedTo">
-        <th style=" width: 80px; text-align: center; border-radius: 10%; " mat-header-cell *matHeaderCellDef> Assigned User </th>
-        <td  style=" text-align: center " mat-cell *matCellDef="let element"> {{getAssignedUser(element.ticket.assignedTo)}} </td>
-      </ng-container>
+    <ng-container matColumnDef="state">
+      <th style=" width: 80px; text-align: center; border-radius: 10%; " mat-header-cell *matHeaderCellDef> Ticket status </th>
+      <td  style=" text-align: center " mat-cell *matCellDef="let element"> {{element.ticket.state}} </td>
+    </ng-container>
 
-      <ng-container matColumnDef="state">
-        <th style=" width: 80px; text-align: center; border-radius: 10%; " mat-header-cell *matHeaderCellDef> Ticket status </th>
-        <td  style=" text-align: center " mat-cell *matCellDef="let element"> {{element.ticket.state}} </td>
-      </ng-container>      
+   
 
-    <ng-container  matColumnDef="assignButton">
-        <th  style=" width: 100px; text-align: center;" mat-header-cell  *matHeaderCellDef> Resolve </th>
+    <ng-container  matColumnDef="reviewButton">
+        <th  style=" width: 100px; text-align: center;" mat-header-cell  *matHeaderCellDef> Review </th>
         <td  style=" text-align: center; cursor: pointer;" mat-cell *matCellDef="let element">
-        <button [disabled]="(element.ticket.assignedTo!=undefined)" (click)="assignTicket(element.ticket)" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal"  style="width: 50px; height: 20px; border: none; box-shadow:  0 4px 4px 0 rgba(0,0,0,0.2);">{{element.assignButton}}</button>
-      </td>
-      
+        <button type="button" data-bs-toggle="modal" data-bs-target="#exampleModal"  style="width: 50px; height: 20px; border: none; box-shadow:  0 4px 4px 0 rgba(0,0,0,0.2);">{{element.reviewButton}}</button>
+      </td> 
     </ng-container>
 
-  
+    <ng-container  matColumnDef="movebackButton">
+        <th  style=" width: 100px; text-align: center;" mat-header-cell  *matHeaderCellDef> Move back </th>
+        <td  style=" text-align: center; cursor: pointer;" mat-cell *matCellDef="let element">
+        <button type="button" data-bs-toggle="modal" data-bs-target="#exampleModal"  style="width: 80px; height: 20px; border: none; box-shadow:  0 4px 4px 0 rgba(0,0,0,0.2);">{{element.movebackButton}}</button>
+      </td> 
+    </ng-container>
+
+    <ng-container  matColumnDef="closeButton">
+        <th  style=" width: 100px; text-align: center;" mat-header-cell  *matHeaderCellDef> Close </th>
+        <td  style=" text-align: center; cursor: pointer;" mat-cell *matCellDef="let element">
+        <button type="button" data-bs-toggle="modal" data-bs-target="#exampleModal"  style="width: 50px; height: 20px; border: none; box-shadow:  0 4px 4px 0 rgba(0,0,0,0.2);">{{element.closeButton}}</button>
+      </td> 
+    </ng-container>
+
+
   
     <tr style="background-color: #fff;" mat-header-row *matHeaderRowDef="displayedColumns"></tr>
     <tr style="background-color: #fff;" mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
@@ -139,31 +149,5 @@
   <br><br>
   <br><br>
   <br><br>
-  
-  <!-- Modal -->
-  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" >
-    <div class="modal-dialog modal-dialog-centered">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h3 class="modal-title fs-5" id="exampleModalLabel">Assign the ticket</h3>
-          <button (click)="closeModal()" #myModalClose type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body" style="height: 150px;">
-           <span style="font-weight:200; font-size:medium; font-family: 'Montserrat', sans-serif;">You have the option of assigning the ticket <br>to yourself or one of your group members</span> 
-            <br>
-            <br>
-            <select (change)="setUser($any($event.target).value)" [formGroup]= "form" id="exampleFormControl" style="width: 23rem; height: 34px;  border-radius: 4px; border-color: rgb(211, 211, 211);" formControlName="users" name="users" > 
-            
-                <option style=" font-family: sans-serif; letter-spacing: 2px;" *ngFor="let i of users; let in= index" value={{in}}>{{i.name}}</option>
-              
-              </select>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" style="width: 120px; height: 25px; padding: 0px 0px;">Close</button>
-          <button (click)="submitButton()" type="button" class="btn btn-primary"  style="width: 120px;height: 25px; margin-right: 100px; padding: 0px 0px;">Submit</button>
-        </div>
-      </div>
-    </div>
-  </div>
   </div>
  </div>

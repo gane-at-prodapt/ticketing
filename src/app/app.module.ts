@@ -60,6 +60,7 @@ import { ResolveTicketComponent } from './resolve-ticket/resolve-ticket.componen
 import { MyticketComponent } from './myticket/myticket.component';
 import { SuccessMessageComponent } from './success-message/success-message.component';
 import { FailMessageComponent } from './fail-message/fail-message.component';
+import { CloseTicketComponent } from './close-ticket/close-ticket.component';
 
 
 
@@ -107,7 +108,8 @@ import { FailMessageComponent } from './fail-message/fail-message.component';
     ResolveTicketComponent,
     MyticketComponent,
     SuccessMessageComponent,
-    FailMessageComponent
+    FailMessageComponent,
+    CloseTicketComponent
   ],
   imports: [
     BrowserModule,

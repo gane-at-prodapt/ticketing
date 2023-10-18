@@ -28,6 +28,7 @@ import { ResolveTicketComponent } from './resolve-ticket/resolve-ticket.componen
 import { MyticketComponent } from './myticket/myticket.component';
 import { SuccessMessageComponent } from './success-message/success-message.component';
 import { FailMessageComponent } from './fail-message/fail-message.component';
+import { CloseTicketComponent } from './close-ticket/close-ticket.component';
 
 const routes: Routes = [
   { path: 'home', component: AdminHomeComponent },
@@ -57,7 +58,8 @@ const routes: Routes = [
   { path: 'resolve', component: ResolveTicketComponent },
   { path: 'myticket', component: MyticketComponent },
   { path: 'success', component: SuccessMessageComponent },
-  { path: 'fail', component: FailMessageComponent }
+  { path: 'fail', component: FailMessageComponent },
+  { path: 'close', component: CloseTicketComponent }
 
 
   
