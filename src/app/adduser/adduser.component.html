@@ -21,7 +21,7 @@
 
 <div class="outer">
 <nav class="navbar navbar-expand-lg bg-body-tertiary" style="background-color:black " >
-    <div class="container-fluid" style="background-color: rgb(240, 240, 240);" >
+    <div class="container-fluid" style="font-family: 'League Spartan', sans-serif;  background-color: rgb(240, 240, 240);" >
       <a class="navbar-brand" [routerLink]="'../userHome'">Users</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -55,14 +55,14 @@
 <br>
 <br>
 
-<div class="card" style="width: 40rem;height: 400px; margin-left: 280px; box-shadow:  2px 4px 4px 0 rgba(0,0,0,0.2); ">
+<div class="card" style="width: 25rem;height: 400px; margin-left: 380px; box-shadow:  2px 4px 4px 0 rgba(0,0,0,0.2); ">
     <div class="card-body">
-      <h5 class="card-title" style=" margin-left: 20px; margin-top: 10px; letter-spacing: 2px;">ADD NEW USER</h5>
+      <h5 class="card-title" style="font-family: 'League Spartan', sans-serif;  margin-left: 20px; margin-top: 10px; letter-spacing: 2px;">ADD NEW USER</h5>
       <br>
       <form [formGroup]= "form">
 
         <div class="form-group" >
-          <input class="form-control" style="width: 18rem; " placeholder="Enter name"  formControlName="userName" type="text" name="userName" > 
+          <input class="form-control" style="width: 23rem; " placeholder="Enter name"  formControlName="userName" type="text" name="userName" > 
           <span class="text-danger" *ngIf= "getuserName(form.get('userName'))">
             {{
               getuserName(form.get('userName'))
@@ -71,7 +71,7 @@
         </div>
         <br>
 
-        <select (change)="setRole($any($event.target).value)" [formGroup]= "form" id="exampleFormControl" style="width: 18rem; height: 34px; border-radius: 4px; border-color: rgb(211, 211, 211);" formControlName="roles" name="roles" > 
+        <select (change)="setRole($any($event.target).value)" [formGroup]= "form" id="exampleFormControl" style="width: 23rem; height: 34px; border-radius: 4px; border-color: rgb(211, 211, 211);" formControlName="roles" name="roles" > 
         
             <option *ngFor="let i of roles; let in= index" value={{in}}>{{i.name}}</option>
           
@@ -81,7 +81,7 @@
           
 
           <div class="form-group" >
-            <input class="form-control" style="width: 18rem; " placeholder="Enter email"  formControlName="email" type="text" name="email" > 
+            <input class="form-control" style="width: 23rem; " placeholder="Enter email"  formControlName="email" type="text" name="email" > 
             <span class="text-danger" *ngIf= "getuserEmail(form.get('email'))">
               {{
                 getuserEmail(form.get('email'))
@@ -90,8 +90,10 @@
           </div>
             <br>
       </form>
+      <br>
 
-      <button id="submitButton" type="button"(click)="submit()" data-bs-toggle="modal" data-bs-target="#exampleModal1" class="btn btn-primary btn-sm">Submit</button>
+      <button id="submitButton" type="button"(click)="submit()" data-bs-toggle="modal" data-bs-target="#exampleModal1" class="btn btn-primary btn-sm"
+      style="width: 23rem;">Submit</button>
 
       <div class="modal fade" id="exampleModal1" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" >
         <div class="modal-dialog modal-dialog-centered">

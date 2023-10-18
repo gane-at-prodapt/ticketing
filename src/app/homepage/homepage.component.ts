@@ -2,7 +2,7 @@ import { animate, state, style, transition, trigger } from '@angular/animations'
 import { Component,Renderer2, OnInit} from '@angular/core';
 import { Chart, ChartData, ChartOptions, Title } from 'chart.js';
 import { Router, NavigationEnd } from '@angular/router';
-
+import { getCookie } from 'typescript-cookie';
 
 @Component({
   selector: 'app-homepage',
@@ -22,6 +22,9 @@ import { Router, NavigationEnd } from '@angular/router';
   ]
 })
 export class HomepageComponent {
+
+  name:string|undefined = getCookie('userName');
+  role: string|undefined= getCookie('userRole');
 
   constructor(private router: Router) { } 
 
@@ -78,6 +81,7 @@ export class HomepageComponent {
     let mountainback = document.getElementById('mountain_back');
     let mountainfront = document.getElementById('mountain_front');
     let text = document.getElementById('text');
+    let text1 = document.getElementById('text1');
     let btn = document.getElementById('explore');
     let bubble1=document.getElementById('bubble1');
     let bubble2=document.getElementById('bubble2');
@@ -185,9 +189,13 @@ export class HomepageComponent {
         text.style.bottom= 250 + value + 'px';
         text.style.opacity = 100 - (value*0.5) + '%';
       }
+      if(text1!=null) {
+        text1.style.bottom= 230 + value + 'px';
+        text1.style.opacity = 100 - (value*0.5) + '%';
+      }
 
       if(btn!=null) {
-        btn.style.bottom = value +250  + 'px';
+        btn.style.bottom = value +265  + 'px';
         btn.style.opacity = 100 - (value*0.25) + '%';
       }
 
