@@ -51,11 +51,11 @@ export interface NetworkElement{
 }
 
 export interface Issue{
-  id: number;
-  name: string;
-  network_family: string;
-  description: string;
-  modifiedOn: string;
+  id?: number;
+  name?: string;
+  network_family?: string;
+  description?: string;
+  modifiedOn?: number;
 }
 
 export interface AssignmentGroup{
