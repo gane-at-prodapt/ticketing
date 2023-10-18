@@ -42,7 +42,7 @@ export interface Auth{
 }
 
 export interface NetworkElement{
-  id: number;
+  id?: number;
   name: string;
   deviceFamily:string;
   ipv4Address:string;

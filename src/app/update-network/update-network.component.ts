@@ -1,6 +1,9 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router, NavigationEnd } from '@angular/router';
+import { NetworkElement, ServiceService } from '../service.service';
+import { error } from 'highcharts';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-update-network',
@@ -9,7 +12,7 @@ import { Router, NavigationEnd } from '@angular/router';
 })
 export class UpdateNetworkComponent {
 
-  constructor(private router: Router) { } 
+  constructor(private router: Router, private service:ServiceService,private toastr: ToastrService) { } 
       
   ngOnInit() { 
       this.router.events.subscribe((event) => { 
@@ -27,8 +30,22 @@ export class UpdateNetworkComponent {
   IPAddress:string="";
   macAddress:string="";
   
-  networkElements:string[]=["Router","Modem","Firewall","Switch","OLT","ONT"];
+  networkElements:string[]=["Broadband cable","Wireless dongle", "Modem", "Router", "Ethernet Cable", "Wireless access point", "Opical Network terminal", "Splitter", "Fiber Optic cable","Network switch"];
  
+  setName(str:string){
+    this.networkName=str;
+  }
+  setFamily(str:string){
+    this.networkFamily=str;
+  }
+  setIp(str:string){
+    this.IPAddress=str;
+  }
+  setMac(str:string){
+    this.macAddress=str;
+  }
+  
+
   form:FormGroup = new FormGroup(
     {
       networkFamily:new FormControl("",[Validators.required]),
@@ -45,56 +62,33 @@ export class UpdateNetworkComponent {
       networkFamily:new FormControl("",[Validators.required])
     }
   )
-  getnetworkName(control:any):string
-  {
-    this.networkName= control.value
-    return '';
-  }
-
-  getnetworkFamily(control:any):string
-  {
-    this.networkFamily= control.value
-    return '';
-  }
-
-  getnetworkParent(control:any):string
-  {
-    this.networkParent= control.value
-    return '';
-   
-  }
-
-  getIPAddresss(control:any):string
-  {
-    this.IPAddress= control.value
-    return '';
-  }
-
-  getmacAddresss(control:any):string
-  {
-    this.macAddress= control.value
-    return '';
-  }
 
 
   submit()
   {
 
-  console.log(this.networkName);
-  console.log(this.networkFamily);
-  console.log(this.networkParent);
-  console.log(this.IPAddress);
-  console.log(this.macAddress);
+    console.log(this.networkName);
+    console.log(this.networkFamily);
+    console.log(this.networkParent);
+    console.log(this.IPAddress);
+    console.log(this.macAddress);
 
-  const addNetwork:JSON = <JSON><unknown>{
-    "networkName": this.networkName,
-    "networkFamily": this.networkFamily,
-    "networkParent": this.networkParent,
-    "IPAddress": this.IPAddress,
-    "macAddress": this.macAddress
-  }
-  console.log(addNetwork);
-  
+    let N:NetworkElement={
+      name:this.networkName,
+      deviceFamily:this.networkFamily,
+      ipv4Address:this.IPAddress,
+      macAddress:this.macAddress,
+      modifiedOn:Math.floor(Date.now() / 1000)
+    }
+    this.service.addNetworkElement(N).subscribe((Response)=>{
+      this.toastr.success('Ticket raised successfully');
+    },
+    error=>{
+      this.toastr.error('Failed to raise ticket');
+    });
+    
+
+
   }
  
  

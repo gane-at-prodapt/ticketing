@@ -24,7 +24,7 @@ export class CreateissueComponent {
   matcher = new ErrorStateMatcher();
 
 
-  networkElements:string[]=["Broadband cable","Wireless dongle", "Modem", "Router", "Ethernet Cable", "Wireless access point", "Opical Network terminal", "Splitter", "Fiber Optic cable","Network switch"];;
+  networkElements:string[]=["Broadband cable","Wireless dongle", "Modem", "Router", "Ethernet Cable", "Wireless access point", "Opical Network terminal", "Splitter", "Fiber Optic cable","Network switch"];
   networkElement:string|undefined;
   name:string|undefined;
   description:string|undefined;
