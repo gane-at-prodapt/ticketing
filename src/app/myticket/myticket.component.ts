@@ -73,6 +73,17 @@ export class MyticketComponent {
     this.selectedIncident=I;
   }
 
+  getName(u:User|undefined):string{
+    if(u!=undefined){
+      if(u.name!=undefined)
+      return u.name;
+      else
+      return "-";
+    }else{
+      return "-";
+    }
+  }
+
   moveTicket(I:Incident){
     this.selectedIncident=I;
     this.service.getAssignmentGroups().subscribe(Response=>{
@@ -188,6 +199,7 @@ export class MyticketComponent {
 
   this.service.getIncidentsByMember(Number(getCookie("userId"))).subscribe(Response=>{
     console.log(Number(getCookie("userId")));
+    if(Response!=null)
     Response.forEach((element)=>{
       if(element.state=="Assigned"){
         this.DATA.push({

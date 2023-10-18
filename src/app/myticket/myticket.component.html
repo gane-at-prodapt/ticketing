@@ -116,7 +116,7 @@
   
       <ng-container matColumnDef="assignedTo">
           <th style=" width: 80px; text-align: center; border-radius: 10%; " mat-header-cell *matHeaderCellDef> Assigned User </th>
-          <td  style=" text-align: center " mat-cell *matCellDef="let element"> {{element.ticket.assignedTo.name}} </td>
+          <td  style=" text-align: center " mat-cell *matCellDef="let element"> {{getName(element.ticket.assignedTo)}} </td>
         </ng-container>
   
         
@@ -206,7 +206,7 @@
                 <br>
                 <br>
                 <form [formGroup]= "form">
-                  <select (change)="setGroup($any($event.target).value)" [formGroup]= "form" id="exampleFormControl" style="width: 28rem; height: 34px; line-height: 3;  border-radius: 4px; border-color: rgb(211, 211, 211);" formControlName="users" name="users" > 
+                  <select (change)="setGroup($any($event.target).value)" [formGroup]= "form" id="exampleFormControl" style="width: 28rem; height: 34px; line-height: 3;  border-radius: 4px; border-color: rgb(211, 211, 211);"  name="users" > 
             
                     <option style="font-family: sans-serif; letter-spacing: 2px; " *ngFor="let i of groups; let in= index" value={{in}}>{{i.name}}</option>
                   
