@@ -5,6 +5,7 @@ import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { error } from 'highcharts';
 import * as CryptoJS from 'crypto-js';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-adduser',
@@ -20,7 +21,7 @@ export class AdduserComponent {
 
   roles: Role[]=[];
 
-  constructor(private router: Router,private httpClient : HttpClient, private service : ServiceService) 
+  constructor(private router: Router,private httpClient : HttpClient, private service : ServiceService, private toastr: ToastrService ) 
   { } 
 
 
@@ -102,8 +103,10 @@ export class AdduserComponent {
       };
       this.service.addAuth(createAuth).subscribe((Response)=>{
         console.log(Response);
+        this.toastr.success('New user added successfully');
       },
       error=>{
+        this.toastr.error('Failed to add new user')
 
       });
     }

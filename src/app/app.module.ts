@@ -28,6 +28,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { ChartModule } from 'angular-highcharts';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { HttpClientModule } from '@angular/common/http';
+import { ToastrModule } from 'ngx-toastr';
 
 
 
@@ -124,7 +125,8 @@ import { FailMessageComponent } from './fail-message/fail-message.component';
     MatFormFieldModule,
     MatSelectModule,
     BrowserAnimationsModule,
-    MatButtonModule 
+    MatButtonModule,
+    ToastrModule.forRoot(),
   ],
   providers: [],
   bootstrap: [AppComponent]
