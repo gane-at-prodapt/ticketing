@@ -208,12 +208,12 @@
         computer network to communicate and interact with one another.A network device is a piece of hardware or software integral to communication between
          a computer and an internet network. Network devices play two roles. The first is establishing a network connection</p>
          <br><br>
-         <div class="row">
+         <div class="row"> 
             <div class="col-4" *ngFor="let i of users ; let in= index" style="font-family:'Montserrat', sans-serif;">
                 <div class="card" style="width: 16rem; border-radius: 1px; margin-bottom: 20px;  font-family:'Montserrat', sans-serif;">
                     <div class="card-body" style="font-family:'Montserrat', sans-serif;">
                       <h3 class="card-title" style="font-family:'Montserrat', sans-serif;">{{i.name}}</h3>
-                      <h5 class="card-subtitle mb-2 text-body-secondary" style="font-family:'Montserrat', sans-serif;"><b>Role : {{i.role.name}}</b></h5>
+                      <h5 class="card-subtitle mb-2 text-body-secondary" style="font-family:'Montserrat', sans-serif;"><b>Role : {{i.role?.name}}</b></h5>
                       <span class="card-text"><b>Email : </b>{{i.email}}</span>
                     
                     </div>
