@@ -8,26 +8,9 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
 import { Router, NavigationEnd } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
-import { ServiceService, Role } from '../service.service';
+import { ServiceService, Role, Access } from '../service.service';
 import { numberFormat } from 'highcharts';
 
-export interface access{
-  module: string;
-  moduleaccess: string;
-}
-
-const accessData: access[] =[
-  { module: "Network", moduleaccess:"write | read"},
-  { module: "Components", moduleaccess:"write | read"},
-  { module: "Incident", moduleaccess:"write | read"},
-  { module: "Group", moduleaccess:"write | read"},
-  { module: "Issuse", moduleaccess:"write | read"},
-  { module: "Role", moduleaccess:"read" },
-  { module: "User", moduleaccess:"write | read" },
-  { module: "Module", moduleaccess:"read" },
-  
-
-]
 
 
 
@@ -35,10 +18,6 @@ export interface roleswithbutton {
   role: Role;
   button: any;
 }
-
-
-
-
 
 
 @Component({
@@ -50,11 +29,19 @@ export interface roleswithbutton {
 
 export class RolesandaccessComponent {
 
+  accessData:Access[]=[];
+  selectedRole:Role|undefined;
 
-
-  test(element:number)
-  {
-   console.log(element);
+  viewAccess(role:Role){
+    this.selectedRole=role;
+    this.service.getAccessByRole(role.id).subscribe((Response)=>{
+      console.log(Response);
+      this.accessData=Response;
+      this.seconddataSource = new MatTableDataSource(this.accessData);
+    },
+    error=>{
+      console.log(error);
+    });
   }
   
 
@@ -62,8 +49,6 @@ export class RolesandaccessComponent {
 
 
   secondTable: string[] = ['module', 'moduleaccess']
-  seconddataSource = new MatTableDataSource(accessData);
-
 
 
   constructor(private router: Router, private httpClient : HttpClient, private service : ServiceService) { } 
@@ -89,12 +74,12 @@ export class RolesandaccessComponent {
       
       },
       error=>{
-        //need to display "invalid credentials, try again" in the bottom of the form. clear the password field
         console.log(error);
       });
   } 
   displayedColumns: string[] = ['id', 'name','button'];
   dataSource = new MatTableDataSource(this.DATA);
+  seconddataSource = new MatTableDataSource(this.accessData);
 
   applyFilter(filterValue: string) {
     this.dataSource.filter = filterValue.trim().toLowerCase();

@@ -77,7 +77,6 @@
    
     <ng-container matColumnDef="name">
        
-       
       <th  style=" width: 100px; text-align: center " mat-header-cell *matHeaderCellDef> Role Name </th>
       <td  style=" text-align: center " mat-cell *matCellDef="let element"> {{element.role.name}} </td>
       
@@ -86,34 +85,11 @@
     <ng-container  matColumnDef="button">
       <th  style=" width: 100px; text-align: center;" mat-header-cell  *matHeaderCellDef> Access </th>
       <td  style=" text-align: center; cursor: pointer;" mat-cell *matCellDef="let element">
-       <button mat-raised style="border: none; box-shadow:  0 4px 4px 0 rgba(0,0,0,0.2);">{{element.button}}</button>
+       <button (click)="viewAccess(element.role)" data-bs-toggle="modal" data-bs-target="#AccessModal" mat-raised style="border: none; box-shadow:  0 4px 4px 0 rgba(0,0,0,0.2);">{{element.button}}</button>
     </td>
     </ng-container>
    
-  
-    <!-- Weight Column -->
 
-<!--     
-    <ng-container matColumnDef="network">
-      <th style=" width: 80px; text-align:center"  mat-header-cell *matHeaderCellDef> Network </th>
-      <td  style=" text-align: center " mat-cell *matCellDef="let element"> {{element.network}} </td>
-    </ng-container>
-  
-    
-    <ng-container matColumnDef="incident">
-      <th style=" width: 80px; text-align: center; border-radius: 10%; " mat-header-cell *matHeaderCellDef> Incident </th>
-      <td  style=" text-align: center " mat-cell *matCellDef="let element"> {{element.incident}} </td>
-    </ng-container>
-
-    <ng-container matColumnDef="issues">
-        <th style=" width: 80px; text-align: center; border-radius: 10%; " mat-header-cell *matHeaderCellDef> Issues </th>
-        <td  style=" text-align: center " mat-cell *matCellDef="let element"> {{element.issues}} </td>
-      </ng-container>
-
-      <ng-container matColumnDef="groups">
-        <th style=" width: 80px; text-align: center; border-radius: 10%; " mat-header-cell *matHeaderCellDef> Groups </th>
-        <td  style=" text-align: center " mat-cell *matCellDef="let element"> {{element.groups}} </td>
-      </ng-container> --> 
   
     <tr style="background-color: #fff;" mat-header-row *matHeaderRowDef="displayedColumns"></tr>
     <tr style="background-color: #fff;" mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
@@ -122,13 +98,14 @@
 
 </div>
 
-<!-- <div class="buttons">
+
+
     
-<div class="modal fade" id="exampleModalToggleSA" aria-hidden="true" aria-labelledby="exampleModalToggleLabelSA" tabindex="-1">
+<div class="modal fade" id="AccessModal" aria-hidden="true" aria-labelledby="exampleModalToggleLabelSA" tabindex="-1">
     <div class="modal-dialog modal-dialog-centered">
       <div class="modal-content">
         <div class="modal-header">
-          <h1 class="modal-title fs-5" id="exampleModalToggleLabelSA"> Super Admin access</h1>
+          <h1 class="modal-title fs-5" id="exampleModalToggleLabelSA"> {{selectedRole?.name}} access</h1>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
@@ -139,25 +116,25 @@
             <table id="mysecondtable" mat-table [dataSource]="seconddataSource" class="mat-elevation-z8"> 
               
             
-              <ng-container  matColumnDef="position">
-                <th  style=" width: 100px; text-align: center;" mat-header-cell  *matHeaderCellDef> Role ID </th>
-                <td  style=" text-align: center; cursor: pointer;" mat-cell *matCellDef="let element"> {{element.module}} </td>
+              <ng-container  matColumnDef="module">
+                <th  style=" width: 100px; text-align: center;" mat-header-cell  *matHeaderCellDef> Module </th>
+                <td  style=" text-align: center; cursor: pointer;" mat-cell *matCellDef="let element"> {{element.module.name}} </td>
               </ng-container>
           
               
              
-              <ng-container matColumnDef="name">
+              <ng-container matColumnDef="moduleaccess">
                  
                  
-                <th  style=" width: 100px; text-align: center " mat-header-cell *matHeaderCellDef> Role Name </th>
-                <td  style=" text-align: center; " mat-cell *matCellDef="let element"><span style="border: 1px solid; border-radius: 8px; color: #0d6efd; "> &nbsp; &nbsp;  {{element.moduleaccess}}  &nbsp;  &nbsp;  </span> </td>
+                <th  style=" width: 100px; text-align: center " mat-header-cell *matHeaderCellDef> Access </th>
+                <td  style=" text-align: center; " mat-cell *matCellDef="let element"><span style="border: 1px solid; border-radius: 8px; color: #0d6efd; "> &nbsp; &nbsp;  {{element.status}}  &nbsp;  &nbsp;  </span> </td>
                 
              
               </ng-container>
     
             
-              <tr style="background-color: #fff;" mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-              <tr style="background-color: #fff;" mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+              <tr style="background-color: #fff;" mat-header-row *matHeaderRowDef="secondTable"></tr>
+              <tr style="background-color: #fff;" mat-row *matRowDef="let row; columns: secondTable;"></tr>
                 
           </table>
           
@@ -168,114 +145,6 @@
     </div>
   </div>
 
-  <div class="modal fade" id="exampleModalToggleNA" aria-hidden="true" aria-labelledby="exampleModalToggleLabelNA" tabindex="-1">
-    <div class="modal-dialog modal-dialog-centered" >
-      <div class="modal-content" >
-        <div class="modal-header" >
-          <h6 class="modal-title fs-5" id="exampleModalToggleLabelNA">Network Admin access</h6>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body">
-          
-            <div class="table2">
-                <table id="mysecondtable" mat-table [dataSource]="seconddataSource" class="mat-elevation-z8"> 
-                  
-              
-                  <ng-container  matColumnDef="position">
-                    <th  style=" width: 100px; text-align: center;" mat-header-cell  *matHeaderCellDef> Role ID </th>
-                    <td  style=" text-align: center; cursor: pointer;" mat-cell *matCellDef="let element"> {{element.module}} </td>
-                  </ng-container>
-              
-                  
-                 
-                  <ng-container matColumnDef="name">
-                     
-                     
-                    <th  style=" width: 100px; text-align: center " mat-header-cell *matHeaderCellDef> Role Name </th>
-                    <td  style=" text-align: center; " mat-cell *matCellDef="let element"><span style="border: 1px solid; border-radius: 8px; color: #0d6efd; "> &nbsp; &nbsp; &nbsp; &nbsp;  {{element.moduleaccess}}  &nbsp; &nbsp;  &nbsp; &nbsp;  </span> </td>
-                    
-                 
-                  </ng-container>
-        
-                
-                  <tr style="background-color: #fff;" mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-                  <tr style="background-color: #fff;" mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-                    
-              </table>
-              
-              </div>
-        </div>
-       
-      </div>
-    </div>
-  </div>
-
-  <div class="modal fade" id="exampleModalToggleNE" aria-hidden="true" aria-labelledby="exampleModalToggleLabelNE" tabindex="-1">
-    <div class="modal-dialog modal-dialog-centered">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h1 class="modal-title fs-5" id="exampleModalToggleLabelNE"> Network Engineer access</h1>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body">
-          Show a second modal and hide this one with the button below.
-          Network Engineer access
-        </div>
-       
-      </div>
-    </div>
-  </div>
-
-  <div class="modal fade" id="exampleModalToggleSUPA" aria-hidden="true" aria-labelledby="exampleModalToggleLabelSUPA" tabindex="-1">
-    <div class="modal-dialog modal-dialog-centered">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h1 class="modal-title fs-5" id="exampleModalToggleLabelSUPA">Support Analyst Access</h1>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body">
-          Show a second modal and hide this one with the button below.
-          Support Analyst
-        </div>
-      
-      </div>
-    </div>
-  </div>
-
-  <div class="modal fade" id="exampleModalToggleO" aria-hidden="true" aria-labelledby="exampleModalToggleLabelO" tabindex="-1">
-    <div class="modal-dialog modal-dialog-centered">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h1 class="modal-title fs-5" id="exampleModalToggleLabelO">Observer Access</h1>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body">
-          Show a second modal and hide this one with the button below.
-          Observer Access
-        </div>
-    
-      </div>
-    </div>
-  </div>
- 
-  <div>
-  <button  id="superAdmin" class="btn btn-primary" data-bs-target="#exampleModalToggleSA" data-bs-toggle="modal">access</button>
-</div>
-<div>
-  <button  id="networkAdmin" class="btn btn-primary" data-bs-target="#exampleModalToggleNA" data-bs-toggle="modal">access</button>
-</div>
-<div>
-<button  id="networkEngineer" class="btn btn-primary" data-bs-target="#exampleModalToggleNE" data-bs-toggle="modal">access</button>
-</div>
-<div>
-  <button  id="supportAnalyst" class="btn btn-primary" data-bs-target="#exampleModalToggleSUPA" data-bs-toggle="modal">access</button>
-</div>
-<div>
- <button  id="Observer" class="btn btn-primary" data-bs-target="#exampleModalToggleO" data-bs-toggle="modal">access</button>
-</div>
-  
- 
-  </div> -->
   
   <br><br>
   <br><br>
