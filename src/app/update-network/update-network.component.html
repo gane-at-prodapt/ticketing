@@ -48,64 +48,29 @@
                 
                 <form [formGroup]= "form">
                   <div class="form-group" >
-                    <input class="form-control" style="width: 23rem; " placeholder="Enter network name"  formControlName="networkName" type="text" name="networkName" > 
-                    <span class="text-danger" *ngIf= "getnetworkName(form.get('networkName'))">
-                    {{
-                      getnetworkName(form.get('networkName'))
-                    }}
-                    </span>
+                    <input class="form-control" (change)="setName($any($event.target).value)" style="width: 23rem; " placeholder="Device name"  formControlName="networkName" type="text" name="networkName" > 
                   </div>
                  
                 <br>
-                
-                
-                  <div class="form-group">
-                   
-                    <select [formGroup]= "form" id="exampleFormControlSelect1" style="width: 370px; height: 34px; border-radius: 4px; border-color: rgb(211, 211, 211);" formControlName="networkFamily" name="networkFamily" > 
-                    
-                      <option *ngFor="let i of networkElements; let in= index" value={{i}}>{{i}}</option>
-                      <p><span>You selected: </span><b>{{select.value}}</b></p>
-                      <span class="text-danger" *ngIf= "getnetworkFamily(form.get('networkFamily'))">
-                        {{
-                          getnetworkFamily(form.get('networkFamily'))
-                        }}
-                        </span>
-                    
-                    </select>
-                  </div>
-                  <br>
                   
                   <div class="form-group">
                    
-                    <select [formGroup]= "form" id="exampleFormControlSelect1" style="width: 200px;" style="width: 370px; height: 34px; border-radius: 4px; border-color: rgb(211, 211, 211);" class="custom-select"  formControlName="networkParent" name="networkParent" > 
+                    <select (change)="setFamily($any($event.target).value)" [formGroup]= "form" id="exampleFormControlSelect1" style="width: 200px;" style="width: 370px; height: 34px; border-radius: 4px; border-color: rgb(211, 211, 211);" class="custom-select"  formControlName="networkParent" name="networkParent" > 
                      
                       <option *ngFor="let i of networkElements; let in= index" value={{i}}>{{i}}</option>
-                      <p><span>You selected: </span><b>{{select.value}}</b></p>
-                      <span class="text-danger" *ngIf= "getnetworkParent(form.get('networkParent'))">
-                        {{
-                          getnetworkParent(form.get('networkParent'))
-                        }}
-                        </span>
-                    
+                  
                     </select>
                   </div>
+
                   <br>
                   <div class="form-group" >
-                    <input class="form-control" style="width: 23rem; " placeholder="Enter Network IP address"  formControlName="IPAddress" type="text" name="IPAddress" > 
-                    <span class="text-danger" *ngIf= "getIPAddresss(form.get('IPAddress'))">
-                    {{
-                      getIPAddresss(form.get('IPAddress'))
-                    }}
-                    </span>
+                    <input (change)="setIp($any($event.target).value)" class="form-control" style="width: 23rem; " placeholder="Enter Network IP address"  formControlName="IPAddress" type="text" name="IPAddress" > 
+                  
                   </div>
                   <br>
                   <div class="form-group" >
-                    <input class="form-control" style="width: 23rem; " placeholder="Enter Mac address"  formControlName="macAddress" type="text" name="macAddress" > 
-                    <span class="text-danger" *ngIf= "getmacAddresss(form.get('macAddress'))">
-                    {{
-                      getmacAddresss(form.get('macAddress'))
-                    }}
-                    </span>
+                    <input (change)="setMac($any($event.target).value)" class="form-control" style="width: 23rem; " placeholder="Enter Mac address"  formControlName="macAddress" type="text" name="macAddress" > 
+                    
                   </div>
                 </form>
                 <br>

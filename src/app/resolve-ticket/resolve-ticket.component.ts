@@ -137,16 +137,6 @@ export class ResolveTicketComponent {
     console.log(error);
   });
 
-  
-
-
-
-  //   window.addEventListener('scroll', function(){
-  //     let value = window.scrollY;
-  //     if(mynavbar1!=null){
-  //       mynavbar1.style.top =  value  + 'px';
-  //     }
-  // });
 }
 
 displayedColumns: string[] = ['id', 'name', 'issue', 'priority', 'severity', 'assignmentGroup','state', 'assignedTo' ,'assignButton'];

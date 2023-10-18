@@ -34,18 +34,6 @@
           <li class="nav-item">
             <a class="nav-link" [routerLink]="'../issues'">View Issues</a>
           </li>
-          <!-- <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-              Dropdown
-            </a>
-            <ul class="dropdown-menu">
-              <li><a class="dropdown-item" href="#">Action</a></li>
-              <li><a class="dropdown-item" href="#">Another action</a></li>
-              <li><hr class="dropdown-divider"></li>
-              <li><a class="dropdown-item" href="#">Something else here</a></li>
-            </ul>
-          </li> -->
-          
         </ul>
        
       </div>
@@ -61,16 +49,13 @@
       <h5 class="card-title">CREATE &nbsp; ISSUE</h5>
 
       <br><br><br>
-      
-
-      <p style="margin-left: 50px; margin-bottom: 0px;">Select network device</p>
 
       <div class="input-group mb-3"  >
-        <select style="width: 365px; height: 25px; margin-left: 50px; margin-top: 5px; border-radius: 4px;" name="networkName"class="custom-select" id="inputGroupSelect" >
+        <select (change)="setNetworkElement($any($event.target).value)" style="width: 365px; height: 25px; margin-left: 50px; margin-top: 5px; border-radius: 4px;" name="networkName"class="custom-select" id="inputGroupSelect" >
         
-          <option selected>Select</option>
+          <option value="" disabled selected hidden>Select Network device</option>
     
-        <option *ngFor="let i of networkElements; let in= index" value={{in}}>{{i}}</option>
+          <option *ngFor="let i of networkElements; let in= index" value={{in}}>{{i}}</option>
         
         </select>
 
@@ -79,21 +64,20 @@
         
    </div>
    <div>
-    <p style="margin-left: 50px; margin-bottom: 0px;">Issue Name</p>
-    <input style="margin-top: 3px; " class="form-control"  formControlName="issuename" type="text" name="issuename" > 
+    <input (change)="setIssueName($any($event.target).value)" style="margin-top: 3px; " placeholder="Issue Name" class="form-control"  formControlName="issuename" type="text" name="issuename" > 
                
   </div>
   <br>
 
-  <div>
-    <p style="margin-left: 50px; margin-bottom: 0px;">Issue Description</p> 
-
-
-
-    <textarea id="w3review" name="w3review" rows="4" cols="50">  At w3schools.com you will learn how to make a website. They offer free tutorials in all web development technologies.
-    </textarea>
+  <div> 
+    <textarea id="w3review" (change)="setIssueDesc($any($event.target).value)" placeholder="Issue description" name="w3review" rows="4" cols="50"></textarea>
    
   </div>
+
+  <br>
+  <br>
+
+  <button id="submitButton" type="button"(click)="submit()"  class="btn btn-primary btn-sm">Submit</button>
 
     
 

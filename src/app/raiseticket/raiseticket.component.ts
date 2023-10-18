@@ -116,6 +116,7 @@ export class RaiseticketComponent {
 
   setIssue(id:number){
     this.issue=this.issues[id];
+    if(this.issue.id!=undefined)
     this.service.getAssignmentGroupsByIssue(this.issue.id).subscribe((Response)=>{
       this.groups=Response;
       console.log(this.issues);
