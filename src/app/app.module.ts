@@ -68,6 +68,7 @@ import { FailMessageComponent } from './fail-message/fail-message.component';
 
 
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -126,7 +127,7 @@ import { FailMessageComponent } from './fail-message/fail-message.component';
     MatSelectModule,
     BrowserAnimationsModule,
     MatButtonModule,
-    ToastrModule.forRoot(),
+    ToastrModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent]
