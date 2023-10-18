@@ -18,35 +18,59 @@ export class RolesHomepageComponent {
   constructor(private router: Router, private httpClient : HttpClient, private service : ServiceService, private toastr: ToastrService) { } 
 
   navCreateNetwork(){
-    if(this.access[0].status=="write"){
+    if(this.access[0]!=undefined && this.access[0].status=="write"){
       this.router.navigate(['/','addnetwork']);
-    }else{
+    }
+    
+    else{
       this.toastr.error('Access restricted');
     }
+    window.scroll({ 
+      top: 0, 
+      left: 0, 
+      behavior: 'smooth' 
+    });
     
   }
   navCreateIncident(){
-    if(this.access[2].status=="write"){
+    if(this.access[2]!=undefined && this.access[2].status=="write"){
       this.router.navigate(['/','ticket']);
     }else{
       this.toastr.error('Access restricted');
     }
+    window.scroll({ 
+      top: 0, 
+      left: 0, 
+      behavior: 'smooth' 
+    });
   }
   navCreateIssue(){
-    if(this.access[4].status=="write"){
+    if(this.access[4]!=undefined && this.access[4].status=="write"){
       this.router.navigate(['/','addissue']);
     }else{
       this.toastr.error('Access restricted');
     }
+    window.scroll({ 
+      top: 0, 
+      left: 0, 
+      behavior: 'smooth' 
+    });
   }
   navCreateUser(){
-    if(this.access[6].status=="write"){
+    if(this.access[6]!=undefined && this.access[6].status=="write"){
       this.router.navigate(['/','adduser']);
     }else{
       this.toastr.error('Access restricted');
     }
-  }
 
+    window.scroll({ 
+      top: 0, 
+      left: 0, 
+      behavior: 'smooth' 
+    });
+
+  
+  }
   ngOnInit() { 
       this.router.events.subscribe((event) => { 
           if (!(event instanceof NavigationEnd)) { 

@@ -52,7 +52,7 @@
             <a class="nav-link" [routerLink]="'../issues'">&nbsp; Search issues </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" [routerLink]="'../addissue'">&nbsp; Create new issue</a>
+            <a class="nav-link" style="cursor: pointer;" (click)="navCreateIssue()">&nbsp; Create new issue</a>
           </li>
           <li class="nav-item" style="margin-left: 580px;">
             <a class="nav-link" [routerLink]="'../homepage'">Homepage</a>
@@ -134,7 +134,7 @@
          <a class="nav-link" style="position: absolute; font-family: 'Montserrat', sans-serif; font-weight:200; margin-bottom: 0px;" [routerLink]="'../network'">Search network </a>    
         </li>
         <li class="nav-item" style="margin-left: 30px;">
-        <a class="nav-link" style="margin-top: 22px; font-family: 'Montserrat', sans-serif; font-weight:200; " [routerLink]="'../addnetwork'">Create new network</a>
+        <a class="nav-link" style="margin-top: 22px; font-family: 'Montserrat', sans-serif; font-weight:200; cursor: pointer;" (click)="navCreateNetwork()">Create new network</a>
 
         </li>
 
@@ -142,7 +142,7 @@
             <a class="nav-link"  style=" font-family: 'Montserrat', sans-serif; font-weight:bolder" [routerLink]="'../incidentHome'">Incident </a>
         </li>
         <li class="nav-item" style="margin-left: 30px;">
-            <a class="nav-link" style="position: absolute; font-family: 'Montserrat', sans-serif; font-weight:200; margin-bottom: 0px;" [routerLink]="'../incident'">Search incident </a>    
+            <a class="nav-link" style="position: absolute; font-family: 'Montserrat', sans-serif; font-weight:200; margin-bottom: 0px;  cursor: pointer;" (click)="navCreateIncident()">Search incident </a>    
            </li>
            <li class="nav-item" style="margin-left: 30px;">
            <a class="nav-link" style="margin-top: 22px; font-family: 'Montserrat', sans-serif; font-weight:200; " [routerLink]="'../ticket'">Create new incident </a>
@@ -166,7 +166,7 @@
             <a class="nav-link" style="position: absolute; font-family: 'Montserrat', sans-serif; font-weight:200; margin-bottom: 0px;" [routerLink]="'../issues'">Search issues </a>    
            </li>
            <li class="nav-item" style="margin-left: 30px;">
-           <a class="nav-link" style="margin-top: 22px; font-family: 'Montserrat', sans-serif; font-weight:200; " [routerLink]="'../addissue'">Create new issues </a>
+           <a class="nav-link" style="margin-top: 22px; font-family: 'Montserrat', sans-serif; font-weight:200; cursor: pointer; " (click)="navCreateIssue()">Create new issues </a>
    
         </li>
 
@@ -177,7 +177,7 @@
             <a class="nav-link" style="position: absolute; font-family: 'Montserrat', sans-serif; font-weight:200; margin-bottom: 0px;" [routerLink]="'../users'">Search users </a>    
            </li>
            <li class="nav-item" style="margin-left: 30px;">
-           <a class="nav-link" style="margin-top: 22px; font-family: 'Montserrat', sans-serif; font-weight:200; " [routerLink]="'../adduser'">Create new users </a>
+           <a class="nav-link" style="margin-top: 22px; font-family: 'Montserrat', sans-serif; font-weight:200; cursor: pointer;" (click)="navCreateUser()">Create new users </a>
    
         </li>
 
