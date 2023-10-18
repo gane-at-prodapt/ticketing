@@ -81,10 +81,10 @@ export class UpdateNetworkComponent {
       modifiedOn:Math.floor(Date.now() / 1000)
     }
     this.service.addNetworkElement(N).subscribe((Response)=>{
-      this.toastr.success('Ticket raised successfully');
+      this.toastr.success('New network device added successfully ');
     },
     error=>{
-      this.toastr.error('Failed to raise ticket');
+      this.toastr.error('Failed to create new network device');
     });
     
 

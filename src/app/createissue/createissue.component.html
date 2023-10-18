@@ -20,8 +20,8 @@
 
 
 <div class="outer">
-<nav class="navbar navbar-expand-lg bg-body-tertiary" style="background-color:black " >
-    <div class="container-fluid" >
+<nav class="navbar navbar-expand-lg bg-body-tertiary" style="font-family: 'League Spartan', sans-serif; background-color:black " >
+    <div class="container-fluid" style="background-color: rgb(240, 240, 240);" >
       <a class="navbar-brand" [routerLink]="'../issueHome'">Issues</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -43,7 +43,7 @@
   <br><br>
   <br>
 
-  <div class="card" style="width: 30rem; height: 30rem;">
+  <div class="card" style="width: 33rem; height: 30rem;">
   
     <div class="card-body">
       <h5 class="card-title">CREATE &nbsp; ISSUE</h5>
@@ -51,7 +51,7 @@
       <br><br><br>
 
       <div class="input-group mb-3"  >
-        <select (change)="setNetworkElement($any($event.target).value)" style="width: 365px; height: 25px; margin-left: 50px; margin-top: 5px; border-radius: 4px;" name="networkName"class="custom-select" id="inputGroupSelect" >
+        <select (change)="setNetworkElement($any($event.target).value)" style="width: 370px; height: 34px; border-radius: 4px; border-color: rgb(211, 211, 211); margin-left: 70px;" name="networkName"class="custom-select" id="inputGroupSelect" >
         
           <option value="" disabled selected hidden>Select Network device</option>
     
@@ -64,20 +64,20 @@
         
    </div>
    <div>
-    <input (change)="setIssueName($any($event.target).value)" style="margin-top: 3px; " placeholder="Issue Name" class="form-control"  formControlName="issuename" type="text" name="issuename" > 
+    <input (change)="setIssueName($any($event.target).value)" style="margin-left: 70px; width: 370px; height: 34px; border-radius: 4px; border-color: rgb(211, 211, 211); " placeholder="Issue Name" class="form-control"  formControlName="issuename" type="text" name="issuename" > 
                
   </div>
   <br>
 
   <div> 
-    <textarea id="w3review" (change)="setIssueDesc($any($event.target).value)" placeholder="Issue description" name="w3review" rows="4" cols="50"></textarea>
+    <textarea id="w3review" (change)="setIssueDesc($any($event.target).value)" placeholder="&nbsp; Issue Description" name="w3review" rows="4" cols="50" style="margin-left: 70px;  width: 370px; border-radius: 4px;  border-color: rgb(211, 211, 211); font-size: medium;"></textarea>
    
   </div>
 
   <br>
   <br>
 
-  <button id="submitButton" type="button"(click)="submit()"  class="btn btn-primary btn-sm">Submit</button>
+  <button id="submitButton" style="width: 370px;  margin-left: 70px;" type="button"(click)="submit()"  class="btn btn-primary btn-sm">Submit</button>
 
     
 

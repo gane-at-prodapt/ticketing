@@ -22,15 +22,16 @@
 <div class="outer">
 <nav class="navbar navbar-expand-lg bg-body-tertiary" style="background-color:black " >
     <div class="container-fluid" style="font-family: 'League Spartan', sans-serif; background-color: rgb(240, 240, 240);" >
-      <a class="navbar-brand" [routerLink]="'../groupHome'">Group</a>
+      <a class="navbar-brand" [routerLink]="'../groupHome'" style="margin-left: 10px;">Group</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
           <li class="nav-item">
-            <a class="nav-link" [routerLink]="'../group'">View group</a>
+            <a class="nav-link" [routerLink]="'../group'">Search group</a>
           </li>
+         
           <!-- <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
               Dropdown
@@ -59,7 +60,8 @@
     <br><br>
     <div class="search1">
       <mat-form-field id="searchfield" style="margin-left: 250px; width: 650px; background-color: #fff; color: #fff;">
-        <input id="mysearch" matInput (keyup)="applyFilter($any($event.target).value)" placeholder="Search for groups">
+        <i class="fa-solid fa-magnifying-glass"></i>
+        <input style="position: absolute; margin-left: 10px;"  id="mysearch" matInput (keyup)="applyFilter($any($event.target).value)" placeholder="Search for groups">
       </mat-form-field>
   </div>
   <br><br><br><br>
@@ -69,26 +71,35 @@
     <!-- Position Column -->
     <ng-container  matColumnDef="id">
       <th  style=" width: 60px; text-align: center;" mat-header-cell  *matHeaderCellDef> Group ID </th>
-      <td   style=" text-align: center " mat-cell *matCellDef="let element"> {{element.id}} </td>
+      <td   style=" text-align: center " mat-cell *matCellDef="let element"> {{element.group.id}} </td>
     </ng-container>
   
     <!-- Name Column -->
     <ng-container matColumnDef="name">
       <th  style=" width: 100px; text-align: center " mat-header-cell *matHeaderCellDef> Assignment Group </th>
-      <td   style=" text-align: center " mat-cell *matCellDef="let element"> {{element.name}} </td>
+      <td   style=" text-align: center " mat-cell *matCellDef="let element"> {{element.group.name}} </td>
     </ng-container>
   
     <!-- Weight Column -->
     <ng-container matColumnDef="issueName">
       <th style=" width: 80px; text-align:center"  mat-header-cell *matHeaderCellDef> Issue Name </th>
-      <td  style=" text-align: center " mat-cell *matCellDef="let element"> {{element.issue.name}} </td>
+      <td  style=" text-align: center " mat-cell *matCellDef="let element"> {{element.group.issue.name}} </td>
     </ng-container>
   
     <!-- Symbol Column -->
     <ng-container matColumnDef="networkFamily">
       <th style=" width: 80px; text-align: center; border-radius: 10%; " mat-header-cell *matHeaderCellDef> Network Family </th>
-      <td  style=" text-align: center " mat-cell *matCellDef="let element"> {{element.issue.network_family}} </td>
+      <td  style=" text-align: center " mat-cell *matCellDef="let element"> {{element.group.issue.network_family}} </td>
     </ng-container>
+
+    <ng-container matColumnDef="memberButton">
+      <th style=" width: 80px; text-align: center; border-radius: 10%; " mat-header-cell *matHeaderCellDef> Group Members </th>
+      <td  style=" text-align: center " mat-cell *matCellDef="let element">
+      <button (click)= "memberButton(element.group)" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal" style="width: 80px; height: 20px; border: none; box-shadow:  0 4px 4px 0 rgba(0,0,0,0.2);">{{element.memberButton}} </button>
+    </td>
+    </ng-container>
+
+
   
     <tr style="background-color: #fff;" mat-header-row *matHeaderRowDef="displayedColumns"></tr>
     <tr style="background-color: #fff;" mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
@@ -101,5 +112,44 @@
   <br><br>
   <br><br>
   <br><br>
+
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" >
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h3 class="modal-title fs-5" id="exampleModalLabel">Resolve the ticket</h3>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body" style="height: 250px;">
+            <table id="mytable" style="width: 320px; " mat-table [dataSource]="dataSource1"> 
+  
+            <!-- Position Column -->
+            <ng-container  matColumnDef="id">
+              <th  style=" width: 60px; text-align: center;" mat-header-cell  *matHeaderCellDef> User ID </th>
+              <td   style=" text-align: center " mat-cell *matCellDef="let element"> {{element.id}} </td>
+            </ng-container>
+
+            <ng-container  matColumnDef="groupMember">
+              <th  style=" width: 60px; text-align: center;" mat-header-cell  *matHeaderCellDef> User Name </th>
+              <td   style=" text-align: center " mat-cell *matCellDef="let element"> {{element.groupMember.name}} </td>
+            </ng-container>
+
+          
+          
+            <tr style="background-color: #fff;" mat-header-row *matHeaderRowDef="displayedColumns1"></tr>
+            <tr style="background-color: #fff;" mat-row *matRowDef="let row; columns: displayedColumns1;"></tr>
+            </table>
+          
+            
+        </div>
+
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" style="width: 120px; height: 25px; padding: 0px 0px;">Close</button>
+          <button type="button" class="btn btn-primary"  style="width: 120px;height: 25px; margin-right: 100px; padding: 0px 0px;">Submit</button>
+        </div>
+      </div>
+    </div>
   </div>
-</div>
+  </div>
+  </div>
+

@@ -190,7 +190,7 @@ export class HomepageComponent {
         text.style.opacity = 100 - (value*0.5) + '%';
       }
       if(text1!=null) {
-        text1.style.bottom= 230 + value + 'px';
+        text1.style.bottom= 245 + value + 'px';
         text1.style.opacity = 100 - (value*0.5) + '%';
       }
 

@@ -31,6 +31,8 @@ export class CreateissueComponent {
 
   constructor(private router: Router, private service: ServiceService, private toastr: ToastrService) { } 
 
+  
+
   setNetworkElement(ind:number){
     this.networkElement=this.networkElements[ind];
   }

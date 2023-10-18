@@ -22,7 +22,7 @@
 <div class="outer">
 <nav class="navbar navbar-expand-lg bg-body-tertiary" style="background-color:black " >
     <div class="container-fluid" style="font-family: 'League Spartan', sans-serif;  background-color: rgb(240, 240, 240);" >
-      <a class="navbar-brand" [routerLink]="'../userHome'">Users</a>
+      <a class="navbar-brand" [routerLink]="'../userHome'" style="margin-left: 10px;">Users</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -57,7 +57,7 @@
 
 <div class="card" style="width: 25rem;height: 400px; margin-left: 380px; box-shadow:  2px 4px 4px 0 rgba(0,0,0,0.2); ">
     <div class="card-body">
-      <h5 class="card-title" style="font-family: 'League Spartan', sans-serif;  margin-left: 20px; margin-top: 10px; letter-spacing: 2px;">ADD NEW USER</h5>
+      <h5 class="card-title" style="font-family: 'League Spartan', sans-serif; margin-top: 10px; letter-spacing: 2px;">ADD NEW USER</h5>
       <br>
       <form [formGroup]= "form">
 
@@ -110,7 +110,7 @@
 
                     <div class="form-group" >
                       
-                      <input (change)="setPassword($any($event.target).value)" class="form-control" style="width: 28rem; " placeholder="Password"  formControlName="rootcause" type="text" name="rootcause" > 
+                      <input (change)="setPassword($any($event.target).value)" class="form-control" style="width: 28rem; " placeholder="Password"  formControlName="rootcause" type="password" name="rootcause" > 
                       
                     </div>
                 
