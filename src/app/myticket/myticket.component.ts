@@ -11,6 +11,8 @@ import { ServiceService, Incident, User, AssignmentGroup } from '../service.serv
 import { MatButton } from '@angular/material/button';
 import { getCookie} from 'typescript-cookie'
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { ViewChild } from '@angular/core';
+import { ToastrService } from 'ngx-toastr';
 
 export interface myticketswithbutton
 {
@@ -26,6 +28,13 @@ export interface myticketswithbutton
   styleUrls: ['./myticket.component.css']
 })
 export class MyticketComponent {
+
+
+  @ViewChild('myModalClose') modalClose;
+  @ViewChild('myModalCloseignore') modalCloseignore;
+  @ViewChild('myModalClosemove') modalClosemove;
+
+
   DATA : myticketswithbutton[] =[];
 
   groups: AssignmentGroup[]=[];
@@ -38,7 +47,11 @@ export class MyticketComponent {
   rootcause:string="";
   reason:string="";
 
-  constructor(private router: Router,private httpClient : HttpClient, private service : ServiceService) 
+  closeModal(){
+    this.groups=[];
+  }
+
+  constructor(private router: Router,private httpClient : HttpClient, private service : ServiceService, private toastr: ToastrService) 
   { } 
   getLevel(n:number): string
   {
@@ -91,9 +104,14 @@ export class MyticketComponent {
       tempTicket.raisedBy=this.raisedBy;
       this.service.putIncident(tempTicket).subscribe((Response)=>{
         console.log(Response);
+        console.log("works");
+        this.toastr.success('Ticket moved');
+        
+        this.modalClosemove.nativeElement.click();
       },
     error=>{
       console.log(error);
+      this.modalClosemove.nativeElement.click();
     });
     }
   }
@@ -105,9 +123,12 @@ export class MyticketComponent {
       tempTicket.resolution_comment=this.rootcause;
       this.service.putIncident(tempTicket).subscribe((Response)=>{
         console.log(Response);
+        this.toastr.success('Ticket resolved');
+        this.modalClose.nativeElement.click();
       },
     error=>{
       console.log(error);
+      this.modalClose.nativeElement.click();
     });
     }
   }
@@ -119,9 +140,12 @@ export class MyticketComponent {
       tempTicket.resolution_comment=this.reason;
       this.service.putIncident(tempTicket).subscribe((Response)=>{
         console.log(Response);
+        this.toastr.success('Ticket ignored');
+        this.modalCloseignore.nativeElement.click();
       },
     error=>{
       console.log(error);
+      this.modalCloseignore.nativeElement.click();
     });
     }
   }

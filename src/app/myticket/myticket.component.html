@@ -162,7 +162,7 @@
           <div class="modal-content">
             <div class="modal-header">
               <h3 class="modal-title fs-5" id="exampleModalLabel">Resolve the ticket</h3>
-              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              <button (click)="closeModal()" #myModalClose type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body" style="height: 250px;">
                <span style="font-weight:200; font-size:medium; font-family: 'Montserrat', sans-serif;">You have the option of resolving this ticket <br>by providing the rootcause and solution of this ticket. The admin will analyze your response and close the ticket if it is correct </span> 
@@ -183,9 +183,6 @@
                 
                   </form>
 
-
-
-
             </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" style="width: 120px; height: 25px; padding: 0px 0px;">Close</button>
@@ -202,7 +199,7 @@
           <div class="modal-content">
             <div class="modal-header">
               <h3 class="modal-title fs-5" id="exampleModalLabel">Move the ticket</h3>
-              <button (click)="closeMove()" type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              <button (click)= "closeModal()" #myModalClosemove type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body" style="height: 250px;">
                <span style="font-weight:200; font-size:medium; font-family: 'Montserrat', sans-serif;">You have the option of moving this ticket <br>to another group if you think this particular ticket is not suitable for your group or it requires the attention of another group </span> 
@@ -241,7 +238,7 @@
           <div class="modal-content">
             <div class="modal-header">
               <h3 class="modal-title fs-5" id="exampleModalLabel">Ignore the ticket</h3>
-              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              <button (click)= "closeModal()" #myModalCloseignore type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body" style="height: 150px;">
                <span style="font-weight:200; font-size:medium; font-family: 'Montserrat', sans-serif;">You have the option of ignoring the ticket. Please state your resaon for ignoring this ticket.</span> 
