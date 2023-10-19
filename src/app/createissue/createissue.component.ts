@@ -29,7 +29,11 @@ export class CreateissueComponent {
   name:string|undefined;
   description:string|undefined;
 
-  constructor(private router: Router, private service: ServiceService, private toastr: ToastrService) { } 
+  constructor(private router: Router, private service: ServiceService, private toastr: ToastrService) {
+    this.router.routeReuseStrategy.shouldReuseRoute = () => {
+      return false;
+    };
+   } 
 
   
 
@@ -51,6 +55,7 @@ export class CreateissueComponent {
     }
     this.service.addIssue(I).subscribe((Response)=>{
       this.toastr.success('Ticket raised successfully');
+      this.router.navigateByUrl('/addissue');
     },error=>{
       this.toastr.error('Failed to raise ticket');
     })
