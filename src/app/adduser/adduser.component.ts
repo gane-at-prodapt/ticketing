@@ -105,7 +105,6 @@ export class AdduserComponent {
         this.user=Response;
       },
       error=>{
-
       });
     }
     PasswordSubmit(){
@@ -137,15 +136,5 @@ export class AdduserComponent {
       error=>{
         console.log(error);
       });
-    
-    
-       
-
     }
-  
-
-   
-
-
-
 }

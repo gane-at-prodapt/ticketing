@@ -12,6 +12,7 @@ import { ServiceService, AssignmentGroup , Groupmembers} from '../service.servic
 export interface assignmentGroupwithbuttons
 {
   group: AssignmentGroup;
+  searchkey:string;
   memberButton: any;
 }
 
@@ -60,6 +61,7 @@ export class CreateGroupComponent {
         Response.forEach((element)=>{
           this.DATA.push({
             group: element,
+            searchkey:element.name,
             memberButton : "members"
             }
           )
