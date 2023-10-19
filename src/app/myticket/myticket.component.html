@@ -28,21 +28,21 @@
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
           <li class="nav-item">
-            <a class="nav-link active" aria-current="page" [routerLink]="'../incident'">View tickets</a>
+            <a class="nav-link" aria-current="page" [routerLink]="'../incident'">View tickets</a>
           </li>
 
         
           <li class="nav-item">
-            <a class="nav-link" [routerLink]="'../ticket'">Raise ticket</a>
+            <a class="nav-link" style="cursor: pointer;" (click)="navCreateIncident()">Raise ticket</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" [routerLink]="'../resolve'">Assign ticket</a>
+            <a class="nav-link"  style="cursor: pointer;" (click)="navAssignIncident()">Assign ticket</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" [routerLink]="'../myticket'">My tickets</a>
+            <a class="nav-link active" style="cursor: pointer;" (click)="navMyIncident()">My tickets</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" [routerLink]="'../close'">Close tickets</a>
+            <a class="nav-link" style="cursor: pointer;" (click)="navcloseIncident()">Close tickets</a>
           </li>
           
       
@@ -64,7 +64,7 @@
       <br><br>
       <div class="search1">
         <mat-form-field id="searchfield" style=" margin-left: 260px;width: 650px; background-color: #fff; color: #fff;">
-          <i style="position: absolute;" class="fa-solid fa-magnifying-glass"></i>
+          <i class="fa-solid fa-magnifying-glass"></i>
           <input style="position: absolute; margin-left: 10px; padding: 0px 0px;" id="mysearch" matInput (keyup)="applyFilter($any($event.target).value)" placeholder=" &nbsp; Search for tickets">
         </mat-form-field>
     </div>
@@ -199,7 +199,7 @@
           <div class="modal-content">
             <div class="modal-header">
               <h3 class="modal-title fs-5" id="exampleModalLabel">Move the ticket</h3>
-              <button (click)= "closeModal()" #myModalClosemove type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              <button (click)="closeModal()" #myModalClosemove type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body" style="height: 250px;">
                <span style="font-weight:200; font-size:medium; font-family: 'Montserrat', sans-serif;">You have the option of moving this ticket <br>to another group if you think this particular ticket is not suitable for your group or it requires the attention of another group </span> 
@@ -238,7 +238,7 @@
           <div class="modal-content">
             <div class="modal-header">
               <h3 class="modal-title fs-5" id="exampleModalLabel">Ignore the ticket</h3>
-              <button (click)= "closeModal()" #myModalCloseignore type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              <button (click)="closeModal()" #myModalCloseignore type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body" style="height: 150px;">
                <span style="font-weight:200; font-size:medium; font-family: 'Montserrat', sans-serif;">You have the option of ignoring the ticket. Please state your resaon for ignoring this ticket.</span> 

@@ -2,7 +2,7 @@ import { Block } from '@angular/compiler';
 import { Component } from '@angular/core';
 import { AbstractControl, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router, NavigationEnd } from '@angular/router';
-import { AssignmentGroup, Issue, Incident, ServiceService,NetworkElement, User} from '../service.service';
+import { AssignmentGroup, Issue, Incident, ServiceService,NetworkElement, User, Access} from '../service.service';
 import { getCookie} from 'typescript-cookie'
 import { ToastrService } from 'ngx-toastr';
 @Component({
@@ -27,6 +27,8 @@ export class RaiseticketComponent {
   Severity:number|undefined;
   flexRadioDefault:string="";
  
+  access: Access[]=[];
+
   constructor(private router: Router, private service:ServiceService, private toastr: ToastrService ) { 
     this.router.routeReuseStrategy.shouldReuseRoute = () => {
       return false;
@@ -131,6 +133,58 @@ export class RaiseticketComponent {
     this.group=this.groups[id];
   }
 
+  
+  navCreateIncident(){
+    if(this.access[2]!=undefined && this.access[2].status=="write"){
+      this.router.navigate(['/','ticket']);
+    }else{
+      this.toastr.error('Access restricted');
+    }
+    window.scroll({ 
+      top: 0, 
+      left: 0, 
+      behavior: 'smooth' 
+    });
+  }
+  navAssignIncident(){
+    if(this.access[2]!=undefined && this.access[2].status=="write"){
+      this.router.navigate(['/','resolve']);
+    }else{
+      this.toastr.error('Access restricted');
+    }
+    window.scroll({ 
+      top: 0, 
+      left: 0, 
+      behavior: 'smooth' 
+    });
+  }
+
+  navMyIncident(){
+    if(this.access[2]!=undefined && this.access[2].status=="write"){
+      this.router.navigate(['/','myticket']);
+    }else{
+      this.toastr.error('Access restricted');
+    }
+    window.scroll({ 
+      top: 0, 
+      left: 0, 
+      behavior: 'smooth' 
+    });
+  }
+
+  navcloseIncident(){
+    if(this.access[2]!=undefined && this.access[2].status=="write"){
+      this.router.navigate(['/','close']);
+    }else{
+      this.toastr.error('Access restricted');
+    }
+    window.scroll({ 
+      top: 0, 
+      left: 0, 
+      behavior: 'smooth' 
+    });
+  }
+
  
  
 
@@ -159,12 +213,22 @@ export class RaiseticketComponent {
     this.service.addIncident(I).subscribe((Response)=>{
       console.log(Response);
       this.toastr.success('Ticket raised successfully');
+      window.scroll({ 
+        top: 0, 
+        left: 0, 
+        behavior: 'smooth' 
+      });
       this.router.navigateByUrl('/ticket');
     },
     error=>{
       //need to display "invalid credentials, try again" in the bottom of the form. clear the password field
       console.log(error);
       this.toastr.error('Failed to raise ticket');
+      window.scroll({ 
+        top: 0, 
+        left: 0, 
+        behavior: 'smooth' 
+      });
     });
   
     
@@ -193,7 +257,12 @@ export class RaiseticketComponent {
     const content = document.getElementById("content");
 
 
-    
+    this.service.getAccessByRole(Number(getCookie("userRoleId"))).subscribe(Response=>{
+      this.access=Response;
+    },error=>{
+      console.log(error);
+    });
+
 
     
 

@@ -28,21 +28,21 @@
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
           <li class="nav-item">
-            <a class="nav-link active" aria-current="page" [routerLink]="'../incident'">View tickets</a>
+            <a class="nav-link" aria-current="page" [routerLink]="'../incident'">View tickets</a>
           </li>
 
         
           <li class="nav-item">
-            <a class="nav-link" [routerLink]="'../ticket'">Raise ticket</a>
+            <a class="nav-link" style="cursor: pointer;" (click)="navCreateIncident()">Raise ticket</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" [routerLink]="'../resolve'">Assign ticket</a>
+            <a class="nav-link"  style="cursor: pointer;" (click)="navAssignIncident()">Assign ticket</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" [routerLink]="'../myticket'">My tickets</a>
+            <a class="nav-link " style="cursor: pointer;" (click)="navMyIncident()">My tickets</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" [routerLink]="'../close'">Close tickets</a>
+            <a class="nav-link active" style="cursor: pointer;" (click)="navcloseIncident()">Close tickets</a>
           </li>
           
          
@@ -118,21 +118,21 @@
     <ng-container  matColumnDef="reviewButton">
         <th  style=" width: 100px; text-align: center;" mat-header-cell  *matHeaderCellDef> Review </th>
         <td  style=" text-align: center; cursor: pointer;" mat-cell *matCellDef="let element">
-        <button  type="button" data-bs-toggle="modal" data-bs-target="#exampleModal"  style="width: 50px; height: 20px; border: none; box-shadow:  0 4px 4px 0 rgba(0,0,0,0.2);">{{element.reviewButton}}</button>
+        <button (click)="selectedTicket(element)" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal2"  style="width: 50px; height: 20px; border: none; box-shadow:  0 4px 4px 0 rgba(0,0,0,0.2);">{{element.reviewButton}}</button>
       </td> 
     </ng-container>
 
     <ng-container  matColumnDef="movebackButton">
         <th  style=" width: 100px; text-align: center;" mat-header-cell  *matHeaderCellDef> Move back </th>
         <td  style=" text-align: center; cursor: pointer;" mat-cell *matCellDef="let element">
-        <button (click)="moveBack(element)" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal"  style="width: 80px; height: 20px; border: none; box-shadow:  0 4px 4px 0 rgba(0,0,0,0.2);">{{element.movebackButton}}</button>
+        <button (click)="selectedTicket(element)" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal1"  style="width: 80px; height: 20px; border: none; box-shadow:  0 4px 4px 0 rgba(0,0,0,0.2);">{{element.movebackButton}}</button>
       </td> 
     </ng-container>
 
     <ng-container  matColumnDef="closeButton">
         <th  style=" width: 100px; text-align: center;" mat-header-cell  *matHeaderCellDef> Close </th>
         <td  style=" text-align: center; cursor: pointer;" mat-cell *matCellDef="let element">
-        <button (click)="closeTicket(element)" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal"  style="width: 50px; height: 20px; border: none; box-shadow:  0 4px 4px 0 rgba(0,0,0,0.2);">{{element.closeButton}}</button>
+        <button (click)="selectedTicket(element)" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal"  style="width: 50px; height: 20px; border: none; box-shadow:  0 4px 4px 0 rgba(0,0,0,0.2);">{{element.closeButton}}</button>
       </td> 
     </ng-container>
 
@@ -150,32 +150,65 @@
   <br><br>
   <br><br>
 
-  <div class="modal fade" id="exampleModal1" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" >
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" >
     <div class="modal-dialog modal-dialog-centered">
       <div class="modal-content">
         <div class="modal-header">
-          <h3 class="modal-title fs-5" id="exampleModalLabel">Resolve the ticket</h3>
-          <button #myModalClose type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          <h3 class="modal-title fs-5" id="exampleModalLabel">Close the ticket</h3>
+          <button #modalCloseTicket type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
-        <div class="modal-body" style="height: 250px;">
-           <span style="font-weight:200; font-size:medium; font-family: 'Montserrat', sans-serif;">You have the option of resolving this ticket <br>by providing the rootcause and solution of this ticket. The admin will analyze your response and close the ticket if it is correct </span> 
-            <br>
-            <br>
-            <!-- <select (change)="setUser($any($event.target).value)" [formGroup]= "form" id="exampleFormControl" style="width: 23rem; height: 34px;  border-radius: 4px; border-color: rgb(211, 211, 211);" formControlName="users" name="users" > 
-            
-                <option style=" font-family: sans-serif; letter-spacing: 2px;" *ngFor="let i of users; let in= index" value={{in}}>{{i.name}}</option>
-              
-              </select> -->
-              
-
+        <div class="modal-body" style="height: 80px;">
+           <span style="font-weight:200; font-size:medium; font-family: 'Montserrat', sans-serif;">Are you sure you want to close this ticket ? </span> 
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" style="width: 120px; height: 25px; padding: 0px 0px;">Close</button>
-          <button type="button" class="btn btn-primary"  style="width: 120px;height: 25px; margin-right: 100px; padding: 0px 0px;">Submit</button>
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" style="width: 120px; height: 25px; padding: 0px 0px;">No</button>
+          <button (click)="closeTicket()" type="button" class="btn btn-primary"  style="width: 120px;height: 25px; margin-right: 100px; padding: 0px 0px;">Yes</button>
         </div>
       </div>
     </div>
   </div>
+
+  <div class="modal fade" id="exampleModal1" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" >
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h3 class="modal-title fs-5" id="exampleModalLabel">Move back the ticket</h3>
+          <button #modalCloseMove type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body" style="height: 80px;">
+           <span style="font-weight:200; font-size:medium; font-family: 'Montserrat', sans-serif;">Are you sure you want to move back this ticket ? </span> 
+
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" style="width: 120px; height: 25px; padding: 0px 0px;">No</button>
+          <button (click)="moveBack()" type="button" class="btn btn-primary"  style="width: 120px;height: 25px; margin-right: 100px; padding: 0px 0px;">Yes</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal fade" id="exampleModal2" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" >
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h3 class="modal-title fs-5" id="exampleModalLabel">Move back the ticket</h3>
+          <button #myModalClose type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body" style="height: 150px;">
+           <span style="font-size:medium;">Resolution comment given by user who resolved this ticket : <br><br>
+            <b style="letter-spacing: 2px; font-family: 'Poppins';">{{selectTicket?.ticket?.resolution_comment}}</b> </span> 
+
+        </div>
+        <div class="modal-footer">
+          <!-- <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" style="width: 120px; height: 25px; padding: 0px 0px;">No</button> -->
+          <!-- <button #closeReview type="button" class="btn btn-primary"  style="width: 120px;height: 25px; margin-right: 100px; padding: 0px 0px;">Yes</button>  -->
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
   </div>
 
   </div>

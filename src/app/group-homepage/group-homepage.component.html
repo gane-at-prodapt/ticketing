@@ -137,15 +137,28 @@
         </li>
 
         <li class="nav-item" style="margin-left: 30px;" >
-            <a class="nav-link"  style=" font-family: 'Montserrat', sans-serif; font-weight:bolder" [routerLink]="'../incidentHome'">Incident </a>
-        </li>
-        <li class="nav-item" style="margin-left: 30px;">
-            <a class="nav-link" style="position: absolute; font-family: 'Montserrat', sans-serif; font-weight:200; margin-bottom: 0px;" [routerLink]="'../incident'">Search incident </a>    
-           </li>
-           <li class="nav-item" style="margin-left: 30px;">
-           <a class="nav-link" style="margin-top: 22px; font-family: 'Montserrat', sans-serif; font-weight:200; cursor: pointer;" (click)="navCreateIncident()">Create new incident </a>
-   
-        </li>
+          <a class="nav-link"  style=" font-family: 'Montserrat', sans-serif; font-weight:bolder" [routerLink]="'../incidentHome'">Incident </a>
+      </li>
+      <li class="nav-item" style="margin-left: 30px;">
+          <a class="nav-link" style="position: absolute; font-family: 'Montserrat', sans-serif; font-weight:200; margin-bottom: 0px;" [routerLink]="'../incident'">Search incident </a>    
+         </li>
+         <li class="nav-item" style="margin-left: 30px;">
+         <a class="nav-link" style="position: absolute; margin-top: 22px; font-family: 'Montserrat', sans-serif; font-weight:200; cursor: pointer;" (click)="navCreateIncident()">Create new incident </a>
+      </li>
+      <li class="nav-item" style="margin-left: 30px;">
+        <a class="nav-link" style="position: absolute; margin-top: 44px; font-family: 'Montserrat', sans-serif; font-weight:200; cursor: pointer;" (click)="navAssignIncident()">Assign incident </a>
+
+     </li>
+     <li class="nav-item" style="margin-left: 30px;">
+      <a class="nav-link" style="position: absolute; margin-top: 66px; font-family: 'Montserrat', sans-serif; font-weight:200; cursor: pointer;" (click)="navMyIncident()">View my incident </a>
+
+   </li>
+   <li class="nav-item" style="margin-left: 30px;">
+    <a class="nav-link" style="position: absolute; margin-top: 88px; font-family: 'Montserrat', sans-serif; font-weight:200; cursor: pointer;" (click)="navCreateIncident()">Close incident </a>
+
+ </li>
+ <br><br><br><br>
+ <br><br>
 
         <li class="nav-item" style="margin-left: 30px;" >
             <a class="nav-link"  style=" font-family: 'Montserrat', sans-serif; font-weight:bolder" [routerLink]="'../groupHome'">Group </a>
@@ -200,9 +213,9 @@
     <br><br>
     <br><br>
     <h1 style="font-family:'Montserrat', sans-serif; font-weight:bolder; letter-spacing: 2px; ">GROUP</h1>
-    <p style="font-family:'Montserrat', sans-serif;"> Network devices, also known as networking hardware, are physical devices that allow hardware on a 
-        computer network to communicate and interact with one another.A network device is a piece of hardware or software integral to communication between
-         a computer and an internet network. Network devices play two roles. The first is establishing a network connection</p>
+    <p style="font-family:'Montserrat', sans-serif;"> Every group is created in order to resolve an issue. Once a group is created,
+    skilled members will be selected and added to the group. When a ticket is assigned to the group, the group memebr has the option of resolving the ticket 
+  himself or assign the ticket to one of this group members. The group member also has the option of ignoring the ticket</p>
          <br><br>
          <div class="row">
             <div class="col-4" *ngFor="let i of groups ; let in= index" style="font-family:'Montserrat', sans-serif;">

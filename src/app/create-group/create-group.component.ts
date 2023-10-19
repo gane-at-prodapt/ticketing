@@ -81,7 +81,7 @@ export class CreateGroupComponent {
   dataSource1 = new MatTableDataSource(this.DATA1);
 
   applyFilter(filterValue: string) {
-    this.dataSource.filter = filterValue.trim().toLowerCase();
+    this.dataSource.filter = filterValue;
   }
 
 

@@ -52,7 +52,7 @@
             <a class="nav-link" [routerLink]="'../network'">&nbsp; Search network element </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" (click)="navCreateNetwork()">&nbsp; Add network element</a>
+            <a class="nav-link" style="cursor: pointer;" (click)="navCreateNetwork()">&nbsp; Add network element</a>
           </li>
           <li class="nav-item" style="margin-left: 500px;">
             <a class="nav-link" [routerLink]="'../homepage'">Homepage</a>
@@ -139,15 +139,28 @@
         </li>
 
         <li class="nav-item" style="margin-left: 30px;" >
-            <a class="nav-link"  style=" font-family: 'Montserrat', sans-serif; font-weight:bolder" [routerLink]="'../incidentHome'">Incident </a>
-        </li>
-        <li class="nav-item" style="margin-left: 30px;">
-            <a class="nav-link" style="position: absolute; font-family: 'Montserrat', sans-serif; font-weight:200; margin-bottom: 0px;" [routerLink]="'../incident'">Search incident </a>    
-           </li>
-           <li class="nav-item" style="margin-left: 30px;">
-           <a class="nav-link" style="margin-top: 22px; font-family: 'Montserrat', sans-serif; font-weight:200; cursor: pointer;" (click)="navCreateIncident()">Create new incident </a>
-   
-        </li>
+          <a class="nav-link"  style=" font-family: 'Montserrat', sans-serif; font-weight:bolder" [routerLink]="'../incidentHome'">Incident </a>
+      </li>
+      <li class="nav-item" style="margin-left: 30px;">
+          <a class="nav-link" style="position: absolute; font-family: 'Montserrat', sans-serif; font-weight:200; margin-bottom: 0px;" [routerLink]="'../incident'">Search incident </a>    
+         </li>
+         <li class="nav-item" style="margin-left: 30px;">
+         <a class="nav-link" style="position: absolute; margin-top: 22px; font-family: 'Montserrat', sans-serif; font-weight:200; cursor: pointer;" (click)="navCreateIncident()">Create new incident </a>
+      </li>
+      <li class="nav-item" style="margin-left: 30px;">
+        <a class="nav-link" style="position: absolute; margin-top: 44px; font-family: 'Montserrat', sans-serif; font-weight:200; cursor: pointer;" (click)="navAssignIncident()">Assign incident </a>
+
+     </li>
+     <li class="nav-item" style="margin-left: 30px;">
+      <a class="nav-link" style="position: absolute; margin-top: 66px; font-family: 'Montserrat', sans-serif; font-weight:200; cursor: pointer;" (click)="navMyIncident()">View my incident </a>
+
+   </li>
+   <li class="nav-item" style="margin-left: 30px;">
+    <a class="nav-link" style="position: absolute; margin-top: 88px; font-family: 'Montserrat', sans-serif; font-weight:200; cursor: pointer;" (click)="navCreateIncident()">Close incident </a>
+
+ </li>
+ <br><br><br><br>
+ <br><br>
 
         <li class="nav-item" style="margin-left: 30px;" >
             <a class="nav-link"  style=" font-family: 'Montserrat', sans-serif; font-weight:bolder" [routerLink]="'../groupHome'">Group </a>
