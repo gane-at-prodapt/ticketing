@@ -12,7 +12,12 @@ import { ToastrService } from 'ngx-toastr';
 })
 export class UpdateNetworkComponent {
 
-  constructor(private router: Router, private service:ServiceService,private toastr: ToastrService) { } 
+  constructor(private router: Router, private service:ServiceService,private toastr: ToastrService) {
+    this.router.routeReuseStrategy.shouldReuseRoute = () => {
+      return false;
+    };
+  
+   } 
       
   ngOnInit() { 
       this.router.events.subscribe((event) => { 
@@ -66,13 +71,6 @@ export class UpdateNetworkComponent {
 
   submit()
   {
-
-    console.log(this.networkName);
-    console.log(this.networkFamily);
-    console.log(this.networkParent);
-    console.log(this.IPAddress);
-    console.log(this.macAddress);
-
     let N:NetworkElement={
       name:this.networkName,
       deviceFamily:this.networkFamily,
@@ -82,6 +80,7 @@ export class UpdateNetworkComponent {
     }
     this.service.addNetworkElement(N).subscribe((Response)=>{
       this.toastr.success('New network device added successfully ');
+      this.router.navigateByUrl('/addnetwork');
     },
     error=>{
       this.toastr.error('Failed to create new network device');

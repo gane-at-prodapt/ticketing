@@ -27,7 +27,11 @@ export class AdduserComponent {
   roles: Role[]=[];
 
   constructor(private router: Router,private httpClient : HttpClient, private service : ServiceService, private toastr: ToastrService ) 
-  { } 
+  { 
+    this.router.routeReuseStrategy.shouldReuseRoute = () => {
+      return false;
+    };
+  } 
 
 
   form:FormGroup = new FormGroup(
@@ -114,6 +118,7 @@ export class AdduserComponent {
         console.log(Response);
         this.toastr.success('New user added successfully');
         this.modalClose.nativeElement.click();
+        this.router.navigateByUrl('/adduser');
       },
       error=>{
         this.toastr.error('Failed to add new user');

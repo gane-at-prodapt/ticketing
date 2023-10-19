@@ -27,7 +27,11 @@ export class RaiseticketComponent {
   Severity:number|undefined;
   flexRadioDefault:string="";
  
-  constructor(private router: Router, private service:ServiceService, private toastr: ToastrService ) { } 
+  constructor(private router: Router, private service:ServiceService, private toastr: ToastrService ) { 
+    this.router.routeReuseStrategy.shouldReuseRoute = () => {
+      return false;
+    };
+  } 
 
   updateName(selectedLi: string)
   {
@@ -37,11 +41,6 @@ export class RaiseticketComponent {
       content.innerText=selectedLi;
     }
   }
-
-  // showSuccess()
-  // {
-  //   this.toastr.success('Ticket raised successfully');
-  // }
 
   ticketName:string="";
   form:FormGroup = new FormGroup(
@@ -160,9 +159,7 @@ export class RaiseticketComponent {
     this.service.addIncident(I).subscribe((Response)=>{
       console.log(Response);
       this.toastr.success('Ticket raised successfully');
-
-
-
+      this.router.navigateByUrl('/ticket');
     },
     error=>{
       //need to display "invalid credentials, try again" in the bottom of the form. clear the password field
