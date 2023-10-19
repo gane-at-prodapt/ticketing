@@ -7,7 +7,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { Router, NavigationEnd } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
-import { ServiceService, Incident, User, AssignmentGroup } from '../service.service';
+import { ServiceService, Incident, User, AssignmentGroup , Access } from '../service.service';
 import { MatButton } from '@angular/material/button';
 import { getCookie} from 'typescript-cookie'
 import { FormGroup } from '@angular/forms';
@@ -34,6 +34,7 @@ export class ResolveTicketComponent {
   users : User[]=[];
   user: User | undefined;
   selectedIncident : Incident|undefined;
+  access: Access[]=[];
 
 
   
@@ -68,6 +69,58 @@ export class ResolveTicketComponent {
     }
   }
 
+  navCreateIncident(){
+    if(this.access[2]!=undefined && this.access[2].status=="write"){
+      this.router.navigate(['/','ticket']);
+    }else{
+      this.toastr.error('Access restricted');
+    }
+    window.scroll({ 
+      top: 0, 
+      left: 0, 
+      behavior: 'smooth' 
+    });
+  }
+  navAssignIncident(){
+    if(this.access[2]!=undefined && this.access[2].status=="write"){
+      this.router.navigate(['/','resolve']);
+    }else{
+      this.toastr.error('Access restricted');
+    }
+    window.scroll({ 
+      top: 0, 
+      left: 0, 
+      behavior: 'smooth' 
+    });
+  }
+
+  navMyIncident(){
+    if(this.access[2]!=undefined && this.access[2].status=="write"){
+      this.router.navigate(['/','myticket']);
+    }else{
+      this.toastr.error('Access restricted');
+    }
+    window.scroll({ 
+      top: 0, 
+      left: 0, 
+      behavior: 'smooth' 
+    });
+  }
+
+  navcloseIncident(){
+    if(this.access[2]!=undefined && this.access[2].status=="write"){
+      this.router.navigate(['/','close']);
+    }else{
+      this.toastr.error('Access restricted');
+    }
+    window.scroll({ 
+      top: 0, 
+      left: 0, 
+      behavior: 'smooth' 
+    });
+  }
+
+
 
   setUser(index:number)
   {
@@ -101,10 +154,20 @@ export class ResolveTicketComponent {
       this.service.putIncident(this.selectedIncident).subscribe((Response)=>{
         this.toastr.success('User assigned successfully');
         this.modalClose.nativeElement.click();
+        window.scroll({ 
+          top: 0, 
+          left: 0, 
+          behavior: 'smooth' 
+        });
       },
       error=>{
         console.log(error);
         this.modalClose.nativeElement.click();
+        window.scroll({ 
+          top: 0, 
+          left: 0, 
+          behavior: 'smooth' 
+        });
       })
     }
     
@@ -123,6 +186,12 @@ export class ResolveTicketComponent {
       } 
       window.scrollTo(0, 0) 
     }); 
+
+    this.service.getAccessByRole(Number(getCookie("userRoleId"))).subscribe(Response=>{
+      this.access=Response;
+    },error=>{
+      console.log(error);
+    });
 
   this.service.getIncidentsByMemberGroups(Number(getCookie("userId"))).subscribe(Response=>{
     console.log(Number(getCookie("userId")));

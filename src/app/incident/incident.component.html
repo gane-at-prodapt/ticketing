@@ -33,16 +33,16 @@
 
         
           <li class="nav-item">
-            <a class="nav-link" [routerLink]="'../ticket'">Raise ticket</a>
+            <a class="nav-link" style="cursor: pointer;" (click)="navCreateIncident()">Raise ticket</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" [routerLink]="'../resolve'">Assign ticket</a>
+            <a class="nav-link"  style="cursor: pointer;" (click)="navAssignIncident()">Assign ticket</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" [routerLink]="'../myticket'">My tickets</a>
+            <a class="nav-link" style="cursor: pointer;" (click)="navMyIncident()">My tickets</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" [routerLink]="'../close'">Close tickets</a>
+            <a class="nav-link" style="cursor: pointer;" (click)="navcloseIncident()">Close tickets</a>
           </li>
           
          

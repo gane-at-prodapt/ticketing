@@ -7,21 +7,11 @@ import { MatInputModule } from '@angular/material/input';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { Router, NavigationEnd } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
-import { ServiceService, NetworkElement } from '../service.service';
+import { ServiceService, NetworkElement, Access } from '../service.service';
+import { ToastrService } from 'ngx-toastr';
+import { getCookie } from 'typescript-cookie';
 
-export interface PeriodicElement {
-  name: string;
-  position: number;
-  weight: string;
-  symbol: string;
-}
 
-const ELEMENT_DATA: PeriodicElement[] = [
-  {position: 1, name: 'Router', weight: '192.158.1.38', symbol: '00:1B:44:11:3A:B7'},
-  {position: 2, name: 'ONT', weight: '172.158.10.1', symbol: '00:B0:D0:63:C2:26'},
-  {position: 3, name: 'OLT', weight: '192.158.1.38', symbol: '00:1B:63:84:45:E6'},
-  
-];
 
 @Component({
   selector: 'app-create-network',
@@ -31,9 +21,10 @@ const ELEMENT_DATA: PeriodicElement[] = [
 export class CreateNetworkComponent{
 
   DATA : NetworkElement[] =[];
+  access : Access[]=[];
 
  
-  constructor(private router: Router,private httpClient : HttpClient, private service : ServiceService) { } 
+  constructor(private router: Router,private httpClient : HttpClient, private service : ServiceService, private toastr: ToastrService) { } 
   componentName:string="";
   networkID:number=0;
   
@@ -53,6 +44,22 @@ export class CreateNetworkComponent{
     console.log(rememberUser);
   }
 
+  navCreateNetwork(){
+    if(this.access[0]!=undefined && this.access[0].status=="write"){
+      this.router.navigate(['/','addnetwork']);
+    }
+    
+    else{
+      this.toastr.error('Access restricted');
+    }
+    window.scroll({ 
+      top: 0, 
+      left: 0, 
+      behavior: 'smooth' 
+    });
+    
+  }
+
  
 
 
@@ -64,6 +71,12 @@ export class CreateNetworkComponent{
       } 
       window.scrollTo(0, 0) 
   }); 
+
+  this.service.getAccessByRole(Number(getCookie("userRoleId"))).subscribe(Response=>{
+    this.access=Response;
+  },error=>{
+    console.log(error);
+  });
 
   
   this.service.getNetworkElements().subscribe(Response=>{

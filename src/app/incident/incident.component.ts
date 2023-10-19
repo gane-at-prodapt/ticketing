@@ -7,7 +7,9 @@ import { MatInputModule } from '@angular/material/input';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { Router, NavigationEnd } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
-import { ServiceService, Incident } from '../service.service';
+import { ServiceService, Incident, Access , Role} from '../service.service';
+import { ToastrService } from 'ngx-toastr';
+import { getCookie } from 'typescript-cookie';
 
 
 
@@ -19,7 +21,11 @@ import { ServiceService, Incident } from '../service.service';
 export class IncidentComponent {
 
   DATA : Incident[] =[];
-  constructor(private router: Router,private httpClient : HttpClient, private service : ServiceService) { } 
+
+  access: Access[]=[];
+  roles: Role[]=[];
+
+  constructor(private router: Router,private httpClient : HttpClient, private service : ServiceService, private toastr: ToastrService) { } 
 
   getLevel(n:number): string
   {
@@ -37,6 +43,61 @@ export class IncidentComponent {
     }
   }
 
+
+  navCreateIncident(){
+    if(this.access[2]!=undefined && this.access[2].status=="write"){
+      this.router.navigate(['/','ticket']);
+    }else{
+      this.toastr.error('Access restricted');
+    }
+    window.scroll({ 
+      top: 0, 
+      left: 0, 
+      behavior: 'smooth' 
+    });
+  }
+  navAssignIncident(){
+    if(this.access[2]!=undefined && this.access[2].status=="write"){
+      this.router.navigate(['/','resolve']);
+    }else{
+      this.toastr.error('Access restricted');
+    }
+    window.scroll({ 
+      top: 0, 
+      left: 0, 
+      behavior: 'smooth' 
+    });
+  }
+
+  navMyIncident(){
+    if(this.access[2]!=undefined && this.access[2].status=="write"){
+      this.router.navigate(['/','myticket']);
+    }else{
+      this.toastr.error('Access restricted');
+    }
+    window.scroll({ 
+      top: 0, 
+      left: 0, 
+      behavior: 'smooth' 
+    });
+  }
+
+  navcloseIncident(){
+    if(this.access[2]!=undefined && this.access[2].status=="write"){
+      this.router.navigate(['/','close']);
+    }else{
+      this.toastr.error('Access restricted');
+    }
+    window.scroll({ 
+      top: 0, 
+      left: 0, 
+      behavior: 'smooth' 
+    });
+  }
+
+
+
+
   ngOnInit(){
 
     let navbar = document.getElementById('mynavbar');
@@ -50,6 +111,13 @@ export class IncidentComponent {
       } 
       window.scrollTo(0, 0) 
   }); 
+
+  this.service.getAccessByRole(Number(getCookie("userRoleId"))).subscribe(Response=>{
+    this.access=Response;
+  },error=>{
+    console.log(error);
+  });
+
   this.service.getIncidents().subscribe(Response=>{
     this.DATA=Response;
     console.log(this.DATA);

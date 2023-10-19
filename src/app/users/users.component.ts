@@ -7,7 +7,9 @@ import { MatInputModule } from '@angular/material/input';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { HttpClient } from '@angular/common/http';
 import { Router, NavigationEnd } from '@angular/router';
-import { ServiceService,User } from '../service.service';
+import { ServiceService,User, Access } from '../service.service';
+import { getCookie } from 'typescript-cookie';
+import { ToastrService } from 'ngx-toastr';
 
 
 
@@ -21,10 +23,29 @@ import { ServiceService,User } from '../service.service';
 export class UsersComponent implements OnInit{
   
   DATA : User[] = [];
+  access: Access[]=[];
 
-  constructor(private router: Router, private service : ServiceService) {
+  constructor(private router: Router, private service : ServiceService,  private toastr: ToastrService) {
     
   }
+
+  navCreateUser(){
+    if(this.access[6]!=undefined && this.access[6].status=="write"){
+      this.router.navigate(['/','adduser']);
+    }else{
+      this.toastr.error('Access restricted');
+    }
+
+    window.scroll({ 
+      top: 0, 
+      left: 0, 
+      behavior: 'smooth' 
+    });
+
+  
+  }
+
+  
 
   ngOnInit(): void {
 
@@ -34,6 +55,12 @@ export class UsersComponent implements OnInit{
       } 
       window.scrollTo(0, 0) 
   }); 
+
+  this.service.getAccessByRole(Number(getCookie("userRoleId"))).subscribe(Response=>{
+    this.access=Response;
+  },error=>{
+    console.log(error);
+  });
 
      this.service.getUsers().subscribe(Response=>{
       this.DATA=Response;

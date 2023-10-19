@@ -69,6 +69,46 @@ export class NetworkHomepageComponent {
       behavior: 'smooth' 
     });
   }
+  navAssignIncident(){
+    if(this.access[2]!=undefined && this.access[2].status=="write"){
+      this.router.navigate(['/','resolve']);
+    }else{
+      this.toastr.error('Access restricted');
+    }
+    window.scroll({ 
+      top: 0, 
+      left: 0, 
+      behavior: 'smooth' 
+    });
+  }
+
+  navMyIncident(){
+    if(this.access[2]!=undefined && this.access[2].status=="write"){
+      this.router.navigate(['/','myticket']);
+    }else{
+      this.toastr.error('Access restricted');
+    }
+    window.scroll({ 
+      top: 0, 
+      left: 0, 
+      behavior: 'smooth' 
+    });
+  }
+
+  navcloseIncident(){
+    if(this.access[2]!=undefined && this.access[2].status=="write"){
+      this.router.navigate(['/','close']);
+    }else{
+      this.toastr.error('Access restricted');
+    }
+    window.scroll({ 
+      top: 0, 
+      left: 0, 
+      behavior: 'smooth' 
+    });
+  }
+
+
   
       
   ngOnInit() { 

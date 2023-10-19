@@ -7,12 +7,13 @@ import { MatInputModule } from '@angular/material/input';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { Router, NavigationEnd } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
-import { ServiceService, Incident, User, AssignmentGroup } from '../service.service';
+import { ServiceService, Incident, User, AssignmentGroup, Access } from '../service.service';
 import { MatButton } from '@angular/material/button';
 import { getCookie} from 'typescript-cookie'
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ViewChild } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
+
 
 export interface myticketswithbutton
 {
@@ -28,6 +29,8 @@ export interface myticketswithbutton
   styleUrls: ['./myticket.component.css']
 })
 export class MyticketComponent {
+
+  access: Access[]=[];
 
 
   @ViewChild('myModalClose') modalClose;
@@ -68,6 +71,58 @@ export class MyticketComponent {
       return "High";
     }
   }
+
+  navCreateIncident(){
+    if(this.access[2]!=undefined && this.access[2].status=="write"){
+      this.router.navigate(['/','ticket']);
+    }else{
+      this.toastr.error('Access restricted');
+    }
+    window.scroll({ 
+      top: 0, 
+      left: 0, 
+      behavior: 'smooth' 
+    });
+  }
+  navAssignIncident(){
+    if(this.access[2]!=undefined && this.access[2].status=="write"){
+      this.router.navigate(['/','resolve']);
+    }else{
+      this.toastr.error('Access restricted');
+    }
+    window.scroll({ 
+      top: 0, 
+      left: 0, 
+      behavior: 'smooth' 
+    });
+  }
+
+  navMyIncident(){
+    if(this.access[2]!=undefined && this.access[2].status=="write"){
+      this.router.navigate(['/','myticket']);
+    }else{
+      this.toastr.error('Access restricted');
+    }
+    window.scroll({ 
+      top: 0, 
+      left: 0, 
+      behavior: 'smooth' 
+    });
+  }
+
+  navcloseIncident(){
+    if(this.access[2]!=undefined && this.access[2].status=="write"){
+      this.router.navigate(['/','close']);
+    }else{
+      this.toastr.error('Access restricted');
+    }
+    window.scroll({ 
+      top: 0, 
+      left: 0, 
+      behavior: 'smooth' 
+    });
+  }
+
 
   resolveTicket(I:Incident){
     this.selectedIncident=I;
@@ -118,6 +173,11 @@ export class MyticketComponent {
         console.log(Response);
         console.log("works");
         this.toastr.success('Ticket moved');
+        window.scroll({ 
+          top: 0, 
+          left: 0, 
+          behavior: 'smooth' 
+        });
         this.modalClosemove.nativeElement.click();
         
         if(tempTicket!=undefined)
@@ -140,6 +200,11 @@ export class MyticketComponent {
       this.service.putIncident(tempTicket).subscribe((Response)=>{
         console.log(Response);
         this.toastr.success('Ticket resolved');
+        window.scroll({ 
+          top: 0, 
+          left: 0, 
+          behavior: 'smooth' 
+        });
         this.modalClose.nativeElement.click();
         
         if(tempTicket!=undefined)
@@ -162,6 +227,11 @@ export class MyticketComponent {
       this.service.putIncident(tempTicket).subscribe((Response)=>{
         console.log(Response);
         this.toastr.success('Ticket ignored');
+        window.scroll({ 
+          top: 0, 
+          left: 0, 
+          behavior: 'smooth' 
+        });
         this.modalCloseignore.nativeElement.click();
 
         if(tempTicket!=undefined)
@@ -230,6 +300,12 @@ export class MyticketComponent {
 
     this.service.getUserById(Number(getCookie("userId"))).subscribe((Response)=>{
       this.raisedBy=Response;
+    });
+
+    this.service.getAccessByRole(Number(getCookie("userRoleId"))).subscribe(Response=>{
+      this.access=Response;
+    },error=>{
+      console.log(error);
     });
 
     this.router.events.subscribe((event) => { 

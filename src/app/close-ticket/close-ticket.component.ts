@@ -1,9 +1,10 @@
 import { HttpClient } from '@angular/common/http';
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
 import { NavigationEnd, Router } from '@angular/router';
-import { Incident, ServiceService } from '../service.service';
+import { Incident, ServiceService, Access } from '../service.service';
 import { ToastrService } from 'ngx-toastr';
+import { getCookie} from 'typescript-cookie'
 
 export interface closeTicket
 {
@@ -21,6 +22,12 @@ export interface closeTicket
 export class CloseTicketComponent {
 
   DATA : closeTicket[] =[];
+  selectTicket : closeTicket | undefined;
+  
+  access : Access[]=[];
+  @ViewChild('modalCloseMove') modalClosemoveback;
+  @ViewChild('modalCloseTicket') modalCloseclose;
+
   constructor(private router: Router,private httpClient : HttpClient, private service : ServiceService, private toastr: ToastrService) { } 
 
   getLevel(n:number): string
@@ -44,30 +51,110 @@ export class CloseTicketComponent {
     this.dataSource= new MatTableDataSource(this.DATA);
   }
 
-  closeTicket(I:closeTicket){
-    let tempTicket = I.ticket;
+  selectedTicket(sI:closeTicket)
+  {
+    this.selectTicket= sI;
+  }
+
+  closeTicket(){
+    let tempTicket = this.selectTicket?.ticket;
+    if(tempTicket!= undefined)
     this.service.deleteIncident(tempTicket).subscribe((Response)=>{
-      this.deleteItem(I);
-      this.toastr.success('Ticket closed successfully');
+      if(this.selectTicket!= undefined){
+        this.deleteItem(this.selectTicket);
+        this.toastr.success('Ticket closed successfully');
+        this.modalCloseclose.nativeElement.click();
+        window.scroll({ 
+          top: 0, 
+          left: 0, 
+          behavior: 'smooth' 
+        });
+      }
     },
     error=>{
 
     });
   }
 
-  moveBack(I:closeTicket){
-    let tempTicket=I.ticket;
-    tempTicket.state="Assigned";
-    tempTicket.resolution_comment="Not Accepted";
-    tempTicket.modifiedOn=Math.floor(Date.now() / 1000);
-    this.service.putIncident(tempTicket).subscribe((Response)=>{
-      this.deleteItem(I);
-      this.toastr.success('Ticket moved back');
+  moveBack(){
+    let tempTicket= this.selectTicket?.ticket;
+    if(tempTicket!= undefined)
+    { 
+      tempTicket.state="Assigned";
+      tempTicket.resolution_comment="Not Accepted";
+      tempTicket.modifiedOn=Math.floor(Date.now() / 1000);
+    
+      
+      this.service.putIncident(tempTicket).subscribe((Response)=>{
+        if(this.selectTicket!= undefined){
+          console.log("hello");
+          this.deleteItem(this.selectTicket);
+          this.toastr.success('Ticket moved back');
+          this.modalClosemoveback.nativeElement.click();
+          window.scroll({ 
+            top: 0, 
+            left: 0, 
+            behavior: 'smooth' 
+          });
+        }
     },
     error=>{
 
     });
   }
+  }
+
+  navCreateIncident(){
+    if(this.access[2]!=undefined && this.access[2].status=="write"){
+      this.router.navigate(['/','ticket']);
+    }else{
+      this.toastr.error('Access restricted');
+    }
+    window.scroll({ 
+      top: 0, 
+      left: 0, 
+      behavior: 'smooth' 
+    });
+  }
+  navAssignIncident(){
+    if(this.access[2]!=undefined && this.access[2].status=="write"){
+      this.router.navigate(['/','resolve']);
+    }else{
+      this.toastr.error('Access restricted');
+    }
+    window.scroll({ 
+      top: 0, 
+      left: 0, 
+      behavior: 'smooth' 
+    });
+  }
+
+  navMyIncident(){
+    if(this.access[2]!=undefined && this.access[2].status=="write"){
+      this.router.navigate(['/','myticket']);
+    }else{
+      this.toastr.error('Access restricted');
+    }
+    window.scroll({ 
+      top: 0, 
+      left: 0, 
+      behavior: 'smooth' 
+    });
+  }
+
+  navcloseIncident(){
+    if(this.access[2]!=undefined && this.access[2].status=="write"){
+      this.router.navigate(['/','close']);
+    }else{
+      this.toastr.error('Access restricted');
+    }
+    window.scroll({ 
+      top: 0, 
+      left: 0, 
+      behavior: 'smooth' 
+    });
+  }
+
 
   ngOnInit(){
 
@@ -82,6 +169,13 @@ export class CloseTicketComponent {
       } 
       window.scrollTo(0, 0) 
   }); 
+
+  this.service.getAccessByRole(Number(getCookie("userRoleId"))).subscribe(Response=>{
+    this.access=Response;
+  },error=>{
+    console.log(error);
+  });
+
   this.service.getIncidents().subscribe(Response=>{
     
     // this.DATA=Response;
