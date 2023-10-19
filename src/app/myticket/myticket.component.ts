@@ -18,6 +18,9 @@ import { ToastrService } from 'ngx-toastr';
 export interface myticketswithbutton
 {
   ticket: Incident;
+  searchkey1:string|undefined;
+  searchkey2:string|undefined;
+  searchkey3:string|undefined;
   resolveButton: any;
   moveButton:any;
   ignoreButton:any;
@@ -258,6 +261,9 @@ export class MyticketComponent {
         if(element.state=="Assigned"){
           this.DATA.push({
             ticket: element,
+            searchkey1:element.name,
+            searchkey2:element.issue?.name,
+            searchkey3:element.assignmentGroup?.name,
             resolveButton: "resolve",
             moveButton:"move",
             ignoreButton:"ignore"

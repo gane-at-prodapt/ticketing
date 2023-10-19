@@ -9,6 +9,9 @@ import { getCookie} from 'typescript-cookie'
 export interface closeTicket
 {
   ticket: Incident;
+  searchkey1:string|undefined;
+  searchkey2:string|undefined;
+  searchkey3:string|undefined;
   closeButton: any;
   reviewButton:any;
   movebackButton:any;
@@ -186,6 +189,9 @@ export class CloseTicketComponent {
       this.DATA.push(
         {
           ticket:element,
+          searchkey1:element.name,
+          searchkey2:element.issue?.name,
+          searchkey3:element.assignmentGroup?.name,
           closeButton:"close",
           reviewButton:"review",
           movebackButton:"moveback"

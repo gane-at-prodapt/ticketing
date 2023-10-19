@@ -16,6 +16,7 @@ import { numberFormat } from 'highcharts';
 
 export interface roleswithbutton {
   role: Role;
+  searchkey:string;
   button: any;
 }
 
@@ -65,6 +66,7 @@ export class RolesandaccessComponent {
         Response.forEach((element)=>{
           this.DATA.push({
             role: element,
+            searchkey:element.name,
             button : "access"
             }
           )
