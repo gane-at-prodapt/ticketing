@@ -54,10 +54,10 @@ export class CreateissueComponent {
       modifiedOn: Math.floor(Date.now() / 1000)
     }
     this.service.addIssue(I).subscribe((Response)=>{
-      this.toastr.success('Ticket raised successfully');
+      this.toastr.success('Issue created successfully');
       this.router.navigateByUrl('/addissue');
     },error=>{
-      this.toastr.error('Failed to raise ticket');
+      this.toastr.error('Failed to create issue');
     })
   }
       

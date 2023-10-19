@@ -20,7 +20,7 @@
 
 <div class="outer">
 <nav id="nav1"  class="navbar navbar-expand-lg bg-body-tertiary" style="background-color:black " >
-    <div class="container-fluid" style="background-color: rgb(240, 240, 240);" >
+    <div class="container-fluid" style="font-family: 'League Spartan', sans-serif; background-color: rgb(240, 240, 240);" >
       <a class="navbar-brand" [routerLink]="'../networkHome'" style="margin-left: 20px;">Network</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -66,8 +66,8 @@
   <br><br>
   <div class="search1">
     <mat-form-field id="searchfield" style="margin-left: 270px; width: 650px;  background-color: #fff; color: #fff;">
-      
-      <input id="mysearch" matInput (keyup)="applyFilter($any($event.target).value)" placeholder="Search for network devices">
+      <i class="fa-solid fa-magnifying-glass"></i>
+      <input style="position: absolute; margin-left: 10px;"  id="mysearch" matInput (keyup)="applyFilter($any($event.target).value)" placeholder="Search for network devices">
     </mat-form-field>
 </div>
 <br><br><br><br>
