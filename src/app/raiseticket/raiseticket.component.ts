@@ -26,7 +26,7 @@ export class RaiseticketComponent {
   Priority:number|undefined;
   Severity:number|undefined;
   flexRadioDefault:string="";
- 
+  userRoleId:number = Number(getCookie("userRoleId"))
   access: Access[]=[];
 
   constructor(private router: Router, private service:ServiceService, private toastr: ToastrService ) { 
@@ -173,7 +173,7 @@ export class RaiseticketComponent {
   }
 
   navcloseIncident(){
-    if(this.access[2]!=undefined && this.access[2].status=="write"){
+    if(this.userRoleId==1 || this.userRoleId==2){
       this.router.navigate(['/','close']);
     }else{
       this.toastr.error('Access restricted');

@@ -31,6 +31,7 @@ export interface ticketwithbuttons
 })
 export class ResolveTicketComponent {
 
+  userRoleId:number = Number(getCookie("userRoleId"))
   @ViewChild('myModalClose') modalClose;
 
   DATA : ticketwithbuttons[] =[];
@@ -111,7 +112,7 @@ export class ResolveTicketComponent {
   }
 
   navcloseIncident(){
-    if(this.access[2]!=undefined && this.access[2].status=="write"){
+    if(this.userRoleId==1 || this.userRoleId==2){
       this.router.navigate(['/','close']);
     }else{
       this.toastr.error('Access restricted');

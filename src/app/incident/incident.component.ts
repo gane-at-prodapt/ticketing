@@ -21,7 +21,7 @@ import { getCookie } from 'typescript-cookie';
 export class IncidentComponent {
 
   DATA : Incident[] =[];
-
+  userRoleId:number = Number(getCookie("userRoleId"))
   access: Access[]=[];
   roles: Role[]=[];
 
@@ -83,7 +83,7 @@ export class IncidentComponent {
   }
 
   navcloseIncident(){
-    if(this.access[2]!=undefined && this.access[2].status=="write"){
+    if(this.userRoleId==1 || this.userRoleId==2){
       this.router.navigate(['/','close']);
     }else{
       this.toastr.error('Access restricted');
@@ -94,7 +94,6 @@ export class IncidentComponent {
       behavior: 'smooth' 
     });
   }
-
 
 
 
