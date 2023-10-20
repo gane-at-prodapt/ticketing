@@ -3,7 +3,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Poppins', sans-serif;
+    
     scroll-behavior: smooth;
 }
 
@@ -30,7 +30,7 @@ header{
 header .logo
 {
     color: #fff;
-    font-family: 'Poppins';
+    font-family:'League Spartan', sans-serif;
     text-decoration: none;
     font-weight: 700;
     text-transform: uppercase;
@@ -85,6 +85,8 @@ section
     z-index: 1000;
 
 }
+
+
 .section101
 {
     z-index: 1000;
@@ -347,7 +349,7 @@ section img#bubble88
 
     font-size:0.60cm;
 
-   margin-right: 580px;
+   margin-right: 600px;
 
     margin-top: 50px;
    
@@ -367,7 +369,7 @@ section img#bubble88
     font-size: .90em;
     mix-blend-mode: screen;
     z-index: 7;
-    margin-right: 840px;
+    margin-right: 820px;
     margin-top: 20px;
     transform: translateY(70px);
 }
@@ -391,6 +393,22 @@ section img#bubble88
     background: linear-gradient(to bottom, #073b54 ,transparent);
     z-index: 1000;
 } 
+
+.section1::after
+{
+    content:'';
+    position:absolute;
+    margin-top: 1100px;
+    width: 100%;
+    height: 200px;
+    background: linear-gradient(to bottom, #075665 ,transparent);
+    z-index: 1000;
+} 
+
+.section2
+{
+    z-index: 9;
+}
 
 .section1
 {
