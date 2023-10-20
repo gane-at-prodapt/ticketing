@@ -33,7 +33,7 @@ export class HomepageComponent {
     labels: ['Open', 'Assigned', 'Ignored', 'Resolved', 'Closed'],
     datasets: [
 
-      { label: 'dataset', data: [25, 18, 12 , 15 , 18],  backgroundColor: ['rgb(7, 86, 101)','rgb(86, 155, 169)','rgb(7, 86, 101)', 'rgb(86, 155, 169)', 'rgb(108, 159, 169)'], hoverBackgroundColor:['rgba(151, 246, 245,0.6)','rgba(42, 205, 203,0.6)','rgba(55, 201, 239,0.6)', 'rgba(151, 246, 245,0.6)', 'rgba(42, 205, 203,0.6)' ], 
+      { label: 'dataset', data: [5, 3, 2 , 4 , 6],  backgroundColor: ['rgb(7, 86, 101)','rgb(86, 155, 169)','rgb(7, 86, 101)', 'rgb(86, 155, 169)', 'rgb(108, 159, 169)'], hoverBackgroundColor:['rgba(151, 246, 245,0.6)','rgba(42, 205, 203,0.6)','rgba(55, 201, 239,0.6)', 'rgba(151, 246, 245,0.6)', 'rgba(42, 205, 203,0.6)' ], 
       borderColor:['rgb(7, 86, 101)','rgb(86, 155, 169)','rgb(7, 86, 101)', 'rgb(86, 155, 169)', 'rgb(108, 159, 169)' ], 
     hoverBorderColor:['rgba(151, 246, 245,0.6)','rgba(42, 205, 203,0.6)','rgba(55, 201, 239,0.6)', 'rgba(151, 246, 245,0.6)', 'rgba(42, 205, 203,0.6)'] }, 
       ],
@@ -46,10 +46,10 @@ export class HomepageComponent {
 
 
    barChartData: ChartData<'bar'> = {
-    labels: ['Group 1', 'Group 2', 'Group 3', 'Group 4', 'Group 5'],
+    labels: ['SA', 'NA', 'NE', 'SA', 'OB'],
     datasets: [
 
-      { label: 'dataset', borderRadius: 2,  data: [70, 87, 69 , 75 , 80],  backgroundColor: ['rgb(7, 86, 101)','rgb(86, 155, 169)','rgb(7, 86, 101)', 'rgb(86, 155, 169)', 'rgb(108, 159, 169)'], hoverBackgroundColor:['rgba(151, 246, 245,0.6)','rgba(42, 205, 203,0.6)','rgba(55, 201, 239,0.6)', 'rgba(151, 246, 245,0.6)', 'rgba(42, 205, 203,0.6)' ], 
+      { label: 'dataset', borderRadius: 2,  data: [1, 6, 6 , 6 , 1],  backgroundColor: ['rgb(7, 86, 101)','rgb(86, 155, 169)','rgb(7, 86, 101)', 'rgb(86, 155, 169)', 'rgb(108, 159, 169)'], hoverBackgroundColor:['rgba(151, 246, 245,0.6)','rgba(42, 205, 203,0.6)','rgba(55, 201, 239,0.6)', 'rgba(151, 246, 245,0.6)', 'rgba(42, 205, 203,0.6)' ], 
       borderColor:['rgb(7, 86, 101)','rgb(86, 155, 169)','rgb(7, 86, 101)', 'rgb(86, 155, 169)', 'rgb(108, 159, 169)' ], 
     hoverBorderColor:['rgba(151, 246, 245,0.6)','rgba(42, 205, 203,0.6)','rgba(55, 201, 239,0.6)', 'rgba(151, 246, 245,0.6)', 'rgba(42, 205, 203,0.6)'] }, 
       ],
@@ -61,10 +61,10 @@ export class HomepageComponent {
     }
 
     lineChartData: ChartData<'line'> = {
-      labels: ['Group 1', 'Group 2', 'Group 3', 'Group 4', 'Group 5'],
+      labels: ['SA ', 'NA', 'NE', 'SA', ],
       datasets: [
   
-        { label: 'dataset', data: [70, 87, 69 , 75 , 80],  backgroundColor: ['rgb(7, 86, 101)','rgb(86, 155, 169)','rgb(7, 86, 101)', 'rgb(86, 155, 169)', 'rgb(108, 159, 169)'], hoverBackgroundColor:['rgba(151, 246, 245,0.6)','rgba(42, 205, 203,0.6)','rgba(55, 201, 239,0.6)', 'rgba(151, 246, 245,0.6)', 'rgba(42, 205, 203,0.6)' ], 
+        { label: 'dataset', data: [7, 5, 6 , 5 ],  backgroundColor: ['rgb(7, 86, 101)','rgb(86, 155, 169)','rgb(7, 86, 101)', 'rgb(86, 155, 169)', 'rgb(108, 159, 169)'], hoverBackgroundColor:['rgba(151, 246, 245,0.6)','rgba(42, 205, 203,0.6)','rgba(55, 201, 239,0.6)', 'rgba(151, 246, 245,0.6)', 'rgba(42, 205, 203,0.6)' ], 
         borderColor:['rgb(7, 86, 101)','rgb(86, 155, 169)','rgb(7, 86, 101)', 'rgb(86, 155, 169)', 'rgb(108, 159, 169)' ], 
       hoverBorderColor:['rgba(151, 246, 245,0.6)','rgba(42, 205, 203,0.6)','rgba(55, 201, 239,0.6)', 'rgba(151, 246, 245,0.6)', 'rgba(42, 205, 203,0.6)'] }, 
         ],
