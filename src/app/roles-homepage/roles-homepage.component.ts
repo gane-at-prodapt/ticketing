@@ -12,6 +12,7 @@ import { getCookie } from 'typescript-cookie';
 })
 export class RolesHomepageComponent {
 
+  userRoleId:number = Number(getCookie("userRoleId"));
   roles: Role[]=[];
   access:Access[] = [];
 
@@ -98,7 +99,7 @@ export class RolesHomepageComponent {
   }
 
   navcloseIncident(){
-    if(this.access[2]!=undefined && this.access[2].status=="write"){
+    if(this.userRoleId==1 || this.userRoleId==2){
       this.router.navigate(['/','close']);
     }else{
       this.toastr.error('Access restricted');
@@ -109,6 +110,7 @@ export class RolesHomepageComponent {
       behavior: 'smooth' 
     });
   }
+
 
 
 

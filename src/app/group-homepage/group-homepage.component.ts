@@ -12,6 +12,7 @@ import { ToastrService } from 'ngx-toastr';
 })
 export class GroupHomepageComponent {
 
+  userRoleId:number = Number(getCookie("userRoleId"));
   groups: AssignmentGroup[]=[];
   access:Access[] = [];
 
@@ -100,7 +101,7 @@ export class GroupHomepageComponent {
   }
 
   navcloseIncident(){
-    if(this.access[2]!=undefined && this.access[2].status=="write"){
+    if(this.userRoleId==1 || this.userRoleId==2){
       this.router.navigate(['/','close']);
     }else{
       this.toastr.error('Access restricted');
