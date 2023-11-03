@@ -30,12 +30,12 @@ export class HomepageComponent {
 
   
   lineChart2Data: ChartData<'doughnut'> = {
-    labels: ['Open', 'Assigned', 'Ignored', 'Resolved', 'Closed'],
+    labels: ['Open', 'Assigned', 'Ignored', 'Resolved'],
     datasets: [
 
-      { label: 'dataset', data: [5, 3, 2 , 4 , 6],  backgroundColor: ['rgb(7, 86, 101)','rgb(86, 155, 169)','rgb(7, 86, 101)', 'rgb(86, 155, 169)', 'rgb(108, 159, 169)'], hoverBackgroundColor:['rgba(151, 246, 245,0.6)','rgba(42, 205, 203,0.6)','rgba(55, 201, 239,0.6)', 'rgba(151, 246, 245,0.6)', 'rgba(42, 205, 203,0.6)' ], 
-      borderColor:['rgb(7, 86, 101)','rgb(86, 155, 169)','rgb(7, 86, 101)', 'rgb(86, 155, 169)', 'rgb(108, 159, 169)' ], 
-    hoverBorderColor:['rgba(151, 246, 245,0.6)','rgba(42, 205, 203,0.6)','rgba(55, 201, 239,0.6)', 'rgba(151, 246, 245,0.6)', 'rgba(42, 205, 203,0.6)'] }, 
+      { label: 'dataset', data: [5, 3, 2 , 4 ],  backgroundColor: ['rgb(7, 86, 101)','rgb(86, 155, 169)','rgb(7, 86, 101)', 'rgb(108, 159, 169)'], hoverBackgroundColor:['rgba(151, 246, 245,0.6)','rgba(42, 205, 203,0.6)','rgba(55, 201, 239,0.6)', 'rgba(42, 205, 203,0.6)' ], 
+      borderColor:['rgb(7, 86, 101)','rgb(86, 155, 169)','rgb(7, 86, 101)',  'rgb(108, 159, 169)' ], 
+    hoverBorderColor:['rgba(151, 246, 245,0.6)','rgba(42, 205, 203,0.6)','rgba(55, 201, 239,0.6)', 'rgba(42, 205, 203,0.6)'] }, 
       ],
   };
   lineChart2Options: ChartOptions = {

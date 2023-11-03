@@ -334,7 +334,9 @@ section img#bubble88
  
 
     font-size:1.0cm;
-    margin-right: 450px;
+    /* margin-right: 450px; */
+    text-align: left;
+    transform: translateX(-240px);
     margin-bottom: 30px;
     letter-spacing: 2px;
     /* z-index: 9; */
@@ -370,8 +372,8 @@ section img#bubble88
     mix-blend-mode: screen;
     z-index: 7;
     margin-right: 820px;
-    margin-top: 20px;
-    transform: translateY(70px);
+    
+    transform: translateY(30px);
 }
 
 
