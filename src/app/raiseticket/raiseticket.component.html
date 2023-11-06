@@ -86,36 +86,7 @@
         <li id="point1" >Inform us about the prioritization of this issue</li><br>
         <li id="point1" >Once the ticket is ope it either be resolved or ignored</li><br>
       </ul> 
-      <!-- <div class="card" style="width: 35rem; height: 20rem; position: absolute;  margin-top: 50px; margin-left: 25px; border-radius: 1px; ">
-        <div class="card-body">
-      <div class="row">
-        <div class="col-4">
-          <div id="list-example" class="list-group">
-            <a class="list-group-item list-group-item-action" href="#list-item-1">Item 1</a>
-            <a class="list-group-item list-group-item-action" href="#list-item-2">Item 2</a>
-            <a class="list-group-item list-group-item-action" href="#list-item-3">Item 3</a>
-            <a class="list-group-item list-group-item-action" href="#list-item-4">Item 4</a>
-          </div>
-        </div>
-        <div class="col-8" style="height: 0px; margin-bottom: 20px;">
-          <div id="content" data-bs-spy="scroll" data-bs-target="#list-example" data-bs-smooth-scroll="true" class="scrollspy-example" tabindex="0">
-            <h4 id="list-item-1">Item 1</h4>
-            <p style="border: none;">This is some placeholder content for the scrollspy page. Note that as you scroll down the page, the appropriate navigation link is highlighted. It's repeated throughout the component example. 
-              We keep adding some more example copy here to emphasize the scrolling and highlighting</p>
-            <h4 id="list-item-2">Item 2</h4>
-            <p style="border: none;">This is some placeholder content for the scrollspy page. Note that as you scroll down the page, the appropriate navigation link is highlighted. It's repeated throughout the component example. We keep adding some more example copy here to emphasize the scrolling and highlighting
 
-            </p>
-            <h4 id="list-item-3">Item 3</h4>
-            <p style="border: none;">This is some placeholder content for the scrollspy page. Note that as you scroll down the page, the appropriate navigation link is highlighted. It's repeated throughout the component example. We keep adding some more example copy here to emphasize the scrolling and highlighting</p>
-            <h4 id="list-item-4">Item 4</h4>
-            <p style="border: none;">This is some placeholder content for the scrollspy page. Note that as you scroll down the page, the appropriate navigation link is highlighted. It's repeated throughout the component example. We keep adding some more example copy here to emphasize the scrolling and highlighting</p>
-          </div>
-        </div>
-      </div>
-        </div>
-      </div>
-     -->
 
         
       
@@ -127,37 +98,17 @@
     <div class="card" id="card" style="width: 25rem; height: 33rem; position: absolute;  margin-top: 10px; ">
         <div class="card-body">
           <h3 class="card-title" style="text-align: center; " >RAISE &nbsp; TICKET</h3>
-          <!-- <h6 class="card-subtitle mb-2 text-body-secondary">Card subtitle</h6> -->
-          <!-- <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p> -->
-          <!-- <a href="#" class="card-link">Card link</a>
-          <a href="#" class="card-link">Another link</a> -->
+
           <br>
-          <form [formGroup]= "form">
-
-            <div class="form-group" >
-              <input (change)="setTicketName($any($event.target).value)" class="form-control" style="width: 23rem; " placeholder="Issue name"  formControlName="ticketName" type="text" name="ticketName" > 
-              
-            </div>
-            <br>
-
-          <!-- <div class="form-group" >
-            <input class="form-control" style="width: 23rem; " placeholder="Enter name"  formControlName="ticketName" type="text" name="ticketName" > 
-            <span class="text-danger" *ngIf= "getticketName(form.get('ticketName'))">
-              {{
-                getticketName(form.get('ticketName'))
-              }}
-            </span>
-          </div> -->
-         
-       <div class="form-group">
-                   
-        <select (change)="setNetworkFamily($any($event.target).value)" [formGroup]= "form" id="networkFamilySelect" style="width: 370px; height: 34px; border-radius: 4px; border-color: rgb(211, 211, 211);" formControlName="networkFamily" name="networkFamily" > 
-          
-          <option value="" disabled selected hidden>Select Network Family</option>
-          <option *ngFor="let i of  networkFamilies; let in= index" value={{in}}>{{i}}</option>
-        
-        </select>
-      </div>
+          <form [formGroup]= "form">         
+             <div class="form-group">        
+                <select (change)="setNetworkFamily($any($event.target).value)" [formGroup]= "form" id="networkFamilySelect" style="width: 370px; height: 34px; border-radius: 4px; border-color: rgb(211, 211, 211);" formControlName="networkFamily" name="networkFamily" > 
+                  
+                  <option value="" disabled selected hidden>Select Network Family</option>
+                  <option *ngFor="let i of  networkFamilies; let in= index" value={{in}}>{{i}}</option>
+                
+                </select>
+              </div>
 
       <br>
 
@@ -195,35 +146,10 @@
         </select>
       </div>
       
-      
-      
-
-
-        
-
-           
-      <!-- <div class="wrapper" style="margin-top: 27px;">
-        <div class="select-btn"  >
-            <span id="selectedData">Select</span>
-
-              <span id="arrow" class="material-symbols-outlined" style="color:#807f7f;">
-                
-                </span>
-        </div>
-
-        <div class="content" id="content" >
-            <div class="search">
-                <input class="material-symbols-outlined" type="text" placeholder="search">
-            </div>
-            <ul class="options">
-              <li *ngFor="let item of searchresult" (click)="getvalue(item)" >
-                {{item}} 
-              </li>
-            </ul>
-        </div>
-        </div>
-    -->
-
+      <div class="form-group" >
+        <br>
+        <input (change)="setTicketName($any($event.target).value)" class="form-control" id="DescriptionText" style="display: none;width: 23rem; " placeholder="Issue Description"  formControlName="ticketName" type="text" name="ticketName" > 
+      </div>
 
        <br>
 

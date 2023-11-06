@@ -61,22 +61,29 @@ export class CloseTicketComponent {
 
   closeTicket(){
     let tempTicket = this.selectTicket?.ticket;
-    if(tempTicket!= undefined)
-    this.service.deleteIncident(tempTicket).subscribe((Response)=>{
-      if(this.selectTicket!= undefined){
-        this.deleteItem(this.selectTicket);
-        this.toastr.success('Ticket closed successfully');
-        this.modalCloseclose.nativeElement.click();
-        window.scroll({ 
-          top: 0, 
-          left: 0, 
-          behavior: 'smooth' 
-        });
-      }
-    },
-    error=>{
+    
+    if(tempTicket!= undefined){
 
-    });
+      tempTicket.state="Closed";
+      tempTicket.modifiedOn=Math.floor(Date.now() / 1000);
+
+      this.service.putIncident(tempTicket).subscribe((Response)=>{
+        if(this.selectTicket!= undefined){
+          this.deleteItem(this.selectTicket);
+          this.toastr.success('Ticket closed successfully');
+          this.modalCloseclose.nativeElement.click();
+          window.scroll({ 
+            top: 0, 
+            left: 0, 
+            behavior: 'smooth' 
+          });
+        }
+      },
+      error=>{
+  
+      });
+    }
+    
   }
 
   moveBack(){
@@ -90,7 +97,6 @@ export class CloseTicketComponent {
       
       this.service.putIncident(tempTicket).subscribe((Response)=>{
         if(this.selectTicket!= undefined){
-          console.log("hello");
           this.deleteItem(this.selectTicket);
           this.toastr.success('Ticket moved back');
           this.modalClosemoveback.nativeElement.click();

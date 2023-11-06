@@ -131,6 +131,10 @@ export class RaiseticketComponent {
 
   setGroup(id:number){
     this.group=this.groups[id];
+    let desc = document.getElementById("DescriptionText");
+    if(desc!=null){
+      desc.style.display="block";
+    }
   }
 
   
