@@ -215,7 +215,9 @@
     <br><br>
     <br><br>
     <h1 style="font-family:'Montserrat', sans-serif; font-weight:bolder; letter-spacing: 2px; ">USERS</h1>
-    <p style="font-family:'Montserrat', sans-serif;">Each user has an id and role and depending on their role access is granted or denied. In our system we have used five pre-defined roles.   </p>
+    <p style="font-family:'Montserrat', sans-serif;">Each user has an id and role and depending on their role access is granted or denied. In our system we have used five pre-defined roles. We have five pre-defined roles in our system. Starting with super admin who has acess to every module, 
+      second the network admin, who has all the access every module but the user and role module. Next we have network engineer and support analyst who cant make changes in any other module than incident.
+    Finally we have the observer who cant make changes in any module, an observer can only view modules   </p>
          <br><br>
          <div class="row"> 
             <div class="col-4" *ngFor="let i of users ; let in= index" style="font-family:'Montserrat', sans-serif;">
